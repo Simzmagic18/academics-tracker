@@ -104,76 +104,505 @@
            
             
             <h3>User Information</h3><br>
-        <form action="RegisterNewStudent.php" method="post" enctype="multipart/form-data">
+        <form action="RegisterNewStudent.php" name = "student_form" method="post" enctype="multipart/form-data" onsubmit = "return validateAllFields(this)">
           			
-		
-           <br><b>First Name:</b><br>
-            <input type="text" name="first_name" size="25" required><br>
 			
-            <b>Middle Name:</b><br>
-            <input type="text" name="middle_name" size="25"><br>
+			<label for="student_first_name"><b>First Name</b></label> <span id="error-fname" span style = "float: right"></span><br>
+            <input type="text" name="student_first_name" id ="student_first_name" onblur ="validateFirstName(student_first_name)"  maxlength = "20" required /><br>
+								
+			<hr>
 			
-            <b>Last Name:</b><br>
-            <input type="text" name="last_name" size="25" required><br>
+            <label for="student_middle_name"><b>Middle Name</b></label> <span id="error-mname" span style = "float: right"></span><br>
+            <input type="text" name="student_middle_name" id = "student_middle_name"  onblur ="validateMiddleName(student_middle_name)" maxlength = "20" ><br>
 			
-			<br><b>Gender:</b><br>
-            Male     <input align="left" type="radio" name="gender" value="male"><br>
-            Female   <input align="left" type="radio" name="gender" value="female"><br>
+			<hr>
 			
-			<br><b>Ethnicity:</b><br>
-            <label for="black">Black</label>
-            <input  type="radio" name="ethnicity" id="black" value="Black"><br>
-            <label for="white">White</label>
-            <input  type="radio" name="ethnicity" id="white" value="White"><br>
-            <label for="asian">Asian</label>
-            <input  type="radio" name="ethnicity" id="asian" value="Asian"><br>
-            <label for="coloured">Coloured</label>
-            <input  type="radio" name="ethnicity" id="coloured" value="Coloured"><br>
+            <label for="student_last_name"><b>Last Name</b></label> <span id="error-lname" span style = "float: right"></span><br>
+            <input type="text" name="student_last_name" id = "student_last_name" onblur ="validateLastName(student_last_name)" maxlength = "20" required><br>
 			
-			<b>Date of Birth:</b><br>
-            <input type="date" name="date_of_birth" required>
-            <br><b>Phone Number:</b><br> <input type="text" name="contact_number"><br>
+			<hr>
 			
+			<label for="gender"> <b>Gender </b></br></label> <span id ="error-gender" span style = "float: right"></span> <br>
+            <select id = "gender" name = "gender" onblur ="validateGender(gender)" required>
+				<option value="" >Select...</option>
+				<option value="male">Male</option>
+				<option value="female">Female</option>   
+			</select>
 			
-			<br><h3>Residential Information</h3><br>
-			<br><b>House Number:</b><br>
-            <input type="text" name="house_number" size="10" required><br>
+			<hr>
 			
-			<br><b>Street Name:</b><br>
-            <input type="text" name="street_name" size="25" required><br>
+			<label for="ethnicity"><b>Ethnicity </b><br></label> <span id ="error-race" span style = "float: right"></span><br>
+			<select id = "ethnicity" name = "ethnicity" onblur ="validateEthnicity(ethnicity)" required>
+				<option value="">Select...</option>
+				<option value="white">White</option>
+				<option value="coloured">Coloured</option>
+				<option value="black">Black</option> 
+				<option value="asian">Asian</option>			
+			</select>	
+				
+			<hr>
+			
+			<label for="date_of_birth"> <b>Date of Birth:</b></label> <span id ="error-date" span style = "float: right"></span><br>
+            <input type="date" id="date_of_birth" name="date_of_birth" onblur = "validateDate (date_of_birth)" required>
+			
+			<hr>
+			
+			<label for="contact_number"><b>Phone Number</b></label> <span id="error-phone" span style = "float: right"></span><br>
+            <input type="text" name="contact_number" id = "contact_number" onblur = "validatePhoneNumber (contact_number)" maxlength = "15" required><br>
+			
+			<hr>			
+			
+			<h3>Residential Information</h3><br>
+
+			
+			<label for="house number"><b>House Number</b></label> <span id="error-housen" span style = "float: right"></span><br>
+            <input type="text" name="house_number" id="house_number" onblur = "validateHouseNum (house_number)" maxlength = "6" required><br>
+			
+			<hr>
+			
+			<label for="street name"><b>Street Name</b></label> <span id="error-streetn" span style = "float: right"></span><br>
+            <input type="text" name="street_name" id="street_name" onblur = "validateStreetName (street_name)" maxlength = "25" required><br>
             
-			<br><b>Suburb:</b><br>
-            <input type="text" name="suburb" size="25" required><br>
+			<hr>
 			
-			<br><b>Post code<br>
-            <input type="text" name="post_code" size="25" required><br>
+			<label for="suburb"><b>Suburb</b></label> <span id="error-sub" span style = "float: right"></span><br>
+            <input type="text" name="suburb" id="suburb" onblur = "validateSuburb (suburb)" maxlength = "25" required><br>
+			
+			<hr>			
+			
+			<label for="post code"><b>Post Code</b></label> <span id="error-pcode" span style = "float: right"></span><br>
+            <input type="text" name="post_code" id="post_code" onblur = "validatePostCode (post_code)" maxlength = "10" required><br>
+			
+			<hr>
 			            
-            <br><h3>School Information</h3><br>
-            <br>
-            <label for="SID"><b>School ID</b></label>
-            <br><input type="text" id="SID" name="school_code"><br>
+            <h3>School Information</h3><br>
 			
-			<br><b>User Type:</b><br>
-            <label for="student">Student</label>
-            <input  type="radio" name="user_type" id="student" value="Student"><br>
-            
-            <label for='User' id='UserId'><b>Create User ID</b></label>  
-            <br><input type="text" id='User' name="id"><br>
+			<label for="school_code"><b>School ID</b></label> <span id="error-sid" span style = "float: right"></span><br>
+            <input type="text" id = "school_code" name="school_code"  maxlength = "4" ><br>
 			
-			<br><b>Create Password:</b><br>
-            <input type="text" name="password" size="25" required><br>
+			<hr>
+			
+			<b>User Type:</b><br>
+            <label for="student">student</label>
+			<input  type="radio" name="user_type" id="user_type" value="Student" readonly><br>
+			
+			<hr>
             
-            <input type="submit" value="Register Student">
+            <label for "student_id"><b>Create User ID:</b></label> <span id="error-adid" span style = "float: right"></span><br>
+            <input type="text" name="student_id" id="student_id" onblur = "validateStudentID (student_id)" maxlength="8"  required><br>
+			
+			<hr>
+			
+			<label for "password"><b>Create Password:</b></label> <span id="error-pass" span style = "float: right"></span><br>
+            <input type="password" name="password" id="password" onblur = "validateCreatePassword (password)" size="25" required><br>
+			
+			<hr>
+            
+            <input type="submit" onclick = "return validateAllFields()" value="Register Student">
             
             </form>
         
             <button onclick="goBack()">Go Back </button>
-
             <script>
             function goBack() {
             window.history.back();
             }
             </script>
+			
+			    <script>
+	
+	var send = document.getElementsByName("student_form");
+	
+	function validateFirstName(student_first_name)
+	{  
+ 		var alpha = /^[A-Za-z'-]+$/;
+		var numbers = /^[0-9]+$/;
+		var combo = /^[A-Za-z0-9_]+$/;
+		
+	if(alpha.test(document.getElementById("student_first_name").value))
+		{  
+			document.getElementById("student_first_name").style.background = "white";	
+			document.getElementById("error-fname").style.display = "inline";	
+			document.getElementById('error-fname').innerHTML = "Input Accepted."; 
+			return true;  
+		}
+		else if(numbers.test(document.getElementById("student_first_name").value))
+		{  
+			document.getElementById("student_first_name").style.background = "red"; 
+			document.getElementById('error-fname').innerHTML = "Incorrect Input. Use alphabetic characters, apostrophes and hyphens only."; 
+			return false;  
+		}		
+		else if (combo.test(document.getElementById("student_first_name").value))
+		{
+			document.getElementById("student_first_name").style.background = "red"; 
+			document.getElementById('error-fname').innerHTML = "Incorrect Input. Use alphabetic characters, apostrophes and hyphens only."; 
+			return false;
+		}
+		else if (!((student_first_name.keyCode >= 65) && (student_first_name.keyCode <= 90) || (student_first_name.keyCode >= 97) && (student_first_name.keyCode <= 122) || (student_first_name.keyCode >= 48) && (student_first_name.keyCode <= 57) && (!(student_first_name.keyCode == 32))))
+		{
+			document.getElementById("student_first_name").style.background = "red"; 
+			document.getElementById('error-fname').innerHTML = "Incorrect Input. Please Use alphabetic characters, apostrophes and hyphens only."; 
+			return false;
+		}		
+		else
+		{
+			document.getElementById("student_first_name").style.background = "yellow"; 
+			document.getElementById('error-fname').innerHTML = "Please Enter student First Name."; 
+			return false;
+		}
+		
+	return student_first_name;
+ 	}
+
+	function validateMiddleName(student_middle_name)
+	{  
+ 		var alpha = /^[A-Za-z'-]+$/;
+		var numbers = /^[0-9]+$/;
+		var combo = /^[A-Za-z0-9_]+$/;
+		
+		if((alpha.test(document.getElementById("student_middle_name").value)) || (student_middle_name.value.length == 0))
+		{  
+			document.getElementById("student_middle_name").style.background = "white";	
+			document.getElementById("error-mname").style.display = "inline";	
+			document.getElementById('error-mname').innerHTML = "Input Accepted."; 	
+			return true;  
+		}
+		else if(numbers.test(document.getElementById("student_middle_name").value))
+		{  
+			document.getElementById("student_middle_name").style.background = "red"; 
+			document.getElementById('error-mname').innerHTML = "Incorrect Input. Use alphabetic characters, apostrophes and hyphens only."; 
+			
+			return false;  
+		}		
+		else if (combo.test(document.getElementById("student_middle_name").value))
+		{
+			document.getElementById("student_middle_name").style.background = "red"; 
+			document.getElementById('error-mname').innerHTML = "Incorrect Input. Use alphabetic characters, apostrophes and hyphens only."; 
+			return false;
+		}
+		else if (!((student_middle_name.keyCode >= 65) && (student_middle_name.keyCode <= 90) || (student_middle_name.keyCode >= 97) && (student_middle_name.keyCode <= 122) || (student_middle_name.keyCode >= 48) && (student_middle_name.keyCode <= 57) && (!(student_middle_name.keyCode == 32))))
+		{
+			document.getElementById("student_middle_name").style.background = "red"; 
+			document.getElementById('error-mname').innerHTML = "Incorrect Input. Please Use alphabetic characters, apostrophes and hyphens only."; 
+			return false;
+		}		
+		else
+		{
+			document.getElementById("student_middle_name").style.background = "yellow"; 
+			document.getElementById('error-mname').innerHTML = "Please Enter student Middle Name."; 
+			return false;
+		}
+	
+	return student_middle_name;
+ 	} 
+	
+	function validateLastName(student_last_name)
+	{  
+ 		var alpha = /^[A-Za-z'-]+$/;
+		var numbers = /^[0-9]+$/;
+		var combo = /^[A-Za-z0-9_]+$/;
+		
+		if(alpha.test(document.getElementById("student_last_name").value))
+		{  
+			document.getElementById("student_last_name").style.background = "white";	
+			document.getElementById("error-lname").style.display = "inline";	
+			document.getElementById('error-lname').innerHTML = "Input Accepted."; 	
+			return true;  
+		}
+		else if(numbers.test(document.getElementById("student_last_name").value))
+		{  
+			document.getElementById("student_last_name").style.background = "red"; 
+			document.getElementById('error-lname').innerHTML = "Incorrect Input. Use alphabetic characters, apostrophes and hyphens only."; 
+			return false;  
+		}		
+		else if (combo.test(document.getElementById("student_last_name").value))
+		{
+			document.getElementById("student_last_name").style.background = "red"; 
+			document.getElementById('error-lname').innerHTML = "Incorrect Input. Use alphabetic characters, apostrophes and hyphens only."; 
+			return false;
+		}
+		else if (!((student_last_name.keyCode >= 65) && (student_last_name.keyCode <= 90) || (student_last_name.keyCode >= 97) && (student_last_name.keyCode <= 122) || (student_last_name.keyCode >= 48) && (student_last_name.keyCode <= 57) && (!(student_last_name.keyCode == 32))))
+		{
+			document.getElementById("student_last_name").style.background = "red"; 
+			document.getElementById('error-lname').innerHTML = "Incorrect Input. Please Use alphabetic characters, apostrophes and hyphens only."; 
+			return false;
+		}		
+		else
+		{
+			document.getElementById("student_last_name").style.background = "yellow"; 
+			document.getElementById('error-lname').innerHTML = "Please Enter student Last Name."; 
+			return false;
+		}	
+		
+		return student_last_name;
+ 	} 
+	
+	function validateGender(gender)
+	{
+		var genders = document.getElementById ('gender').value;
+		
+		
+		if (genders == "")
+		{
+			document.getElementById ("gender").style.background = "red";	
+			document.getElementById("gender").style.display = "inline";	
+			document.getElementById('error-gender').innerHTML = "Incorrect Input. Please select gender.";
+			return false;
+		
+		}
+		else if (genders == "male")
+		{
+			document.getElementById ("gender").style.background = "white";
+			document.getElementById("gender").style.display = "inline";	
+			document.getElementById('error-gender').innerHTML = "Input Accepted.";
+			return true;
+		}
+		else if (genders == "female")
+		{
+			document.getElementById ("gender").style.background = "white";
+			document.getElementById("gender").style.display = "inline";
+			document.getElementById('error-gender').innerHTML = "Input Accepted.";
+			return true;
+		}	
+		
+		return gender;
+	}
+	
+	function validateEthnicity(ethnicity)
+	{
+		var race = document.getElementById ('ethnicity').value;
+		
+		
+		if (race == "")
+		{
+			document.getElementById ("ethnicity").style.background = "red";	
+			document.getElementById("ethnicity").style.display = "inline";	
+			document.getElementById('error-race').innerHTML = "Incorrect Input. Please select ethnicity.";
+			return false;
+		
+		}
+		else if (race == "white")
+		{
+			document.getElementById ("ethnicity").style.background = "white";
+			document.getElementById("ethnicity").style.display = "inline";	
+			document.getElementById('error-race').innerHTML = "Input Accepted.";
+			return true;
+		}
+		else if (race == "black")
+		{
+			document.getElementById ("ethnicity").style.background = "white";
+			document.getElementById("ethnicity").style.display = "inline";
+			document.getElementById('error-race').innerHTML = "Input Accepted.";
+			return true;
+		}
+		else if (race == "coloured")
+		{
+			document.getElementById ("ethnicity").style.background = "white";
+			document.getElementById("ethnicity").style.display = "inline";	
+			document.getElementById('error-race').innerHTML = "Input Accepted.";
+			return true;
+		}
+		else if (race == "asian")
+		{
+			document.getElementById ("ethnicity").style.background = "white";
+			document.getElementById("ethnicity").style.display = "inline";	
+			document.getElementById('error-race').innerHTML = "Input Accepted.";
+			return true;
+		}
+		
+		return ethnicity;
+	}
+	
+	function validateDate(date_of_birth)
+	{
+		var dob = document.getElementById ('date_of_birth').value;
+		
+		if (dob == "")
+		{
+			document.getElementById ("date_of_birth").style.background = "red";
+			document.getElementById("date_of_birth").style.display = "inline";	
+			document.getElementById('error-date').innerHTML = "Incorrect Input. Please choose the correct date";
+			return false;
+		}
+		else 
+		{
+			document.getElementById ("date_of_birth").style.background = "white";
+			document.getElementById("date_of_birth").style.display = "inline";	
+			document.getElementById('error-date').innerHTML = "Input Accepted.";
+			return true;
+		}
+		
+		return date_of_birth;		
+	}
+	
+	function validatePhoneNumber (contact_number)
+	{
+		var numbers = /^[0-9]+$/;
+		
+		if ((numbers.test(document.getElementById("contact_number").value)) && (contact_number.value.length >= 10))
+		{
+			document.getElementById ("contact_number").style.background = "white";
+			document.getElementById("contact_number").style.display = "inline";	
+			document.getElementById('error-phone').innerHTML = "Input Accepted.";
+			return true;
+		}
+		else
+		{
+			document.getElementById ("contact_number").style.background = "red";
+			document.getElementById("contact_number").style.display = "inline";	
+			document.getElementById('error-phone').innerHTML = "Incorrect Input. Please use numerical values only. And please check if the length of phone number is greater than 10.";
+			return false;
+		}
+		
+		return contact_number;
+	}
+	
+	function validateHouseNum(house_number)
+	{
+		
+		var combo = /^[A-Za-z0-9_]+$/;
+		
+		if (combo.test(document.getElementById("house_number").value))
+		{
+			document.getElementById ("house_number").style.background = "white";
+			document.getElementById("house_number").style.display = "inline";	
+			document.getElementById('error-housen').innerHTML = "Input Accepted.";
+			return true;
+		}
+		else
+		{
+			document.getElementById ("house_number").style.background = "red";
+			document.getElementById("house_number").style.display = "inline";	
+			document.getElementById('error-housen').innerHTML = "Incorrect Input. Please use alphabetic and numerical values only.";
+			return false;
+		}
+		
+		return house_number;
+	}
+	
+	function validateStreetName(street_name)
+	{
+		var alpha = /^[A-Za-z'-]+$/;
+		
+		if(alpha.test(document.getElementById("street_name").value))
+		{  
+			document.getElementById("street_name").style.background = "white";	
+			document.getElementById("street_name").style.display = "inline";	
+			document.getElementById('error-streetn').innerHTML = "Input Accepted."; 
+			return true;  
+		} else 
+		{
+			document.getElementById ("street_name").style.background = "red";
+			document.getElementById("street_name").style.display = "inline";	
+			document.getElementById('error-streetn').innerHTML = "Incorrect Input. Please use alphabetic and numerical values only.";
+			return false;
+		}
+
+		return street_name;
+	}
+
+	function validateSuburb(suburb)
+	{
+		var alpha = /^[A-Za-z'-]+$/;
+		
+		if(alpha.test(document.getElementById("suburb").value))
+		{  
+			document.getElementById("suburb").style.background = "white";	
+			document.getElementById("suburb").style.display = "inline";	
+			document.getElementById('error-sub').innerHTML = "Input Accepted.";
+			return true;  
+		} else 
+		{
+			document.getElementById ("suburb").style.background = "red";
+			document.getElementById("suburb").style.display = "inline";	
+			document.getElementById('error-sub').innerHTML = "Incorrect Input. Please use alphabetic and numerical values only.";
+			return false;
+		}	
+		
+		return suburb;
+	}
+	
+	function validatePostCode (post_code)
+	{
+		var combo = /^[A-Za-z0-9_]+$/;
+		
+		if(!(combo.test(document.getElementById("post_code").value)) || (post_code.value.length == 0))
+		{  
+			document.getElementById ("post_code").style.background = "red";
+			document.getElementById("post_code").style.display = "inline";	
+			document.getElementById('error-pcode').innerHTML = "Incorrect Input. Please use alphabetic and numerical values only.";
+			return false;  
+		} else 
+		{
+			document.getElementById("post_code").style.background = "white";	
+			document.getElementById("post_code").style.display = "inline";	
+			document.getElementById('error-pcode').innerHTML = "Input Accepted."; 		
+			return true;
+		}
+		
+		return post_code;
+	}
+	
+	
+	function validateStudentID(student_id)
+	{
+		var numbers = /^[0-9]+$/;
+		
+		if ((numbers.test(document.getElementById("student_id").value)) && (student_id.value.length == 8))
+		{
+			document.getElementById("student_id").style.background = "white";	
+			document.getElementById("student_id").style.display = "inline";	
+			document.getElementById('error-adid').innerHTML = "Input Accepted."; 				 
+			return true;
+		}
+		else
+		{
+			document.getElementById ("student_id").style.background = "red";
+			document.getElementById("student_id").style.display = "inline";	
+			document.getElementById('error-adid').innerHTML = "Incorrect Input. Please use numerical values only. And please check if the length of ID is 8.";
+			return false; 
+		}
+		
+		return student_id;
+	}
+	
+	function validateCreatePassword(password)
+	{		
+		if(password.value.length > 8)
+		{
+			document.getElementById("password").style.background = "white";	
+			document.getElementById("password").style.display = "inline";	
+			document.getElementById('error-pass').innerHTML = "Input Accepted."; 
+			return true;
+		}
+		else
+		{
+			document.getElementById ("password").style.background = "red";
+			document.getElementById("password").style.display = "inline";	
+			document.getElementById('error-pass').innerHTML = "Incorrect Input. Please check if the length of chosen password more than 8 characters long.";
+			return false;
+		}
+		
+		return password;
+	}
+	
+
+function validateAllFields ()
+{	
+    if((document.getElementById('student_first_name').style.background == "red") || (document.getElementById('student_middle_name').style.background == "red") || (document.getElementById('student_last_name').style.background == "red") || (document.getElementById('gender').style.background == "red") || (document.getElementById('ethnicity').style.background == "red") || (document.getElementById('date_of_birth').style.background == "red") || (document.getElementById('contact_number').style.background == "red") || (document.getElementById('house_number').style.background == "red") || (document.getElementById('street_name').style.background == "red") || (document.getElementById('suburb').style.background == "red") || (document.getElementById('post_code').style.background == "red") || (document.getElementById('school_code').style.background == "red") || (document.getElementById('student_id').style.background == "red") || (document.getElementById('password').style.background == "red"))
+	{
+        alert('Please ensure that there are no red fields');
+		event.preventDefault();
+        return validateAllFields(x);
+    }
+	else
+	{
+		
+		document.getElementByName("student_form").submit();
+	}
+	
+}		
+	</script>
         
         </div>
 	<!-- Footer -->

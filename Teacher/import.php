@@ -28,7 +28,7 @@ if(isset($_POST["Import"])){
 				{
 					echo "<script type=\"text/javascript\">
 							alert(\"Invalid File:Please Upload CSV File.\");
-							window.location = \"uploadmarks.php\"
+							window.location = \"index101.php\"
 						</script>";
 				
 				}
