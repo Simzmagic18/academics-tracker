@@ -1159,17 +1159,17 @@ section
 11. Footer
 *********************************/
 
-.footer
-{
-	width: 100%;
-	padding-top: 86px;
-	background: #1a1a1a;
+.footer{
+/*clear: both;*/
+height:50px;
+width: 100%;
+text-align: center;
+margin: 0px 0px 0px 0px;
+font-family: arial, helvetica;
+font-weight: bold ;
+font-size: 11px;
+background-color: black;
 }
-.footer .section_title h1
-{
-	color: #FFFFFF;
-}
-
 /*********************************
 11.1 Newsletter
 *********************************/
@@ -1217,7 +1217,7 @@ section
 11.2 Footer Content
 *********************************/
 
-.footer_content 
+/*.footer_content 
 {
 	padding-top: 80px;
 	padding-bottom: 83px;
@@ -1292,7 +1292,7 @@ section
 
 /*********************************
 11.3 Footer Copyright
-*********************************/
+*********************************
 
 .footer_bar
 {
@@ -1310,7 +1310,7 @@ section
 .footer_social .menu_social_item:last-child
 {
 	margin-right: 0px;
-}
+}*/
 input[type=text], select {
     width: 70%;
     padding: 12px 20px;
