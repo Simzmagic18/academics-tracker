@@ -720,25 +720,20 @@ section
 8. Buttons
 *********************************/
 
-.button
-{
-	cursor: pointer;
-}
-.button:hover
-{
-	box-shadow: 0px 10px 20px rgba(0,0,0,0.2);
-}
-.button 
-{
-	font-size: 14px;
-	line-height: 48px;
-	font-weight: 700;
-	text-transform: uppercase;
-}
-.button
-{
-	width: 202px;
-	height: 48px;
+.button{
+    height: 50px;
+    width: 100px;
+    background: #ffb606;
+    border: 2px solid goldenrod;
+    padding: 10px 24px;
+    
+    color:#FFFFFF;
+    text-align: center;
+    font-size: 16px;
+    
+    background: linear-gradient(top, #34696f, #2f5f63);
+    border-radius: 10px;
+    
 }
 
 /*********************************
@@ -991,6 +986,15 @@ section
 	outline: none !important;
 	border-color: #ffb606;
 }
+.req {
+    font-size: 150%;
+    color:red;
+}
+abbr[title] {
+  border-bottom: none !important;
+  cursor: inherit !important;
+  text-decoration: none !important;
+}
 .text_field
 {
 	width: 100%;
@@ -1158,17 +1162,18 @@ section
 /*********************************
 11. Footer
 *********************************/
+.footer{
+/*clear: both;*/
+height:50px;
+width: 100%;
+text-align: center;
+margin: 0px 0px 0px 0px;
+font-family: arial, helvetica;
+font-weight: bold ;
+font-size: 11px;
+background-color: black;
+}
 
-.footer
-{
-	width: 100%;
-	padding-top: 86px;
-	background: #1a1a1a;
-}
-.footer .section_title h1
-{
-	color: #FFFFFF;
-}
 
 /*********************************
 11.1 Newsletter
@@ -1213,104 +1218,6 @@ section
 	border: solid 2px #FFFFFF;
 }
 
-/*********************************
-11.2 Footer Content
-*********************************/
-
-.footer_content 
-{
-	padding-top: 80px;
-	padding-bottom: 83px;
-	border-bottom: solid 2px #4d4e4e;
-}
-.footer_content .logo_container
-{
-	padding-left: 0px;
-}
-.footer_content .logo span
-{
-	color: #FFFFFF;
-}
-.footer_about_text
-{
-	margin-top: 24px;
-	margin-bottom: 0px;
-	padding-right: 20px;
-}
-.footer_column_title
-{
-	font-size: 18px;
-	font-weight: 500;
-	color: #FFFFFF;
-	padding-top: 15px;
-}
-.footer_column_content
-{
-	margin-top: 32px;
-}
-.footer_list_item
-{
-	margin-bottom: 11px;
-}
-.footer_list_item a
-{
-	font-size: 14px;
-	color: #a5a5a5;
-	-webkit-transition: all 200ms ease;
-	-moz-transition: all 200ms ease;
-	-ms-transition: all 200ms ease;
-	-o-transition: all 200ms ease;
-	transition: all 200ms ease;
-}
-.footer_list_item a:hover
-{
-	color: #ffb606;
-}
-.footer_contact_item
-{
-	font-size: 14px;
-	font-weight: 400;
-	color: #a5a5a5;
-	margin-bottom: 22px;
-}
-.footer_contact_item:last-child
-{
-	margin-bottom: 0px;
-}
-.footer_contact_icon
-{
-	display: inline-block;
-	width: 24px;
-	height: 24px;
-	vertical-align: middle;
-	margin-right: 10px;
-}
-.footer_contact_icon img
-{
-	width: 100%;
-}
-
-/*********************************
-11.3 Footer Copyright
-*********************************/
-
-.footer_bar
-{
-	padding-top: 19px;
-	padding-bottom: 19px;
-}
-.footer_social .menu_social_item a i
-{
-	color: #FFFFFF;
-}
-.footer_social .menu_social_item a i:hover
-{
-	color: #ffb606;
-}
-.footer_social .menu_social_item:last-child
-{
-	margin-right: 0px;
-}
 input[type=text], select {
     width: 70%;
     padding: 12px 20px;
@@ -1375,3 +1282,4 @@ input[type=submit], select {
   clear: both;
   display: table;
 }
+

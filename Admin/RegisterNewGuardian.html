@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>guardianistrator Register</title>
+<title>Guardian Register</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="Course Project">
@@ -23,7 +23,7 @@
 			<div class="logo_container">
 				<div class="logo">
 					<img src="images/logo.png" alt="">
-					<span>guardianistrator</span>
+					<span>guardian registration</span>
 				</div>
 			</div>
 
@@ -41,7 +41,7 @@
 		</div>
 		<div class="header_side d-flex flex-row justify-content-center align-items-center">
 			<img src="images/phone-call.svg" alt="">
-			<span>guardianistrator</span>
+			<span>guardian</span>
 		</div>
 
 		<!-- Hamburger -->
@@ -107,7 +107,7 @@
         <form action="RegisterNewGuardian.php" name = "guardian_form" method="post" enctype="multipart/form-data" onsubmit = "return validateAllFields(this)">
           			
 			
-			<label for="guardian_first_name"><b>First Name</b></label> <span id="error-fname" span style = "float: right"></span><br>
+			<label for="guardian_first_name"><b>First Name <abbr class="req" title="required">*</abbr></b></label> <span id="error-fname" span style = "float: right"></span><br>
             <input type="text" name="guardian_first_name" id ="guardian_first_name" onblur ="validateFirstName(guardian_first_name)"  maxlength = "20" required /><br>
 								
 			<hr>
@@ -117,12 +117,12 @@
 			
 			<hr>
 			
-            <label for="guardian_last_name"><b>Last Name</b></label> <span id="error-lname" span style = "float: right"></span><br>
+            <label for="guardian_last_name"><b>Last Name <abbr class="req" title="required">*</abbr></b></label> <span id="error-lname" span style = "float: right"></span><br>
             <input type="text" name="guardian_last_name" id = "guardian_last_name" onblur ="validateLastName(guardian_last_name)" maxlength = "20" required><br>
 			
 			<hr>
 			
-			<label for="gender"> <b>Gender </b></br></label> <span id ="error-gender" span style = "float: right"></span> <br>
+			<label for="gender"> <b>Gender <abbr class="req" title="required">*</abbr></b></br></label> <span id ="error-gender" span style = "float: right"></span> <br>
             <select id = "gender" name = "gender" onblur ="validateGender(gender)" required>
 				<option value="" >Select...</option>
 				<option value="male">Male</option>
@@ -131,7 +131,7 @@
 			
 			<hr>
 			
-			<label for="ethnicity"><b>Ethnicity </b><br></label> <span id ="error-race" span style = "float: right"></span><br>
+			<label for="ethnicity"><b>Ethnicity <abbr class="req" title="required">*</abbr></b><br></label> <span id ="error-race" span style = "float: right"></span><br>
 			<select id = "ethnicity" name = "ethnicity" onblur ="validateEthnicity(ethnicity)" required>
 				<option value="">Select...</option>
 				<option value="white">White</option>
@@ -142,12 +142,12 @@
 				
 			<hr>
 			
-			<label for="date_of_birth"> <b>Date of Birth:</b></label> <span id ="error-date" span style = "float: right"></span><br>
+			<label for="date_of_birth"> <b>Date of Birth <abbr class="req" title="required">*</abbr>:</b></label> <span id ="error-date" span style = "float: right"></span><br>
             <input type="date" id="date_of_birth" name="date_of_birth" onblur = "validateDate (date_of_birth)" required>
 			
 			<hr>
 			
-			<label for="contact_number"><b>Phone Number</b></label> <span id="error-phone" span style = "float: right"></span><br>
+			<label for="contact_number"><b>Phone Number <abbr class="req" title="required">*</abbr></b></label> <span id="error-phone" span style = "float: right"></span><br>
             <input type="text" name="contact_number" id = "contact_number" onblur = "validatePhoneNumber (contact_number)" maxlength = "15" required><br>
 			
 			<hr>			
@@ -155,12 +155,12 @@
 			<h3>Residential Information</h3><br>
 
 			
-			<label for="house number"><b>House Number</b></label> <span id="error-housen" span style = "float: right"></span><br>
+			<label for="house number"><b>House Number <abbr class="req" title="required">*</abbr></b></label> <span id="error-housen" span style = "float: right"></span><br>
             <input type="text" name="house_number" id="house_number" onblur = "validateHouseNum (house_number)" maxlength = "6" required><br>
 			
 			<hr>
 			
-			<label for="street name"><b>Street Name</b></label> <span id="error-streetn" span style = "float: right"></span><br>
+			<label for="street name"><b>Street Name <abbr class="req" title="required">*</abbr></b></label> <span id="error-streetn" span style = "float: right"></span><br>
             <input type="text" name="street_name" id="street_name" onblur = "validateStreetName (street_name)" maxlength = "25" required><br>
             
 			<hr>
@@ -170,7 +170,7 @@
 			
 			<hr>			
 			
-			<label for="post code"><b>Post Code</b></label> <span id="error-pcode" span style = "float: right"></span><br>
+			<label for="post code"><b>Post Code <abbr class="req" title="required">*</abbr></b></label> <span id="error-pcode" span style = "float: right"></span><br>
             <input type="text" name="post_code" id="post_code" onblur = "validatePostCode (post_code)" maxlength = "10" required><br>
 			
 			<hr>
@@ -183,17 +183,17 @@
 			<hr>
 			
 			<b>User Type:</b><br>
-            <label for="guardian">guardian</label>
+            <label for="guardian">Guardian <abbr class="req" title="required">*</abbr></label>
 			<input  type="radio" name="user_type" id="user_type" value="Guardian" readonly><br>
 			
 			<hr>
             
-            <label for "guardian_id"><b>Create User ID:</b></label> <span id="error-adid" span style = "float: right"></span><br>
+            <label for "guardian_id"><b>Create User ID <abbr class="req" title="required">*</abbr>:</b></label> <span id="error-adid" span style = "float: right"></span><br>
             <input type="text" name="guardian_id" id="guardian_id" onblur = "validateGuardianID (guardian_id)" maxlength="8"  required><br>
 			
 			<hr>
 			
-			<label for "password"><b>Create Password:</b></label> <span id="error-pass" span style = "float: right"></span><br>
+			<label for "password"><b>Create Password <abbr class="req" title="required">*</abbr>:</b></label> <span id="error-pass" span style = "float: right"></span><br>
             <input type="password" name="password" id="password" onblur = "validateCreatePassword (password)" size="25" required><br>
 			
 			<hr>
@@ -202,7 +202,7 @@
             
             </form>
         
-            <button onclick="goBack()">Go Back </button>
+            <button class="button" onclick="goBack()">Back </button>
             <script>
             function goBack() {
             window.history.back();
