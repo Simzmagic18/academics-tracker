@@ -723,15 +723,15 @@ section
 *********************************/
 
 .button{
-    height: 150px;
-    width: 250px;
+    height: 25px;
+    width: 50px;
     background: #ffb606;
     border: 2px solid goldenrod;
     padding: 10px 24px;
     
     color:#FFFFFF;
     text-align: center;
-    font: bold 1.6em/50px "Helvetica Neue", sans-serif, serif,  serif, sans-serif;
+    font-size: 16px;
     
     background: linear-gradient(top, #34696f, #2f5f63);
     border-radius: 10px;
