@@ -10,6 +10,7 @@
 <link href="plugins/fontawesome-free-5.0.1/css/fontawesome-all.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" type="text/css" href="styles/news_post_styles.css">
 <link rel="stylesheet" type="text/css" href="styles/news_post_responsive.css">
+<link rel="stylesheet" type="text/css" href="styles/menuDropDown.css">
 </head>
 <body>
 
@@ -33,16 +34,21 @@
 					<ul class="main_nav_list">
 						<li class="main_nav_item"><a href="index.html">home</a></li>
 						<li class="main_nav_item"><a href="#">about us</a></li>
-						<li class="main_nav_item"><a href="courses.html">courses</a></li>
 						<li class="main_nav_item"><a href="contact.html">contact</a></li>
 					</ul>
 				</div>
 			</nav>
 		</div>
-		<div class="header_side d-flex flex-row justify-content-center align-items-center">
-			<img src="images/phone-call.svg" alt="">
-			<span>Administrator</span>
-		</div>
+            <div class="header_side d-flex flex-row justify-content-center align-items-center">
+                <div class="dropdown dropdown-center">
+                    <button class="dropbtn">PROFILE</button>
+                    <div class="dropdown-content">
+                        <a href="Profile.html">USER DETAILS</a>
+                        <a href="#">NOTIFICATIONS</a>
+                        <a href="index.html">LOGOUT</a>
+                    </div>
+                </div>
+            </div>
 
 		<!-- Hamburger -->
 		<div class="hamburger_container">
