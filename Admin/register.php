@@ -1,4 +1,31 @@
-<!DOCTYPE html>
+<?php
+	$msg = "";
+
+	if (isset($_POST['submit'])) {
+		$con = new mysqli('localhost', 'root', '', 'academicsTracker2');
+
+		$name = $con->real_escape_string($_POST['teacher_first_name']);
+		$mname = $con->real_escape_string($_POST['teacher_middle_name']);
+                $lname = $con->real_escape_string($_POST['teacher_last_name']);
+                $dob = $con->real_escape_string($_POST['date_of_birth']);
+                $race = $con->real_escape_string($_POST['ethnicity']);
+                $gen = $con->real_escape_string($_POST['gender']);
+                $type = $con->real_escape_string($_POST['user_type']);
+                $password = $con->real_escape_string($_POST['password']);
+		$cPassword = $con->real_escape_string($_POST['cPassword']);
+
+		if ($password != $cPassword)
+			$msg = "Please Check Your Passwords!";
+		else {
+			$hash = password_hash($password, PASSWORD_BCRYPT);
+			$con->query("INSERT INTO teacher (teacher_first_name,teacher_middle_name,teacher_last_name,date_of_birth,ethnicity,gender,user_type, password) VALUES ('$name', '$mname','$lname','$dob','$race','$gen','$type', '$hash')");
+			readfile("successfulRecord3.html");// echo "Records Inserted Successfully.";
+		}
+	}
+	//mysqli_close($con);
+?>
+
+<!doctype html>
 <html lang="en">
 <head>
 <title>Administrator Register</title>
@@ -10,7 +37,6 @@
 <link href="plugins/fontawesome-free-5.0.1/css/fontawesome-all.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" type="text/css" href="styles/news_post_styles.css">
 <link rel="stylesheet" type="text/css" href="styles/news_post_responsive.css">
-<link rel="stylesheet" type="text/css" href="styles/menuDropDown.css">
 </head>
 <body>
 
@@ -32,23 +58,18 @@
 			<nav class="main_nav_container">
 				<div class="main_nav">
 					<ul class="main_nav_list">
-						<li class="main_nav_item"><a href="subdir/index.html">home</a></li>
+						<li class="main_nav_item"><a href="index.html">home</a></li>
 						<li class="main_nav_item"><a href="#">about us</a></li>
+						<li class="main_nav_item"><a href="courses.html">courses</a></li>
 						<li class="main_nav_item"><a href="contact.html">contact</a></li>
 					</ul>
 				</div>
 			</nav>
 		</div>
-            <div class="header_side d-flex flex-row justify-content-center align-items-center">
-                <div class="dropdown dropdown-center">
-                    <button class="dropbtn">PROFILE</button>
-                    <div class="dropdown-content">
-                        <a href="Profile.html">USER DETAILS</a>
-                        <a href="#">NOTIFICATIONS</a>
-                        <a href="index.html">LOGOUT</a>
-                    </div>
-                </div>
-            </div>
+		<div class="header_side d-flex flex-row justify-content-center align-items-center">
+			<img src="images/phone-call.svg" alt="">
+			<span>Administrator</span>
+		</div>
 
 		<!-- Hamburger -->
 		<div class="hamburger_container">
@@ -110,9 +131,10 @@
            
             
             <h3>User Information</h3><br>
-        <form action="RegisterNewTeacher.php" name = "teacher_form" method="post" enctype="multipart/form-data" onsubmit = "return validateAllFields(this)">
-          			
-			
+
+				<?php if ($msg != "") echo $msg . "<br><br>"; ?>
+
+				<form method="post" action="register.php">
 			<label for="teacher_first_name"><b>First Name <abbr class="req" title="required">*</abbr></b></label> <span id="error-fname" span style = "float: right"></span><br>
             <input type="text" name="teacher_first_name" id ="teacher_first_name" onblur ="validateFirstName(teacher_first_name)"  maxlength = "20" required /><br>
 								
@@ -194,23 +216,23 @@
 			<label for="teacher">Head Of Department</label>
 			<input  type="radio" name="user_type" id="user_type" value="HOD" readonly style="vertical-align: middle" ><br>
 			
-			<hr>
-            
-            <label for="teacher_id"><b>Create User ID <abbr class="req" title="required">*</abbr>:</b></label> <span id="error-adid" span style = "float: right"></span><br>
-            <input type="text" name="teacher_id" id="teacher_id" onblur = "validateTeacherID (teacher_id)" maxlength="8"  required><br>
-			
-			<hr>
 			
 			<label for="password"><b>Create Password <abbr class="req" title="required">*</abbr>:</b></label> <span id="error-pass" span style = "float: right"></span><br>
             <input type="password" name="password" id="password" onblur = "validateCreatePassword (password)" size="25" required><br>
-			
+
 			<hr>
+                        
+                        <br>	<input minlength="5" name="cPassword" type="password" placeholder="Confirm Password..."><br>
             
-            <input type="submit" onclick = "return validateAllFields()" value="Register Teacher">
+            <input name="submit" type="submit" value="Register..." onclick = "return validateAllFields()">
             
-            </form>
+				</form>
+
+			</div>
+		</div>
+	</div>
         
-            <button class="button" onclick="goBack()"> Back </button>
+         <button class="button" onclick="goBack()"> Back </button>
             <script>
             function goBack() {
             window.history.back();
@@ -613,7 +635,7 @@ function validateAllFields ()
 	</script>
         
         </div>
-	<!-- Footer -->
+<!-- Footer -->
 
 	<footer class="footer">
 		<div class="container">
@@ -630,69 +652,10 @@ function validateAllFields ()
 						<div class="logo_container">
 							<div class="logo">
 								<img src="images/logo.png" alt="">
-								<span>course</span>
+								<span>Academics Tracker</span>
 							</div>
 						</div>
 
-						<p class="footer_about_text">In aliquam, augue a gravida rutrum, ante nisl fermentum nulla, vitae tempor nisl ligula vel nunc. Proin quis mi malesuada, finibus tortor fermentum, tempor lacus.</p>
-
-					</div>
-
-					<!-- Footer Column - Menu -->
-
-					<div class="col-lg-3 footer_col">
-						<div class="footer_column_title">Menu</div>
-						<div class="footer_column_content">
-							<ul>
-								<li class="footer_list_item"><a href="index.html">Home</a></li>
-								<li class="footer_list_item"><a href="#">About Us</a></li>
-								<li class="footer_list_item"><a href="courses.html">Courses</a></li>
-								<li class="footer_list_item"><a href="news.html">News</a></li>
-								<li class="footer_list_item"><a href="contact.html">Contact</a></li>
-							</ul>
-						</div>
-					</div>
-
-					<!-- Footer Column - Usefull Links -->
-
-					<div class="col-lg-3 footer_col">
-						<div class="footer_column_title">Usefull Links</div>
-						<div class="footer_column_content">
-							<ul>
-								<li class="footer_list_item"><a href="#">Testimonials</a></li>
-								<li class="footer_list_item"><a href="#">FAQ</a></li>
-								<li class="footer_list_item"><a href="#">Community</a></li>
-								<li class="footer_list_item"><a href="#">Campus Pictures</a></li>
-								<li class="footer_list_item"><a href="#">Tuitions</a></li>
-							</ul>
-						</div>
-					</div>
-
-					<!-- Footer Column - Contact -->
-
-					<div class="col-lg-3 footer_col">
-						<div class="footer_column_title">Contact</div>
-						<div class="footer_column_content">
-							<ul>
-								<li class="footer_contact_item">
-									<div class="footer_contact_icon">
-										<img src="images/placeholder.svg" alt="https://www.flaticon.com/authors/lucy-g">
-									</div>
-									Blvd Libertad, 34 m05200 Arévalo
-								</li>
-								<li class="footer_contact_item">
-									<div class="footer_contact_icon">
-										<img src="images/smartphone.svg" alt="https://www.flaticon.com/authors/lucy-g">
-									</div>
-									0034 37483 2445 322
-								</li>
-								<li class="footer_contact_item">
-									<div class="footer_contact_icon">
-										<img src="images/envelope.svg" alt="https://www.flaticon.com/authors/lucy-g">
-									</div>hello@company.com
-								</li>
-							</ul>
-						</div>
 					</div>
 
 				</div>
@@ -702,18 +665,16 @@ function validateAllFields ()
 
 			<div class="footer_bar d-flex flex-column flex-sm-row align-items-center">
 				<div class="footer_copyright">
-					<span><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></span>
+					<span>Academics Tracker All rights reserved</span>
 				</div>
 				<div class="footer_social ml-sm-auto">
-					<ul class="menu_social">
+					<!--><ul class="menu_social">
 						<li class="menu_social_item"><a href="#"><i class="fab fa-pinterest"></i></a></li>
 						<li class="menu_social_item"><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
 						<li class="menu_social_item"><a href="#"><i class="fab fa-instagram"></i></a></li>
 						<li class="menu_social_item"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
 						<li class="menu_social_item"><a href="#"><i class="fab fa-twitter"></i></a></li>
-					</ul>
+					</ul>-->
 				</div>
 			</div>
 
@@ -733,6 +694,6 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 <script src="plugins/scrollTo/jquery.scrollTo.min.js"></script>
 <script src="plugins/easing/easing.js"></script>
 <script src="js/news_post_custom.js"></script>
-
+        
 </body>
 </html>
