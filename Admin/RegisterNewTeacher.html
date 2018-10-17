@@ -87,7 +87,6 @@
             <br><h2>Please Complete Form</h2>
             <h3>User Information</h3><br>
 
-				<?php if ($msg != "") echo $msg . "<br><br>"; ?>
 
 				<form action="RegisterNewTeacher.php" name = "teacher_form" method="post" enctype="multipart/form-data" onsubmit = "return validateAllFields(this)">
 			<label for="teacher_first_name"><b>First Name <abbr class="req" title="required">*</abbr></b></label> <span id="error-fname" span style = "float: right"></span><br>

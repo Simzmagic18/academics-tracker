@@ -56,20 +56,6 @@ if (hash_equals($hashed_password, crypt( $hashed_password))) {
 		}
 	}
 
-
- 
-if(mysqli_query($con, $sql1))
-{
-	//if(mysqli_query($link, $sql2))
-	//{   
-	      readfile("successfulRecord3.html");
-   		// echo "Records Inserted Successfully.";
-	//}
-}
- else
-{
-    echo "ERROR: Could Not Able To Execute $sql. " . mysqli_error($con);
-}
 // Close connection
 mysqli_close($con);
 
