@@ -23,7 +23,7 @@
     </div>
   </form>
   <?php
-	if (isset($_POST['login']))
+	if (isset($_POST['submit']))
 		{
 			$username = mysqli_real_escape_string($con, $_POST['user']);
 			$password = mysqli_real_escape_string($con, $_POST['pass']);
