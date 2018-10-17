@@ -1,5 +1,5 @@
 <?php session_start(); ?>
-<?php include('dbcon.php'); ?>
+<?php include('dbcon.php');?>
 
 <html>
 <head>
@@ -27,19 +27,14 @@
   <?php
 	if (isset($_POST['submit']))
 		{
-			$username = mysqli_real_escape_string($con, $_POST['user']);
-			$password = mysqli_real_escape_string($con, $_POST['pass']);
-			
-			$query 		= mysqli_query($con, "SELECT * FROM teacher  WHERE  password ='$password' and teacher_id='$username'");
-			$row		= mysqli_fetch_array($query);
-			$num_row 	= mysqli_num_rows($query);
-			  
-	if ($num_row > 0) {
-					// See the password_hash() example to see where this came from.
-								$hash = password_hash($password, PASSWORD_BCRYPT);
-			
-if (password_verify('password', $hash)) {
-    		
+			$username = mysqli_real_escape_string($connect, $_POST["user"]);  
+			$password = mysqli_real_escape_string($connect, $_POST["pass"]);  
+			$password = md5($password);  
+			$query = "SELECT * FROM teacher WHERE user = '$username' AND password = '$password'";  
+			$result = mysqli_query($connect, $query);  
+			if(mysqli_num_rows($result) > 0)  
+
+				if ($num_row > 0) {
 					$_SESSION['teacher_id']=$row['teacher_id'];
 					header('location:home.php');
 				}
@@ -48,11 +43,11 @@ if (password_verify('password', $hash)) {
 					echo 'Invalid Username and Password Combination';
 				}
 		}
-		}
+		
 	?>
 	
   <div class="reminder">
-   <p><a href="http://localhost:8080/NewFolder/Academic%20tracker/public_html/index.html">Home</a></p>
+   <p><a href="index.html">Home</a></p>
     <p><a href="#">Forgot password?</a></p>
   </div>
   
