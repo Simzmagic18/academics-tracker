@@ -1,5 +1,6 @@
 <?php session_start(); ?>
 <?php include('dbcon.php'); ?>
+
 <html>
 <head>
 <link rel="stylesheet" type="text/css" href="style.css">
@@ -21,7 +22,8 @@
     <div class="button-panel">
 		<input type="submit" class="button" title="Log In" name="login" value="Login"></input>
     </div>
-  </form>
+	</form>
+	
   <?php
 	if (isset($_POST['submit']))
 		{
@@ -32,18 +34,23 @@
 			$row		= mysqli_fetch_array($query);
 			$num_row 	= mysqli_num_rows($query);
 			  
-			if ($num_row > 0) 
-				{			
+	if ($num_row > 0) {
+					// See the password_hash() example to see where this came from.
+								$hash = password_hash($password, PASSWORD_BCRYPT);
+			
+if (password_verify('password', $hash)) {
+    		
 					$_SESSION['teacher_id']=$row['teacher_id'];
 					header('location:home.php');
-					
 				}
 			else
 				{
 					echo 'Invalid Username and Password Combination';
 				}
 		}
-  ?>
+		}
+	?>
+	
   <div class="reminder">
    <p><a href="http://localhost:8080/NewFolder/Academic%20tracker/public_html/index.html">Home</a></p>
     <p><a href="#">Forgot password?</a></p>
@@ -52,4 +59,5 @@
 </div>
 
 </body>
+
 </html>
