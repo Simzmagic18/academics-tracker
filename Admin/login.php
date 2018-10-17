@@ -12,8 +12,7 @@
 		    $data = $sql->fetch_array();
 		    if (password_verify($password, $data['password'])) {
 				$msg = "You have been logged IN!";
-				$_SESSION['teacher_id']=$row['teacher_id'];
-					header('location:home.php');
+				
             } else
 			    $msg = "Please check your inputs!";
         } else
@@ -27,7 +26,6 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" type="text/css" href="style.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
 </head>
 <body>
@@ -44,7 +42,7 @@
 				<h3>Login here</h3>
 	
     <div class="form-item">
-		<input type="text" name="user" required="required" placeholder="Username" autofocus required></input>
+		<input type="text" name="teacher_id" required="required" placeholder="Username" autofocus required></input>
     </div>
     
     <div class="form-item">
