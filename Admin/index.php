@@ -45,8 +45,8 @@
 		}
   ?>
   <div class="reminder">
-   <p><a href="subdir/index.html">HOME</a></p>
-    <p><a href="#">Forgot password?</a></p>
+   <p><a href="../index.html">HOME</a></p>
+    <p><a href="#"></a></p>
   </div>
   
 </div>
