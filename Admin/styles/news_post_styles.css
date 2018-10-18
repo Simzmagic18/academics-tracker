@@ -1284,3 +1284,11 @@ input[type=submit], select {
   display: table;
 }
 
+label {
+    padding: 12px 12px 12px 0;
+    display: inline-block;
+}
+.gender{
+    padding: 12px 12px 12px 0;
+    display: inline-block;
+}
