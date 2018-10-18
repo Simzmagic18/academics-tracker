@@ -10,7 +10,16 @@
                 $dob = $con->real_escape_string($_POST['date_of_birth']);
                 $race = $con->real_escape_string($_POST['ethnicity']);
                 $gen = $con->real_escape_string($_POST['gender']);
+<<<<<<< HEAD
                 $type = $con->real_escape_string($_POST['user_type']);
+=======
+<<<<<<< HEAD
+				$type = $con->real_escape_string($_POST['user_type']);
+				$scode = $con->real_escape_string($_POST['school_code']);
+=======
+                $type = $con->real_escape_string($_POST['user_type']);
+>>>>>>> 56f4d66d60b538697f94f8f7d8a9f43f5cefed82
+>>>>>>> 1194b5817735a4b60b9225a8c223aa93db07c2d1
                 $password = $con->real_escape_string($_POST['password']);
 		        $cPassword = $con->real_escape_string($_POST['cPassword']);
 
@@ -18,8 +27,16 @@
 			$msg = "Please Check Your Passwords!";
 		else {
 			$hash = password_hash($password, PASSWORD_BCRYPT);
+<<<<<<< HEAD
 			
 			$con->query("INSERT INTO teacher (teacher_first_name,teacher_middle_name,teacher_last_name,date_of_birth,ethnicity,gender,user_type, password) VALUES ('$name', '$mname','$lname','$dob','$race','$gen','$type', '$hash')");
+=======
+<<<<<<< HEAD
+			$con->query("INSERT INTO teacher (teacher_first_name,teacher_middle_name,teacher_last_name,date_of_birth,ethnicity,gender,user_type, school_code, password) VALUES ('$name', '$mname','$lname','$dob','$race','$gen','$type', '$scode', '$hash')");
+=======
+			$con->query("INSERT INTO teacher (teacher_first_name,teacher_middle_name,teacher_last_name,date_of_birth,ethnicity,gender,user_type, password) VALUES ('$name', '$mname','$lname','$dob','$race','$gen','$type', '$hash')");
+>>>>>>> 56f4d66d60b538697f94f8f7d8a9f43f5cefed82
+>>>>>>> 1194b5817735a4b60b9225a8c223aa93db07c2d1
 			readfile("successfulRecord3.html");// echo "Records Inserted Successfully.";
 		}
 	}

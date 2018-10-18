@@ -44,32 +44,18 @@ if (hash_equals($hashed_password, crypt( $hashed_password))) {
                 $gen = $con->real_escape_string($_POST['gender']);
 				$type = $con->real_escape_string($_POST['user_type']);
 				$scode = $con->real_escape_string($_POST['school_code']);
-                $password = $con->real_escape_string($_POST['password']);
+                
 		$cPassword = $con->real_escape_string($_POST['cPassword']);
-
+		$password = $con->real_escape_string($_POST['password']);
+		$hash = md5($password);
 		if ($password != $cPassword)
 			$msg = "Please Check Your Passwords!";
 		else {
-			$hash = password_hash($password, PASSWORD_BCRYPT);
-			$con->query("INSERT INTO teacher (teacher_first_name,teacher_middle_name,teacher_last_name,date_of_birth,ethnicity,gender,user_type, school_code, password) VALUES ('$name', '$mname','$lname','$dob','$race','$gen','$type', '$scode', '$hash')");
+			$con->query("INSERT INTO teacher (teacher_first_name,teacher_middle_name,teacher_last_name,date_of_birth,ethnicity,gender,user_type, school_code, password) VALUES ('$name', '$mname','$lname','$dob','$race','$gen','$type', '$scode','$hash')");
 			readfile("successfulRecord3.html");// echo "Records Inserted Successfully.";
 		}
 	}
 
-
- 
-if(mysqli_query($con, $sql1))
-{
-	//if(mysqli_query($link, $sql2))
-	//{   
-	      readfile("successfulRecord3.html");
-   		// echo "Records Inserted Successfully.";
-	//}
-}
- else
-{
-    echo "ERROR: Could Not Able To Execute $sql. " . mysqli_error($con);
-}
 // Close connection
 mysqli_close($con);
 

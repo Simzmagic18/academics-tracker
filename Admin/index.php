@@ -7,7 +7,7 @@
 <body>
 <div class="form-wrapper">
   
-  <form action="#" method="post">
+  <form action="index.php" method="post">
     <h3>Login here</h3>
 	
     <div class="form-item">
