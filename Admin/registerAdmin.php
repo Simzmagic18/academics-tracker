@@ -1,4 +1,30 @@
-<!DOCTYPE html>
+<?php
+	$msg = "";
+
+	if (isset($_POST['submit'])) {
+		$con = new mysqli('localhost', 'root', '', 'academicsTracker2');
+
+		$name = $con->real_escape_string($_POST['admin_first_name']);
+		$mname = $con->real_escape_string($_POST['admin_middle_name']);
+                $lname = $con->real_escape_string($_POST['admin_last_name']);
+                $dob = $con->real_escape_string($_POST['date_of_birth']);
+                $race = $con->real_escape_string($_POST['ethnicity']);
+                $gen = $con->real_escape_string($_POST['gender']);
+                $type = $con->real_escape_string($_POST['user_type']);
+                $password = $con->real_escape_string($_POST['password']);
+		$cPassword = $con->real_escape_string($_POST['cPassword']);
+
+		if ($password != $cPassword)
+			$msg = "Please Check Your Passwords!";
+		else {
+			$hash = password_hash($password, PASSWORD_BCRYPT);
+			$con->query("INSERT INTO administrator (admin_first_name,admin_middle_name,admin_last_name,date_of_birth,ethnicity,gender,user_type, password) VALUES ('$name', '$mname','$lname','$dob','$race','$gen','$type', '$hash')");
+			$msg = "You have been registered!";
+		}
+	}
+?>
+
+<!doctype html>
 <html lang="en">
 <head>
 <title>Administrator Register</title>
@@ -10,19 +36,19 @@
 <link href="plugins/fontawesome-free-5.0.1/css/fontawesome-all.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" type="text/css" href="styles/news_post_styles.css">
 <link rel="stylesheet" type="text/css" href="styles/news_post_responsive.css">
-<link rel="stylesheet" type="text/css" href="styles/menuDropDown.css">
 </head>
 <body>
 
 <div class="super_container">
 
 	<!-- Header -->
+
 	<header class="header d-flex flex-row">
 		<div class="header_content d-flex flex-row align-items-center">
 			<!-- Logo -->
 			<div class="logo_container">
 				<div class="logo">
-					<img src="images/ATlogo221.png" alt="logo" width="64px" height="66px">&nbsp;
+					<img src="images/logo.png" alt="">
 					<span>Administrator</span>
 				</div>
 			</div>
@@ -31,20 +57,18 @@
 			<nav class="main_nav_container">
 				<div class="main_nav">
 					<ul class="main_nav_list">
-						<li class="main_nav_item"><a href="Administrator.html">HOME</a></li>
-						<li class="main_nav_item"><a href="../about.html">ABOUT US</a></li>
-						<li class="main_nav_item"><a href="../contact.html">CONTACT US</a></li>
-						<li class="main_nav_item"><a href="profile.html">PROFILE</a></li>
+						<li class="main_nav_item"><a href="index.html">home</a></li>
+						<li class="main_nav_item"><a href="#">about us</a></li>
+						<li class="main_nav_item"><a href="courses.html">courses</a></li>
+						<li class="main_nav_item"><a href="contact.html">contact</a></li>
 					</ul>
 				</div>
 			</nav>
-			
 		</div>
-            <div class="header_side d-flex flex-row justify-content-center align-items-center">
-		    <a href="index.html"><span>LOGOUT</span></a>
-                    </div>
-                </div>
-            </div>
+		<div class="header_side d-flex flex-row justify-content-center align-items-center">
+			<img src="images/phone-call.svg" alt="">
+			<span>Administrator</span>
+		</div>
 
 		<!-- Hamburger -->
 		<div class="hamburger_container">
@@ -65,13 +89,27 @@
 		<div class="menu_inner menu_mm">
 			<div class="menu menu_mm">
 				<ul class="menu_list menu_mm">
-					<li class="menu_item menu_mm"><a href="Administrator.html">HOME</a></li>
-					<li class="menu_item menu_mm"><a href="../about.html">ABOUT US</a></li>
-					<li class="menu_item menu_mm"><a href="../contact.html">CONTACT US</a></li>
-					<li class="menu_item menu_mm"><a href="profile.html">PROFILE</a></li>
-					<li class="menu_item menu_mm"><a href="logout.php">LOGOUT</a></li>
+					<li class="menu_item menu_mm"><a href="index.html">Home</a></li>
+					<li class="menu_item menu_mm"><a href="#">About us</a></li>
+					<li class="menu_item menu_mm"><a href="courses.html">Courses</a></li>
+					<li class="menu_item menu_mm"><a href="contact.html">Contact</a></li>
 				</ul>
+
+				<!-- Menu Social -->
+				
+				<div class="menu_social_container menu_mm">
+					<ul class="menu_social menu_mm">
+						<li class="menu_social_item menu_mm"><a href="#"><i class="fab fa-pinterest"></i></a></li>
+						<li class="menu_social_item menu_mm"><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+						<li class="menu_social_item menu_mm"><a href="#"><i class="fab fa-instagram"></i></a></li>
+						<li class="menu_social_item menu_mm"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+						<li class="menu_social_item menu_mm"><a href="#"><i class="fab fa-twitter"></i></a></li>
+					</ul>
+				</div>
+
+				<div class="menu_copyright menu_mm">Colorlib All rights reserved</div>
 			</div>
+
 		</div>
 
 	</div>
@@ -83,7 +121,7 @@
 			<div class="home_background prlx" style="background-image:url(images/news_background.jpg)"></div>
 		</div>
 		<div class="home_content">
-			<h1>Register New Teacher</h1>
+			<h1>Register New Administrator</h1>
 		</div>
 	</div>
         
@@ -92,21 +130,22 @@
            
             
             <h3>User Information</h3><br>
-        <form action="RegisterNewTeacher.php" name = "teacher_form" method="post" enctype="multipart/form-data" onsubmit = "return validateAllFields(this)">
-          			
-			
-			<label for="teacher_first_name"><b>First Name <abbr class="req" title="required">*</abbr></b></label> <span id="error-fname" span style = "float: right"></span><br>
-            <input type="text" name="teacher_first_name" id ="teacher_first_name" onblur ="validateFirstName(teacher_first_name)"  maxlength = "20" required /><br>
+
+				<?php if ($msg != "") echo $msg . "<br><br>"; ?>
+
+				<form method="post" action="registerAdmin.php">
+			<label for="admin_first_name"><b>First Name <abbr class="req" title="required">*</abbr></b></label> <span id="error-fname" span style = "float: right"></span><br>
+            <input type="text" name="admin_first_name" id ="admin_first_name" onblur ="validateFirstName(admin_first_name)"  maxlength = "20" required /><br>
 								
 			<hr>
 			
-            <label for="teacher_middle_name"><b>Middle Name</b></label> <span id="error-mname" span style = "float: right"></span><br>
-            <input type="text" name="teacher_middle_name" id = "teacher_middle_name"  onblur ="validateMiddleName(teacher_middle_name)" maxlength = "20" ><br>
+            <label for="admin_middle_name"><b>Middle Name</b></label> <span id="error-mname" span style = "float: right"></span><br>
+            <input type="text" name="admin_middle_name" id = "admin_middle_name"  onblur ="validateMiddleName(admin_middle_name)" maxlength = "20" ><br>
 			
 			<hr>
 			
-            <label for="teacher_last_name"><b>Last Name <abbr class="req" title="required">*</abbr></b></label> <span id="error-lname" span style = "float: right"></span><br>
-            <input type="text" name="teacher_last_name" id = "teacher_last_name" onblur ="validateLastName(teacher_last_name)" maxlength = "20" required><br>
+            <label for="admin_last_name"><b>Last Name <abbr class="req" title="required">*</abbr></b></label> <span id="error-lname" span style = "float: right"></span><br>
+            <input type="text" name="admin_last_name" id = "admin_last_name" onblur ="validateLastName(admin_last_name)" maxlength = "20" required><br>
 			
 			<hr>
 			
@@ -171,35 +210,27 @@
 			<hr>
 			
 			<b>User Type:</b><br>
-            <label for="teacher">Teacher <abbr class="req" title="required">*</abbr></label>
-			<input  type="radio" name="user_type" id="teacher" value="Teacher" readonly><br>
-			<label for="teacher">Head Of Department</label>
-			<input  type="radio" name="user_type" id="user_type" value="HOD" readonly style="vertical-align: middle" ><br>
+            <label for="user_type">Administrator <abbr class="req" title="required">*</abbr></label>
+			<input  type="radio" name="user_type" id="user_type" value="Administrator" readonly><br>
 			
 			<hr>
             
-            <label for="teacher_id"><b>Create User ID <abbr class="req" title="required">*</abbr>:</b></label> <span id="error-adid" span style = "float: right"></span><br>
-            <input type="text" name="teacher_id" id="teacher_id" onblur = "validateTeacherID (teacher_id)" maxlength="8"  required><br>
-			
-			<hr>
-			
 			<label for="password"><b>Create Password <abbr class="req" title="required">*</abbr>:</b></label> <span id="error-pass" span style = "float: right"></span><br>
             <input type="password" name="password" id="password" onblur = "validateCreatePassword (password)" size="25" required><br>
-			
-			<hr>
-			
-			<label for="password"><b>Confirm Password <abbr class="req" title="required">*</abbr>:</b></label> <span id="error-pass" span style = "float: right"></span><br>
-            <input type="password" name="cPassword" id="cPassword"size="25" required><br>
-			
 
 			<hr>
+                        
+                        <br>	<input minlength="5" name="cPassword" type="password" placeholder="Confirm Password..."><br>
+            
+            <input name="submit" type="submit" value="Register..." onclick = "return validateAllFields()">
+            
+				</form>
 
-            
-            <input type="submit" onclick = "return validateAllFields()" value="Register Teacher">
-            
-            </form>
+			</div>
+		</div>
+	</div>
         
-            <button class="button" onclick="goBack()"> Back </button>
+         <button class="button" onclick="goBack()"> Back </button>
             <script>
             function goBack() {
             window.history.back();
@@ -208,130 +239,131 @@
 			
 			    <script>
 	
-	var send = document.getElementsByName("teacher_form");
+	var send = document.getElementsByName("admin_form");
 	
-	function validateFirstName(teacher_first_name)
+	
+	function validateFirstName(admin_first_name)
 	{  
  		var alpha = /^[A-Za-z'-]+$/;
 		var numbers = /^[0-9]+$/;
 		var combo = /^[A-Za-z0-9_]+$/;
 		
-	if(alpha.test(document.getElementById("teacher_first_name").value))
+	if(alpha.test(document.getElementById("admin_first_name").value))
 		{  
-			document.getElementById("teacher_first_name").style.background = "white";	
+			document.getElementById("admin_first_name").style.background = "white";	
 			document.getElementById("error-fname").style.display = "inline";	
 			document.getElementById('error-fname').innerHTML = "Input Accepted."; 
 			return true;  
 		}
-		else if(numbers.test(document.getElementById("teacher_first_name").value))
+		else if(numbers.test(document.getElementById("admin_first_name").value))
 		{  
-			document.getElementById("teacher_first_name").style.background = "red"; 
+			document.getElementById("admin_first_name").style.background = "red"; 
 			document.getElementById('error-fname').innerHTML = "Incorrect Input. Use alphabetic characters, apostrophes and hyphens only."; 
 			return false;  
 		}		
-		else if (combo.test(document.getElementById("teacher_first_name").value))
+		else if (combo.test(document.getElementById("admin_first_name").value))
 		{
-			document.getElementById("teacher_first_name").style.background = "red"; 
+			document.getElementById("admin_first_name").style.background = "red"; 
 			document.getElementById('error-fname').innerHTML = "Incorrect Input. Use alphabetic characters, apostrophes and hyphens only."; 
 			return false;
 		}
-		else if (!((teacher_first_name.keyCode >= 65) && (teacher_first_name.keyCode <= 90) || (teacher_first_name.keyCode >= 97) && (teacher_first_name.keyCode <= 122) || (teacher_first_name.keyCode >= 48) && (teacher_first_name.keyCode <= 57) && (!(teacher_first_name.keyCode == 32))))
+		else if (!((admin_first_name.keyCode >= 65) && (admin_first_name.keyCode <= 90) || (admin_first_name.keyCode >= 97) && (admin_first_name.keyCode <= 122) || (admin_first_name.keyCode >= 48) && (admin_first_name.keyCode <= 57) && (!(admin_first_name.keyCode == 32))))
 		{
-			document.getElementById("teacher_first_name").style.background = "red"; 
+			document.getElementById("admin_first_name").style.background = "red"; 
 			document.getElementById('error-fname').innerHTML = "Incorrect Input. Please Use alphabetic characters, apostrophes and hyphens only."; 
 			return false;
 		}		
 		else
 		{
-			document.getElementById("teacher_first_name").style.background = "yellow"; 
-			document.getElementById('error-fname').innerHTML = "Please Enter teacher First Name."; 
+			document.getElementById("admin_first_name").style.background = "yellow"; 
+			document.getElementById('error-fname').innerHTML = "Please Enter Admin First Name."; 
 			return false;
 		}
 		
-	return teacher_first_name;
+	return admin_first_name;
  	}
 
-	function validateMiddleName(teacher_middle_name)
+	function validateMiddleName(admin_middle_name)
 	{  
  		var alpha = /^[A-Za-z'-]+$/;
 		var numbers = /^[0-9]+$/;
 		var combo = /^[A-Za-z0-9_]+$/;
 		
-		if((alpha.test(document.getElementById("teacher_middle_name").value)) || (teacher_middle_name.value.length == 0))
+		if((alpha.test(document.getElementById("admin_middle_name").value)) || (admin_middle_name.value.length == 0))
 		{  
-			document.getElementById("teacher_middle_name").style.background = "white";	
+			document.getElementById("admin_middle_name").style.background = "white";	
 			document.getElementById("error-mname").style.display = "inline";	
 			document.getElementById('error-mname').innerHTML = "Input Accepted."; 	
 			return true;  
 		}
-		else if(numbers.test(document.getElementById("teacher_middle_name").value))
+		else if(numbers.test(document.getElementById("admin_middle_name").value))
 		{  
-			document.getElementById("teacher_middle_name").style.background = "red"; 
+			document.getElementById("admin_middle_name").style.background = "red"; 
 			document.getElementById('error-mname').innerHTML = "Incorrect Input. Use alphabetic characters, apostrophes and hyphens only."; 
 			
 			return false;  
 		}		
-		else if (combo.test(document.getElementById("teacher_middle_name").value))
+		else if (combo.test(document.getElementById("admin_middle_name").value))
 		{
-			document.getElementById("teacher_middle_name").style.background = "red"; 
+			document.getElementById("admin_middle_name").style.background = "red"; 
 			document.getElementById('error-mname').innerHTML = "Incorrect Input. Use alphabetic characters, apostrophes and hyphens only."; 
 			return false;
 		}
-		else if (!((teacher_middle_name.keyCode >= 65) && (teacher_middle_name.keyCode <= 90) || (teacher_middle_name.keyCode >= 97) && (teacher_middle_name.keyCode <= 122) || (teacher_middle_name.keyCode >= 48) && (teacher_middle_name.keyCode <= 57) && (!(teacher_middle_name.keyCode == 32))))
+		else if (!((admin_middle_name.keyCode >= 65) && (admin_middle_name.keyCode <= 90) || (admin_middle_name.keyCode >= 97) && (admin_middle_name.keyCode <= 122) || (admin_middle_name.keyCode >= 48) && (admin_middle_name.keyCode <= 57) && (!(admin_middle_name.keyCode == 32))))
 		{
-			document.getElementById("teacher_middle_name").style.background = "red"; 
+			document.getElementById("admin_middle_name").style.background = "red"; 
 			document.getElementById('error-mname').innerHTML = "Incorrect Input. Please Use alphabetic characters, apostrophes and hyphens only."; 
 			return false;
 		}		
 		else
 		{
-			document.getElementById("teacher_middle_name").style.background = "yellow"; 
-			document.getElementById('error-mname').innerHTML = "Please Enter teacher Middle Name."; 
+			document.getElementById("admin_middle_name").style.background = "yellow"; 
+			document.getElementById('error-mname').innerHTML = "Please Enter Admin Middle Name."; 
 			return false;
 		}
 	
-	return teacher_middle_name;
+	return admin_middle_name;
  	} 
 	
-	function validateLastName(teacher_last_name)
+	function validateLastName(admin_last_name)
 	{  
  		var alpha = /^[A-Za-z'-]+$/;
 		var numbers = /^[0-9]+$/;
 		var combo = /^[A-Za-z0-9_]+$/;
 		
-		if(alpha.test(document.getElementById("teacher_last_name").value))
+		if(alpha.test(document.getElementById("admin_last_name").value))
 		{  
-			document.getElementById("teacher_last_name").style.background = "white";	
+			document.getElementById("admin_last_name").style.background = "white";	
 			document.getElementById("error-lname").style.display = "inline";	
 			document.getElementById('error-lname').innerHTML = "Input Accepted."; 	
 			return true;  
 		}
-		else if(numbers.test(document.getElementById("teacher_last_name").value))
+		else if(numbers.test(document.getElementById("admin_last_name").value))
 		{  
-			document.getElementById("teacher_last_name").style.background = "red"; 
+			document.getElementById("admin_last_name").style.background = "red"; 
 			document.getElementById('error-lname').innerHTML = "Incorrect Input. Use alphabetic characters, apostrophes and hyphens only."; 
 			return false;  
 		}		
-		else if (combo.test(document.getElementById("teacher_last_name").value))
+		else if (combo.test(document.getElementById("admin_last_name").value))
 		{
-			document.getElementById("teacher_last_name").style.background = "red"; 
+			document.getElementById("admin_last_name").style.background = "red"; 
 			document.getElementById('error-lname').innerHTML = "Incorrect Input. Use alphabetic characters, apostrophes and hyphens only."; 
 			return false;
 		}
-		else if (!((teacher_last_name.keyCode >= 65) && (teacher_last_name.keyCode <= 90) || (teacher_last_name.keyCode >= 97) && (teacher_last_name.keyCode <= 122) || (teacher_last_name.keyCode >= 48) && (teacher_last_name.keyCode <= 57) && (!(teacher_last_name.keyCode == 32))))
+		else if (!((admin_last_name.keyCode >= 65) && (admin_last_name.keyCode <= 90) || (admin_last_name.keyCode >= 97) && (admin_last_name.keyCode <= 122) || (admin_last_name.keyCode >= 48) && (admin_last_name.keyCode <= 57) && (!(admin_last_name.keyCode == 32))))
 		{
-			document.getElementById("teacher_last_name").style.background = "red"; 
+			document.getElementById("admin_last_name").style.background = "red"; 
 			document.getElementById('error-lname').innerHTML = "Incorrect Input. Please Use alphabetic characters, apostrophes and hyphens only."; 
 			return false;
 		}		
 		else
 		{
-			document.getElementById("teacher_last_name").style.background = "yellow"; 
-			document.getElementById('error-lname').innerHTML = "Please Enter teacher Last Name."; 
+			document.getElementById("admin_last_name").style.background = "yellow"; 
+			document.getElementById('error-lname').innerHTML = "Please Enter Admin Last Name."; 
 			return false;
 		}	
 		
-		return teacher_last_name;
+		return admin_last_name;
  	} 
 	
 	function validateGender(gender)
@@ -541,26 +573,26 @@
 	}
 	
 	
-	function validateTeacherID(teacher_id)
+	function validateAdminID(admin_id)
 	{
 		var numbers = /^[0-9]+$/;
 		
-		if ((numbers.test(document.getElementById("teacher_id").value)) && (teacher_id.value.length == 8))
+		if ((numbers.test(document.getElementById("admin_id").value)) && (admin_id.value.length == 8))
 		{
-			document.getElementById("teacher_id").style.background = "white";	
-			document.getElementById("teacher_id").style.display = "inline";	
+			document.getElementById("admin_id").style.background = "white";	
+			document.getElementById("admin_id").style.display = "inline";	
 			document.getElementById('error-adid').innerHTML = "Input Accepted."; 				 
 			return true;
 		}
 		else
 		{
-			document.getElementById ("teacher_id").style.background = "red";
-			document.getElementById("teacher_id").style.display = "inline";	
+			document.getElementById ("admin_id").style.background = "red";
+			document.getElementById("admin_id").style.display = "inline";	
 			document.getElementById('error-adid').innerHTML = "Incorrect Input. Please use numerical values only. And please check if the length of ID is 8.";
 			return false; 
 		}
 		
-		return teacher_id;
+		return admin_id;
 	}
 	
 	function validateCreatePassword(password)
@@ -586,7 +618,7 @@
 
 function validateAllFields ()
 {	
-    if((document.getElementById('teacher_first_name').style.background == "red") || (document.getElementById('teacher_middle_name').style.background == "red") || (document.getElementById('teacher_last_name').style.background == "red") || (document.getElementById('gender').style.background == "red") || (document.getElementById('ethnicity').style.background == "red") || (document.getElementById('date_of_birth').style.background == "red") || (document.getElementById('contact_number').style.background == "red") || (document.getElementById('house_number').style.background == "red") || (document.getElementById('street_name').style.background == "red") || (document.getElementById('suburb').style.background == "red") || (document.getElementById('post_code').style.background == "red") || (document.getElementById('school_code').style.background == "red") || (document.getElementById('teacher_id').style.background == "red") || (document.getElementById('password').style.background == "red"))
+    if((document.getElementById('admin_first_name').style.background == "red") || (document.getElementById('admin_middle_name').style.background == "red") || (document.getElementById('admin_last_name').style.background == "red") || (document.getElementById('gender').style.background == "red") || (document.getElementById('ethnicity').style.background == "red") || (document.getElementById('date_of_birth').style.background == "red") || (document.getElementById('contact_number').style.background == "red") || (document.getElementById('house_number').style.background == "red") || (document.getElementById('street_name').style.background == "red") || (document.getElementById('suburb').style.background == "red") || (document.getElementById('post_code').style.background == "red") || (document.getElementById('school_code').style.background == "red") || (document.getElementById('admin_id').style.background == "red") || (document.getElementById('password').style.background == "red"))
 	{
         alert('Please ensure that there are no red fields');
 		event.preventDefault();
@@ -595,7 +627,7 @@ function validateAllFields ()
 	else
 	{
 		
-		document.getElementByName("teacher_form").submit();
+		document.getElementByName("admin_form").submit();
 	}
 	
 }		
@@ -667,7 +699,7 @@ function validateAllFields ()
 									<div class="footer_contact_icon">
 										<img src="images/placeholder.svg" alt="https://www.flaticon.com/authors/lucy-g">
 									</div>
-									Blvd Libertad, 34 m05200 Arévalo
+									Blvd Libertad, 34 m05200 Ar�valo
 								</li>
 								<li class="footer_contact_item">
 									<div class="footer_contact_icon">
@@ -722,6 +754,6 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 <script src="plugins/scrollTo/jquery.scrollTo.min.js"></script>
 <script src="plugins/easing/easing.js"></script>
 <script src="js/news_post_custom.js"></script>
-
+        
 </body>
 </html>
