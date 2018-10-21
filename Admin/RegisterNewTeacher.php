@@ -3,7 +3,6 @@
 
 <?php
 
-$con = mysqli_connect("localhost", "root", "", "academicsTracker2");
  
 if($con === false)
 {
@@ -34,7 +33,7 @@ if (hash_equals($hashed_password, crypt( $hashed_password))) {
 	$msg = "";
 
 	if (isset($_POST['submit'])) {
-		$con = new mysqli('localhost', 'root', '', 'academicsTracker2');
+		
 
 		$name = $con->real_escape_string($_POST['teacher_first_name']);
 		$mname = $con->real_escape_string($_POST['teacher_middle_name']);
@@ -44,14 +43,19 @@ if (hash_equals($hashed_password, crypt( $hashed_password))) {
                 $gen = $con->real_escape_string($_POST['gender']);
 				$type = $con->real_escape_string($_POST['user_type']);
 				$scode = $con->real_escape_string($_POST['school_code']);
-                
-		$cPassword = $con->real_escape_string($_POST['cPassword']);
-		$password = $con->real_escape_string($_POST['password']);
-		$hash = md5($password);
+				$password = $con->real_escape_string($_POST['password']);      
+				$cPassword = $con->real_escape_string($_POST['cPassword']);
+		
+
+
 		if ($password != $cPassword)
+
 			$msg = "Please Check Your Passwords!";
+
 		else {
-			$con->query("INSERT INTO teacher (teacher_first_name,teacher_middle_name,teacher_last_name,date_of_birth,ethnicity,gender,user_type, school_code, password) VALUES ('$name', '$mname','$lname','$dob','$race','$gen','$type', '$scode','$hash')");
+			$hash = md5($password);
+			$con->query("INSERT INTO teacher (teacher_first_name,teacher_middle_name,teacher_last_name,date_of_birth,ethnicity,gender,user_type, school_code, password) VALUES ('$name', '$mname','$lname','$dob','$race','$gen','$type', '$scode', '$hash')");
+			
 			readfile("successfulRecord3.html");// echo "Records Inserted Successfully.";
 		}
 	}
