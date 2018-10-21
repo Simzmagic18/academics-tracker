@@ -1,5 +1,31 @@
-<?php session_start(); ?>
-<?php include('dbcon.php');?>
+<?php
+include('conn.php');
+session_start();
+if($_SERVER['REQUEST_METHOD'] == "POST")
+{
+	//Username and Password sent from Form
+	$username = mysqli_real_escape_string($conn, $_POST['teacher_id']);
+	$password = mysqli_real_escape_string($conn, $_POST['password']);
+	$password = md5($password);
+	$sql = "SELECT * FROM teacher WHERE teacher_id='$username' AND '$password'";
+	$query = mysqli_query($conn, $sql);
+	$res=mysqli_num_rows($query);
+	
+	//If result match $username and $password Table row must be 1 row
+	if($res == 1)
+	{
+		echo 'Password is valid!';
+		$_SESSION['teacher_id']=$res['teacher_id'];
+		header("Location: home.php"); 
+
+		//header("Location: welcome.php");
+	}
+	else
+	{
+		echo 'Invalid Username and Password Combination';
+	}
+}
+?>
 
 <html>
 <head>
@@ -8,44 +34,22 @@
 <body>
 <div class="form-wrapper">
   
-  <form action="#" method="post">
+<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
     <h3>Login here</h3>
 	
     <div class="form-item">
-		<input type="text" name="user" required="required" placeholder="Username" autofocus required></input>
+		<input type="text" name="teacher_id" required="required" placeholder="ID" autofocus required></input>
     </div>
     
     <div class="form-item">
-		<input type="password" name="pass" required="required" placeholder="Password" required></input>
+		<input type="password" name="password" required="required" placeholder="Password" required></input>
     </div>
     
     <div class="button-panel">
-		<input type="submit" class="button" title="Log In" name="login" value="Login"></input>
+		<input class="button" type="submit" name="submit" value="Login"><br/>
     </div>
-	</form>
-	
-  <?php
-	if (isset($_POST['submit']))
-		{
-			$username = mysqli_real_escape_string($connect, $_POST["user"]);  
-			$password = mysqli_real_escape_string($connect, $_POST["pass"]);  
-			$password = md5($password);  
-			$query = "SELECT * FROM teacher WHERE user = '$username' AND password = '$password'";  
-			$result = mysqli_query($connect, $query);  
-			if(mysqli_num_rows($result) > 0)  
-
-				if ($num_row > 0) {
-					$_SESSION['teacher_id']=$row['teacher_id'];
-					header('location:home.php');
-				}
-			else
-				{
-					echo 'Invalid Username and Password Combination';
-				}
-		}
-		
-	?>
-	
+  </form>
+  	
   <div class="reminder">
    <p><a href="index.html">Home</a></p>
     <p><a href="#">Forgot password?</a></p>
@@ -54,5 +58,4 @@
 </div>
 
 </body>
-
 </html>
