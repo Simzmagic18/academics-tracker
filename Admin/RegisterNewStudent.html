@@ -33,13 +33,8 @@
 				<div class="main_nav">
 					<ul class="main_nav_list">
 						<li class="main_nav_item"><a href="Administrator.html">HOME</a></li>
-<<<<<<< HEAD
-						<li class="main_nav_item"><a href="../about_Us.html">ABOUT US</a></li>
-						<li class="main_nav_item"><a href="../contact.html">CONTACT</a></li>
-=======
 						<li class="main_nav_item"><a href="../about.html">ABOUT US</a></li>
 						<li class="main_nav_item"><a href="../contact.html">CONTACT US</a></li>
->>>>>>> 615cdcb206d847cdec6ed801cd11e58d8b90d4a1
 						<li class="main_nav_item"><a href="profile.html">PROFILE</a></li>
 					</ul>
 				</div>
@@ -69,11 +64,7 @@
 			<div class="menu menu_mm">
 				<ul class="menu_list menu_mm">
 					<li class="menu_item menu_mm"><a href="Administrator.html">HOME</a></li>
-<<<<<<< HEAD
-					<li class="menu_item menu_mm"><a href="../about_Us.html">ABOUT US</a></li>
-=======
 					<li class="menu_item menu_mm"><a href="../about.html">ABOUT US</a></li>
->>>>>>> 615cdcb206d847cdec6ed801cd11e58d8b90d4a1
 					<li class="menu_item menu_mm"><a href="../contact.html">CONTACT US</a></li>
 					<li class="menu_item menu_mm"><a href="profile.html">PROFILE</a></li>
 					<li class="menu_item menu_mm"><a href="logout.php">LOGOUT</a></li>
@@ -92,7 +83,7 @@
 		</div>
 	</div>
 
-        <div class="container">
+	<div class="container">
             <br><h2>Please Complete Form</h2>
 
             <br>
@@ -208,7 +199,7 @@
                 ("input[required]").parent("label").addClass("required");
             </script>
 
-    <script>
+    	<script>
 
 	var send = document.getElementsByName("student_form");
 
@@ -588,31 +579,30 @@
 		return password;
 	}
 
-function validateAllFields () //checks if there is any red field before submitting form
-{
-  if((document.getElementById('student_first_name').style.background == "red") || (document.getElementById('student_middle_name').style.background == "red") || (document.getElementById('student_last_name').style.background == "red") || (document.getElementById('gender').style.background == "red") || (document.getElementById('ethnicity').style.background == "red") || (document.getElementById('date_of_birth').style.background == "red") || (document.getElementById('contact_number').style.background == "red") || (document.getElementById('house_number').style.background == "red") || (document.getElementById('street_name').style.background == "red") || (document.getElementById('suburb').style.background == "red") || (document.getElementById('post_code').style.background == "red") || (document.getElementById('school_code').style.background == "red") || (document.getElementById('student_id').style.background == "red") || (document.getElementById('password').style.background == "red"))
+	function validateAllFields () //checks if there is any red field before submitting form
 	{
-    alert('Please ensure that there are no red fields'); //alert window
-		event.preventDefault(); //prevents submission
-    return validateAllFields(x);
-  }
-	else
-	{
-		document.getElementByName("student_form").submit(); //submits form
+  		if((document.getElementById('student_first_name').style.background == "red") || (document.getElementById('student_middle_name').style.background == "red") || (document.getElementById('student_last_name').style.background == "red") || (document.getElementById('gender').style.background == "red") || (document.getElementById('ethnicity').style.background == "red") || (document.getElementById('date_of_birth').style.background == "red") || (document.getElementById('contact_number').style.background == "red") || (document.getElementById('house_number').style.background == "red") || (document.getElementById('street_name').style.background == "red") || (document.getElementById('suburb').style.background == "red") || (document.getElementById('post_code').style.background == "red") || (document.getElementById('school_code').style.background == "red") || (document.getElementById('student_id').style.background == "red") || (document.getElementById('password').style.background == "red"))
+		{
+    			alert('Please ensure that there are no red fields'); //alert window
+			event.preventDefault(); //prevents submission
+    			return validateAllFields(x);
+  		}
+		else
+		{
+			document.getElementByName("student_form").submit(); //submits form
+		}
 	}
-}
 	</script>
-
         </div>
-	<!-- Footer -->
-
-    <div class="footer">
-        <span>
-            Academics Tracker All rights reserved
-        </span>
-    </div>
 </div>
 
+<!-- Footer -->
+<div class="footer">
+	<span>
+	    Academics Tracker All rights reserved
+	</span>
+</div>
+	
 <script src="js/jquery-3.2.1.min.js"></script>
 <script src="styles/bootstrap4/popper.js"></script>
 <script src="styles/bootstrap4/bootstrap.min.js"></script>
