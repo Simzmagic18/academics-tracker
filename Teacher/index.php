@@ -1,12 +1,15 @@
 <?php
 include('conn.php');
-session_start();
+
 if($_SERVER['REQUEST_METHOD'] == "POST")
 {
+	
+	session_start();
 	//Username and Password sent from Form
 	$username = mysqli_real_escape_string($conn, $_POST['teacher_id']);
 	$password = mysqli_real_escape_string($conn, $_POST['password']);
 	$password = md5($password);
+	$_SESSION['login_user']=$username;
 	$sql = "SELECT * FROM teacher WHERE teacher_id='$username' AND '$password'";
 	$query = mysqli_query($conn, $sql);
 	$res=mysqli_num_rows($query);
@@ -15,7 +18,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
 	if($res == 1)
 	{
 		echo 'Password is valid!';
-		$_SESSION['teacher_id']=$res['teacher_id'];
+		//$_SESSION['teacher_id']=$res['teacher_id'];
 		header("Location: home.php"); 
 
 		//header("Location: welcome.php");

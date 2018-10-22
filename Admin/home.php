@@ -1,9 +1,9 @@
 <?php 
 include('conn.php'); 
-include('session.php');
+//include('session.php');
 
-$result=mysqli_query($conn, "select * from aministrator where admin_id='$session_id'")or die('Error In Session');
-$row=mysqli_fetch_array($result);
+//$result=mysqli_query($conn, "select * from aministrator where admin_id='$session_id'")or die('Error In Session');
+//$row=mysqli_fetch_array($result);
 ?>
 
 
@@ -13,7 +13,11 @@ $row=mysqli_fetch_array($result);
 </head>
 <body>
 <div class="form-wrapper"> 
-    <center><h3>Welcome: <?php echo $row['admin_first_name']; ?> </h3></center>
+    <center><h3>Welcome: <?php 
+     session_start();
+    $login_session=$_SESSION['login_user'];
+    echo $login_session;
+    ?> </h3></center>
 	 <div class="reminder">
 	 
 	 	<META http-equiv="refresh" content="2;URL=Administrator.html"> 

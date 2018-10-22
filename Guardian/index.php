@@ -1,6 +1,6 @@
 <?php
 include('conn.php');
-session_start();
+//session_start();
 //include ('session.php');
 
 //$session_id = $_SESSION['guardian_id'];
@@ -10,20 +10,22 @@ session_start();
 
 if($_SERVER['REQUEST_METHOD'] == "POST")
 {
+	session_start();
+
 	//Username and Password sent from Form
 	$username = mysqli_real_escape_string($conn, $_POST['guardian_id']);
 	$password = mysqli_real_escape_string($conn, $_POST['password']);
 	$password = md5($password);
-	$sql = "SELECT * FROM student WHERE student_id = '$username' AND '$password'";
+	$_SESSION['login_user']=$username;
+	$sql = "SELECT * FROM guardian WHERE guardian_id = '$username' AND '$password'";
 	$query = mysqli_query($conn, $sql);
-	$sesh = mysqli_fetch_array($query);
 	$res= mysqli_num_rows($query);
 	
 	//If result match $username and $password Table row must be 1 row
 	if($res == 1)
 	{
 		echo 'Password is valid!';
-		$_SESSION['student_id']= $sesh['student_id'];
+	//	$_SESSION['student_id']= $username;
 		header("Location: home.php"); 
 
 		//header("Location: welcome.php");

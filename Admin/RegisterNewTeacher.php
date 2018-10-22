@@ -236,6 +236,7 @@ else{
 		   <label for="cPassword"><b>Confirm Password <abbr class="req" title="required">*</abbr>:</b></label> <span id="error-pass2" span style = "float: right"></span><br>
 		   <input type="password" name="cPassword" id="cPassword" onblur = "validateConfirmPassword (cPassword)"  size="25" required><br>
 		   
+		   <hr>
 
 <input type="submit" name="submit" value="Create"><br/>
 

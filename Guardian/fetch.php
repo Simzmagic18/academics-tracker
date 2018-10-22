@@ -31,7 +31,7 @@ if(mysqli_num_rows($result) > 0)
 }
 else{
      $output .= '
-     <li><a href="#" class="text-bold text-italic">No Noti Found</a></li>';
+     <li><a href="#" class="text-bold text-italic"> No New Notifications ></li>';
 }
 
 

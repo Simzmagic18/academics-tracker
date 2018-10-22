@@ -602,7 +602,7 @@ else{
 	{
 		var numbers = /^[0-9]+$/;
 
-		if ((numbers.test(document.getElementById("student_id").value)) && (student_id.value.length == 6))
+		if ((numbers.test(document.getElementById("student_id").value)) && (student_id.value.length > 6))
 		{
 			document.getElementById("student_id").style.background = "white";
 			document.getElementById("student_id").style.display = "inline";
