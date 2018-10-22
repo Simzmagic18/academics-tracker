@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 16, 2018 at 02:38 PM
+-- Generation Time: Oct 22, 2018 at 02:50 AM
 -- Server version: 10.1.32-MariaDB
 -- PHP Version: 7.2.5
 
@@ -48,8 +48,8 @@ CREATE TABLE `administrator` (
 --
 
 INSERT INTO `administrator` (`admin_id`, `admin_first_name`, `admin_middle_name`, `admin_last_name`, `date_of_birth`, `ethnicity`, `gender`, `password`, `salt`, `hash`, `user_type`, `school_code`) VALUES
-(1, 'Tapiwa', NULL, 'Mavende', '1994-02-03', 'Black', 'Male', 'Monash2018', '', '', 'Administrator', '022'),
-(500100, 'Johann', 'Smith', 'Vorster', '1975-09-04', 'white', 'Male', '12345678', '', '', 'Admini', '022');
+(50012351, 'Simbarashe', '', 'Sithole', '2018-10-08', 'coloured', 'female', '25f9e794323b453885f5181f1b624d0b', '', '', 'Administrator', '022'),
+(50012352, 'Simbarashe', '', 'Sithole', '2018-10-08', 'coloured', 'female', '25f9e794323b453885f5181f1b624d0b', '', '', 'Administrator', '022');
 
 -- --------------------------------------------------------
 
@@ -85,7 +85,7 @@ CREATE TABLE `attendance` (
 --
 
 INSERT INTO `attendance` (`record_number`, `subject_code`, `grade_number`, `date_today`, `comment`, `status`, `teacher_id`, `student_id`) VALUES
-(1, '123', '5', '9-Oct', 'On time', 'Present', 987654, 12345679),
+(1, '123', '5', '9-Oct', 'On time', 'Present', 987654, 200136),
 (2, '123', '5', '9-Oct', 'Late', 'Present', 987654, 23456789),
 (3, '123', '5', '9-Oct', 'N/A', 'Absent', 987654, 12435676),
 (4, '123', '5', '9-Oct', 'Excused', 'Absent', 987654, 12334567),
@@ -139,21 +139,22 @@ CREATE TABLE `guardian` (
   `guardian_middle_name` varchar(20) NOT NULL,
   `guardian_last_name` varchar(20) NOT NULL,
   `date_of_birth` int(11) NOT NULL,
-  `ethnicity` int(11) NOT NULL,
+  `ethnicity` text NOT NULL,
   `gender` varchar(6) NOT NULL,
   `password` varchar(255) NOT NULL,
   `salt` varchar(255) NOT NULL,
   `hash` varchar(255) NOT NULL,
   `user_type` varchar(14) NOT NULL,
-  `student_id` int(10) NOT NULL
+  `student_id` int(10) NOT NULL,
+  `school_code` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `guardian`
 --
 
-INSERT INTO `guardian` (`guardian_id`, `guardian_first_name`, `guardian_middle_name`, `guardian_last_name`, `date_of_birth`, `ethnicity`, `gender`, `password`, `salt`, `hash`, `user_type`, `student_id`) VALUES
-(0, 'Ahmed', 'john', 'ian', 2018, 0, 'male', '12345667', '', '', 'Guardian', 190000123);
+INSERT INTO `guardian` (`guardian_id`, `guardian_first_name`, `guardian_middle_name`, `guardian_last_name`, `date_of_birth`, `ethnicity`, `gender`, `password`, `salt`, `hash`, `user_type`, `student_id`, `school_code`) VALUES
+(2, 'Simbarashe', '', 'Sithole', 2018, 'black', 'male', '25f9e794323b453885f5181f1b624d0b', '', '', 'Guardian', 200136, 22);
 
 -- --------------------------------------------------------
 
@@ -310,16 +311,19 @@ CREATE TABLE `student` (
   `password` varchar(255) NOT NULL,
   `salt` varchar(255) NOT NULL,
   `hash` varchar(255) NOT NULL,
-  `user_type` varchar(14) NOT NULL
+  `user_type` varchar(14) NOT NULL,
+  `school_code` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `student`
 --
 
-INSERT INTO `student` (`student_id`, `student_first_name`, `student_middle_name`, `student_last_name`, `date_of_birth`, `ethnicity`, `gender`, `password`, `salt`, `hash`, `user_type`) VALUES
-(19000000, 'Joseph', NULL, 'Zukerberg', '1997-08-13', 'Black', 'Male', '12345678', '', '', 'Student'),
-(19000001, 'jbjbjjbjj', 'gb', 'nnnnnnn', '2018-12-03', 'black', 'female', '48484848484848484848484884848484848848', '', '', 'Student');
+INSERT INTO `student` (`student_id`, `student_first_name`, `student_middle_name`, `student_last_name`, `date_of_birth`, `ethnicity`, `gender`, `password`, `salt`, `hash`, `user_type`, `school_code`) VALUES
+(19000000, 'Joseph', NULL, 'Zukerberg', '1997-08-13', 'Black', 'Male', '12345678', '', '', 'Student', 0),
+(19000001, 'jbjbjjbjj', 'gb', 'nnnnnnn', '2018-12-03', 'black', 'female', '48484848484848484848484884848484848848', '', '', 'Student', 0),
+(19000002, 'Simbarashe', '', 'Sithole', '2018-10-10', 'white', 'male', '25f9e794323b453885f5181f1b624d0b', '', '', 'Student', 22),
+(19000003, 'Simbarashe', '', 'Sithole', '2018-10-10', 'white', 'male', '25f9e794323b453885f5181f1b624d0b', '', '', 'Student', 22);
 
 -- --------------------------------------------------------
 
@@ -383,8 +387,12 @@ CREATE TABLE `teacher` (
 INSERT INTO `teacher` (`teacher_id`, `teacher_first_name`, `teacher_middle_name`, `teacher_last_name`, `date_of_birth`, `ethnicity`, `gender`, `password`, `salt`, `hash`, `user_type`, `school_code`) VALUES
 (200123, 'Simbarashe', NULL, 'Sithole', '2018-09-12', 'Black', 'Male', '12345678', '', '', 'teacher', '123'),
 (200124, 'Tapiwa', '', 'Mavende', '1994-02-03', 'black', 'male', 'Monash2018', '', '', 'HOD', ''),
-(200125, 'gsyu', 'Tapiwa', 'kkkk', '2018-10-16', 'black', 'male', '$2y$10$HZADT4l2hFCGeCwK0r/jielW0xZxkDLMq9oLvmfqPSN1OOgCi2rL.', '', '', 'Teacher', '022'),
-(200126, 'gsyu', 'Tapiwa', 'kkkk', '2018-10-16', 'black', 'male', '$2y$10$m1CMxq9jNQbYHcZDJtOfiOrNQC/aFU0x1PGIPlOkUNZ608.vf5XBu', '', '', 'Teacher', '022');
+(200136, 'Simbarashe', '', 'Sithole', '2018-10-02', 'coloured', 'male', '25f9e794323b453885f5181f1b624d0b', '', '', 'HOD', '022'),
+(200137, 'Test', 'rat', 'subject', '1980-11-09', 'coloured', 'male', '25f9e794323b453885f5181f1b624d0b', '', '', 'Teacher', '5001'),
+(200138, 'Simbarashe', '', 'Sithole', '2012-01-31', 'coloured', 'male', '25f9e794323b453885f5181f1b624d0b', '', '', 'Teacher', '022'),
+(200140, 'Simbarashe', '', 'Sithole', '2013-05-06', 'coloured', 'male', '25f9e794323b453885f5181f1b624d0b', '', '', 'HOD', '022'),
+(200141, 'olapido', '', 'raymond', '1980-11-09', 'white', 'male', '25f9e794323b453885f5181f1b624d0b', '', '', '', '022'),
+(200142, 'Tembi', 'Lisa', 'Ndlovu', '2006-02-07', 'coloured', 'female', '25f9e794323b453885f5181f1b624d0b', '', '', 'Teacher', '022');
 
 --
 -- Indexes for dumped tables
@@ -461,6 +469,12 @@ ALTER TABLE `teacher`
 --
 
 --
+-- AUTO_INCREMENT for table `administrator`
+--
+ALTER TABLE `administrator`
+  MODIFY `admin_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50012353;
+
+--
 -- AUTO_INCREMENT for table `attendance`
 --
 ALTER TABLE `attendance`
@@ -473,6 +487,12 @@ ALTER TABLE `comments`
   MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
+-- AUTO_INCREMENT for table `guardian`
+--
+ALTER TABLE `guardian`
+  MODIFY `guardian_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `results`
 --
 ALTER TABLE `results`
@@ -482,13 +502,13 @@ ALTER TABLE `results`
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `student_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19000002;
+  MODIFY `student_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19000004;
 
 --
 -- AUTO_INCREMENT for table `teacher`
 --
 ALTER TABLE `teacher`
-  MODIFY `teacher_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=200127;
+  MODIFY `teacher_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=200143;
 
 --
 -- Constraints for dumped tables
