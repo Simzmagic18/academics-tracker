@@ -2,9 +2,9 @@
 
 <?php
 //Step1
-include ('dbcon.php');
+include ('conn.php');
 include ('session.php');
- $result = mysqli_query($con, "select * from attendance where student_id = '$session_id'" ) or die('Error in session.');
+ $result = mysqli_query($conn, "SELECT * from guardian where student_id = '$session_id'" ) or die('Error in session.');
  $row = mysqli_fetch_array($result);
                 
 ?>
@@ -197,36 +197,44 @@ include ('session.php');
         
         <!-- TABLE -->
     
-    <table class="data-table">
-		<caption class="title">Student Records</caption>
-		<thead>
-			<tr>
-				<th>Student ID</th>
-				<th>Status</th>
-				 <th>Comment</th>
-                                
-                        </tr>
-		</thead>
-		<tbody>
-		<?php
-                
-                
-		//while ($row = mysqli_fetch_array($result))
-		{
-                    
-                    $id = $row['student_id'];
-                    $status = $row['status'];
-                    $comment = $row['comment'];
-                                       
-			echo '<tr>
-					<td>'.$id.'</td>
-					<td>'.$status. '</td>
-					<td>'.$comment.'</td>
-				</tr>';
-				
+		<table class="table table-bordered">
+			<thead>
+				  	<tr>
+				  		<th>Record Number</th>
+				  		<th>Subject Code</th>
+				  		<th>Grade</th>
+				  		<th>Date</th>
+				  		<th>Comment</th>
+                        <th>Status</th>
+				  		<th>Teacher ID</th>
+				  		<th>Student ID</th>
+				 		
+				 
+				  	</tr>	
+				  </thead>
+			<?php
+			  
+				$SQLSELECT = "SELECT * FROM attendance WHERE student_id ='$session_id";
+				$result_set =  mysqli_query($conn,$SQLSELECT);
+				while($row = mysqli_fetch_array($result_set))
+				{
+				?>
 			
-		}?>
-		</tbody>
+					<tr>
+						<td><?php echo $row['record_number']; ?></td>
+						<td><?php echo $row['subject_code']; ?></td>
+						<td><?php echo $row['grade_number']; ?></td>
+						<td><?php echo $row['date_today']; ?></td>
+						<td><?php echo $row['comment']; ?></td>
+                                                <td><?php echo $row['status']; ?></td>
+						<td><?php echo $row['teacher_id']; ?></td>
+						<td><?php echo $row['student_id']; ?></td>
+					
+
+					</tr>
+				<?php
+				}
+			?>
 		</table>
 	
 
@@ -331,26 +339,8 @@ include ('session.php');
 				</div>
 			</div>
 
-			<!-- Footer Copyright -->
+			<!-- Footer -->
 
-			<div class="footer_bar d-flex flex-column flex-sm-row align-items-center">
-				<div class="footer_copyright">
-					<span><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></span>
-				</div>
-				<div class="footer_social ml-sm-auto">
-					<ul class="menu_social">
-						<li class="menu_social_item"><a href="#"><i class="fab fa-pinterest"></i></a></li>
-						<li class="menu_social_item"><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-						<li class="menu_social_item"><a href="#"><i class="fab fa-instagram"></i></a></li>
-						<li class="menu_social_item"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-						<li class="menu_social_item"><a href="#"><i class="fab fa-twitter"></i></a></li>
-					</ul>
-				</div>
-			</div>
-
-		</div>
 	</footer>
 
 </div>

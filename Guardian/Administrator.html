@@ -1,20 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+
 <head>
-<title>Administrator Register</title>
+<title>Administrator</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="Course Project">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" type="text/css" href="styles/bootstrap4/bootstrap.min.css">
 <link href="plugins/fontawesome-free-5.0.1/css/fontawesome-all.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" type="text/css" href="styles/news_post_styles.css">
-<link rel="stylesheet" type="text/css" href="styles/news_post_responsive.css">
+<link rel="stylesheet" type="text/css" href="styles/news_styles.css">
+<link rel="stylesheet" type="text/css" href="styles/news_responsive.css">
 <link rel="stylesheet" type="text/css" href="styles/menuDropDown.css">
 </head>
-<body>
-
-<div class="super_container">
 
 <!-- Header -->
 <header class="header d-flex flex-row">
@@ -49,8 +46,10 @@
 	</div>
 </header>
 
+<body>
 <!-- Menu -->
 <div class="menu_container menu_mm">
+
 	<!-- Menu Close Button -->
 	<div class="menu_close_container">
 		<div class="menu_close"></div>
@@ -62,7 +61,7 @@
 			<ul class="menu_list menu_mm">
 				<li class="menu_item menu_mm"><a href="Administrator.html">HOME</a></li>
 				<li class="menu_item menu_mm"><a href="../about.html">ABOUT US</a></li>
-        			<li class="menu_item menu_mm"><a href="../contact.html">CONTACT US</a></li>
+				<li class="menu_item menu_mm"><a href="../contact.html">CONTACT US</a></li>
 				<li class="menu_item menu_mm"><a href="profile.html">PROFILE</a></li>
 				<li class="menu_item menu_mm"><a href="logout.php">LOGOUT</a></li>
 			</ul>
@@ -76,46 +75,17 @@
 		<div class="home_background prlx" style="background-image:url(images/news_background.jpg)"></div>
 	</div>
 	<div class="home_content">
-		<h1>Register New Users</h1>
+		<h1>Welcome Administrator</h1>
 	</div>
 </div>
 
-<div class="container">
-    <br><h2>Select User Type</h2>
-
-    <div class="row">
-
-	<div class="icons">
-	    <a href="RegisterNewStudent.php"><img src="images/student-icon.png" alt="Avatar" style="width:100px"></a>
-	    <span>Student</span>
-	</div>
-
-	<div class="icons">
-	    <a href="RegisterNewTeacher.php"><img src="images/teacher-icon.png" alt="Avatar" style="width:100px"></a>
-	    <span>Teacher</span>
-	</div>
-
-	<div class="icons">
-	    <a href="RegisterNewGuardian.php"><img src="images/parent-icon.jpg" alt="Avatar" style="width:100px"></a>
-	    <span>Guardian</span>
-	</div>
-
-	<div class="icons">
-	    <a href="RegisterNewAdministrator.php"><img src="images/admin.png" alt="Avatar" style="width:100px"></a>
-	    <span>Administrator</span>
-	</div>       
-    </div>
-    <style>
-	.footer {
-	    position: fixed;
-	    left: 0;
-	    bottom: 0;
-	    width: 100%;
-	    background-color: black;
-	    color: white;
-	    text-align: center;
-	}
-	</style>
+<!--Buttons-->
+<div align="center">
+	<h4></h4> 
+	<a href="Register New Users.html" class="button">Register New User</a>
+	<a href="user.php" class="button">Manage Users</a>
+	<a href="Manage Subjects.html" class="button">Manage Subjects</a><br>
+	<br><iframe src="https://calendar.google.com/calendar/embed?showTitle=0&amp;showPrint=0&amp;showTabs=0&amp;height=600&amp;wkst=1&amp;bgcolor=%23ff9900&amp;src=en.sa%23holiday%40group.v.calendar.google.com&amp;color=%23125A12&amp;ctz=Africa%2FJohannesburg" style="border:solid 1px #777" width="800" height="600" frameborder="0" scrolling="no"></iframe>
 </div>
 
 <script src="js/jquery-3.2.1.min.js"></script>
@@ -128,7 +98,6 @@
 <script src="plugins/greensock/ScrollToPlugin.min.js"></script>
 <script src="plugins/scrollTo/jquery.scrollTo.min.js"></script>
 <script src="plugins/easing/easing.js"></script>
-<script src="js/news_post_custom.js"></script>
-
+<script src="js/news_custom.js"></script>
 </body>
 </html>

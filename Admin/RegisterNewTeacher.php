@@ -29,10 +29,16 @@ else{
 	$sql = "INSERT INTO teacher (teacher_first_name,teacher_middle_name,teacher_last_name,date_of_birth,ethnicity,gender,user_type, school_code, password) values('$name', '$mname','$lname','$dob','$race','$gen','$type', '$scode','$password')";
 	$result = mysqli_query($conn, $sql);
 
+	if(mysqli_query($conn, $sql)) {
 
-	header("Location: successfulRecord3.html");//  echo "Records Inserted Successfully.";
-
-
+		header("Location: successfulRecord3.html");//  echo "Records Inserted Successfully.";
+	
+	 }
+	  else {
+	
+		echo "ERROR: Could Not Able To Execute $sql. " . mysqli_error($conn);
+	
+	  }
 }		
 
 } 
@@ -537,7 +543,7 @@ else{
 
 	function validateSuburb(suburb)
 	{
-		var alpha = /^[A-Za-z'-]+$/;
+		var alpha = /^[A-Za-z'-\s]+$/;
 		
 		if(alpha.test(document.getElementById("suburb").value))
 		{  
@@ -637,7 +643,12 @@ function validateAllFields ()
 </div>
 
 	<!-- Footer -->
-
+	<div class="footer">
+	<span>
+	    Academics Tracker All rights reserved
+	</span>
+</div>
+	
 
 <script src="js/jquery-3.2.1.min.js"></script>
 <script src="styles/bootstrap4/popper.js"></script>

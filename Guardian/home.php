@@ -12,12 +12,12 @@ include('conn.php');
 </head>
 <body>
 <div class="form-wrapper"> 
-    <center><h3>Welcome: <?php echo $row['admin_first_name']; ?> </h3></center>
+    <center><h3>Welcome: <?php echo $row['guardian_first_name']; ?> </h3></center>
 	 <div class="reminder">
 	 
-	 	<META http-equiv="refresh" content="2;URL=Administrator.html"> 
+	 	<META http-equiv="refresh" content="2;URL=Guardian.html"> 
 
-	 <p><a href="Administrator.html">Click to Proceed</a></p>
+	 <p><a href="Guardian.html">Click to Proceed</a></p>
     <p><a href="logout.php">Log out</a></p>
   </div>
 </div>

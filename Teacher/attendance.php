@@ -1,11 +1,5 @@
 <?php 
-$conn = mysqli_connect("localhost", "root", "", "academicsTracker2");
- 
-// Check connection
-if($conn === false){
-    die("ERROR: Could not connect. " . mysqli_connect_error());
-}
-
+include('conn.php');
 ?>	
 <html lang="en">
 	<head>
