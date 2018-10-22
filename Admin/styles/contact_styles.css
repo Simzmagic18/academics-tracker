@@ -723,19 +723,22 @@ section
 *********************************/
 
 .button{
-    height: 150px;
-    width: 250px;
+    height: 50px;
+    width: 100px;
     background: #ffb606;
     border: 2px solid goldenrod;
     padding: 10px 24px;
     
     color:#FFFFFF;
     text-align: center;
-    font: bold 1.6em/50px "Helvetica Neue", sans-serif, serif,  serif, sans-serif;
+    font-size: 16px;
     
     background: linear-gradient(top, #34696f, #2f5f63);
     border-radius: 10px;
     
+}
+.main_button{
+    padding-bottom: 100px;
 }
 
 /*********************************
@@ -872,15 +875,17 @@ section
 12. Footer
 *********************************/
 
-.footer
-{
-	width: 100%;
-	padding-top: 86px;
-	background: #1a1a1a;
-}
-.footer .section_title h1
-{
-	color: #FFFFFF;
+.footer{
+clear: both;
+height:50px;
+width: 100%;
+text-align: center;
+margin: 0px 0px 0px 0px;
+font-family: arial, helvetica;
+font-weight: bold ;
+font-size: 11px;
+background-color: black;
+position: static;
 }
 
 /*********************************

@@ -851,15 +851,16 @@ section
 10. Footer
 *********************************/
 
-.footer
-{
-	width: 100%;
-	padding-top: 86px;
-	background: #1a1a1a;
-}
-.footer .section_title h1
-{
-	color: #FFFFFF;
+.footer{
+/*clear: both;*/
+height:50px;
+width: 100%;
+text-align: center;
+margin: 0px 0px 0px 0px;
+font-family: arial, helvetica;
+font-weight: bold ;
+font-size: 11px;
+background-color: black;
 }
 
 /*********************************
