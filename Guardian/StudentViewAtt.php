@@ -2,7 +2,7 @@
 
 <?php
 
-include ('conn.php');//Database Connection
+include('conn.php');//Database Connection
 session_start();
 
 	
@@ -190,7 +190,7 @@ session_start();
 			<div class="home_background prlx" style="background-image:url(images/contact_background.jpg)"></div>
 		</div>
 		<div class="home_content">
-			<h6>Welcome<?php echo $res['$'];?> </h6>
+			<h6>Welcome</h6>
                         
 		</div>
 	</div>
@@ -213,10 +213,19 @@ session_start();
 				  	</tr>	
 				  </thead>
 			<?php
-			  
-				$SQLSELECT = "SELECT * FROM attendance WHERE student_id ='$session_id";
-				$result_set =  mysqli_query($conn,$SQLSELECT);
-				while($row = mysqli_fetch_array($result_set))
+			 
+			  $login_session=$_SESSION['login_user'];
+			  echo $login_session;
+
+				$SQLSELECT = "SELECT * FROM attendance WHERE student_id ='$login_session";
+				$row =  mysqli_query($conn,$SQLSELECT);
+				//$row = mysqli_fetch_array($result_set);
+
+				if (!$row) {
+					printf("Error: %s\n", mysqli_error($conn));
+					exit();
+				}
+				else
 				{
 				?>
 			

@@ -3,7 +3,8 @@ include('conn.php');//DB Connection
 
 if($_SERVER['REQUEST_METHOD'] == "POST")
 {
-	// Information sent from Form
+
+	// Information sent from Form to user
 	$name = mysqli_real_escape_string($conn, $_POST['admin_first_name']);
 	$mname = mysqli_real_escape_string($conn, $_POST['admin_middle_name']);
     $lname = mysqli_real_escape_string($conn, $_POST['admin_last_name']);
@@ -16,6 +17,14 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
 	$password = mysqli_real_escape_string($conn, $_POST['password']);
 	
 	
+	// Information sent from Form to Contacts
+	$hNum = mysqli_real_escape_string($conn, $_POST['house_number']);
+	$street = mysqli_real_escape_string($conn, $_POST['street_name']);
+	$suburb = mysqli_real_escape_string($conn, $_POST['suburb']);
+	$pCode = mysqli_real_escape_string($conn, $_POST['post_code']);
+	$cNum = mysqli_real_escape_string($conn, $_POST['contact_number']);
+
+
 
 	if ($password != $cPassword) {
 
@@ -26,8 +35,9 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
 else{
 
 	$password = md5($password); //Password Encrypted
-	$sql = "INSERT INTO administrator (admin_first_name,admin_middle_name,admin_last_name,date_of_birth,ethnicity,gender,user_type, school_code, password) values('$name', '$mname','$lname','$dob','$race','$gen','$type', '$scode','$password')";
+	$sql = "INSERT INTO administrator (admin_first_name,admin_middle_name,admin_last_name,date_of_birth,ethnicity,gender, house_number,street_name,suburb, post_code, contact_number, user_type, school_code, password) values('$name', '$mname','$lname','$dob','$race','$gen', '$hNum', '$street', '$suburb', '$pCode', '$cNum', '$type', '$scode','$password')";
 	$result = mysqli_query($conn, $sql);
+
 
  if(mysqli_query($conn, $sql)) {
 

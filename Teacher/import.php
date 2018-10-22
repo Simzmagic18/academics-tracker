@@ -44,7 +44,7 @@ if(isset($_POST["Import"])){
 			 
 
 			 //close of connection
-			mysql_close($conn); 
+			mysqli_close($conn); 
 				
 		 	
 			
