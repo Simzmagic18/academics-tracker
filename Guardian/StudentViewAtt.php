@@ -1,11 +1,11 @@
  <!DOCTYPE html>
 
 <?php
-//Step1
-include ('conn.php');
-include ('session.php');
- $result = mysqli_query($conn, "SELECT * from guardian where student_id = '$session_id'" ) or die('Error in session.');
- $row = mysqli_fetch_array($result);
+
+include ('conn.php');//Database Connection
+session_start();
+
+	
                 
 ?>
 
@@ -190,7 +190,7 @@ include ('session.php');
 			<div class="home_background prlx" style="background-image:url(images/contact_background.jpg)"></div>
 		</div>
 		<div class="home_content">
-			<h6>Welcome<?php echo $row['student_id'];?> </h6>
+			<h6>Welcome<?php echo $res['$'];?> </h6>
                         
 		</div>
 	</div>
