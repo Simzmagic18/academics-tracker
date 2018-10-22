@@ -1,5 +1,10 @@
 <?php 
-include('conn.php'); 
+include('conn.php');
+include('session.php'); 
+
+$result=mysqli_query($conn, "select * from student where student_id='$session_id'")or die('Error In Session');
+$row=mysqli_fetch_array($result);
+ 
 
 //$result=mysqli_query($con, "select * from teacher where teacher_id='$session_id'")or die('Error In Session');
 //$row=mysqli_fetch_array($result);
@@ -12,7 +17,7 @@ include('conn.php');
 </head>
 <body>
 <div class="form-wrapper"> 
-    <center><h3>Welcome: <?php echo $row['guardian_first_name']; ?> </h3></center>
+    <center><h3>Welcome: <?php echo $row['student_first_name']; ?> </h3></center>
 	 <div class="reminder">
 	 
 	 	<META http-equiv="refresh" content="2;URL=Guardian.html"> 
