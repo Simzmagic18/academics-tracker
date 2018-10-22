@@ -3,9 +3,9 @@
 <?php
 //Step1
 include ('dbcon.php');
-include ('session.php');
-$result=mysqli_query($con, "select * from results where student_id='$session_id'")or die('Error In Session');
-$row=mysqli_fetch_array($result);
+//include ('session.php');
+//$result=mysqli_query($con, "select * from results where student_id='$session_id'")or die('Error In Session');
+//$row=mysqli_fetch_array($result);
 ?>
 
 <html lang="en">

@@ -62,7 +62,8 @@ div
 	position: relative;
 	-webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
-    box-sizing: border-box;
+	box-sizing: border-box;
+	margin: auto;
 }
 ul
 {
@@ -763,7 +764,7 @@ section
 .input_field
 {
 	width: 100%;
-	background: #f8f4f4;
+	background: #ffe096;
 	border: solid 2px transparent;
 	margin-bottom: 24px;
 	height: 42px;
@@ -778,7 +779,7 @@ section
 {
 	width: 100%;
 	height: 189px;
-	background: #f8f4f4;
+	background: #ffe096;
 	border: solid 2px transparent;
 	padding-left: 33px;
 	margin-bottom: 24px;

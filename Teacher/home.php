@@ -1,11 +1,10 @@
 <?php 
-include('dbcon.php');
-include('session.php'); 
+include('conn.php'); 
 
-$result=mysqli_query($con, "select * from teacher where teacher_id='$session_id'")or die('Error In Session');
-$row=mysqli_fetch_array($result);
+//$result=mysqli_query($con, "select * from teacher where teacher_id='$session_id'")or die('Error In Session');
+//$row=mysqli_fetch_array($result);
+?>
 
- ?>
 
 <html>
 <head>

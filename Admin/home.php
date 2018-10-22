@@ -1,11 +1,10 @@
 <?php 
-include('dbcon.php');
-include('session.php'); 
+include('conn.php'); 
 
-$result=mysqli_query($con, "select * from administrator where admin_id='$session_id'")or die('Error In Session');
-$row=mysqli_fetch_array($result);
+//$result=mysqli_query($con, "select * from teacher where teacher_id='$session_id'")or die('Error In Session');
+//$row=mysqli_fetch_array($result);
+?>
 
- ?>
 
 <html>
 <head>
@@ -15,7 +14,6 @@ $row=mysqli_fetch_array($result);
 <div class="form-wrapper"> 
     <center><h3>Welcome: <?php echo $row['admin_first_name']; ?> </h3></center>
 	 <div class="reminder">
-	 
 	 
 	 	<META http-equiv="refresh" content="2;URL=Administrator.html"> 
 

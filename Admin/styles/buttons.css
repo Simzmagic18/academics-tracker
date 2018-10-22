@@ -1,0 +1,27 @@
+.button {
+    background-color: orange;
+    border: none;
+    text-color: white;
+    padding: 15px 25px;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.button:hover {
+    font-weight: bolder;
+}
+
+.app-button{
+    width: 150px;
+    margin:0 20px;
+    display:inline-block;
+    line-height: 60px;
+    alignment: center;
+}
+.rowbtn{
+  text-align:center;
+  /*the same margin which is every button have, it is for small screen, and if you have many buttons.*/
+  margin-left:-20px;
+  marin-right:-20px;
+}
