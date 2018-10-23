@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 23, 2018 at 10:32 AM
+-- Generation Time: Oct 23, 2018 at 01:02 PM
 -- Server version: 10.1.32-MariaDB
 -- PHP Version: 7.2.5
 
@@ -96,6 +96,14 @@ CREATE TABLE `comments` (
   `comment_status` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `comments`
+--
+
+INSERT INTO `comments` (`comment_id`, `comment_subject`, `comment_text`, `comment_status`) VALUES
+(13, 'New marks uploaded', '', 1),
+(14, 'english', '', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -154,6 +162,16 @@ CREATE TABLE `results` (
   `comments` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `results`
+--
+
+INSERT INTO `results` (`result_id`, `student_id`, `subject_code`, `task_number`, `task_score`, `comments`) VALUES
+(610, 19000005, '123', '1', 35, 'Could be better look out for the spelling'),
+(611, 19000007, '123', '1', 45, 'Well done!'),
+(612, 19000010, '123', '1', 50, 'Perfect you aced the test'),
+(613, 19000011, '123', '1', 20, 'Much to worry about must not fall behind');
+
 -- --------------------------------------------------------
 
 --
@@ -201,7 +219,10 @@ CREATE TABLE `student` (
 --
 
 INSERT INTO `student` (`student_id`, `student_first_name`, `student_middle_name`, `student_last_name`, `date_of_birth`, `ethnicity`, `gender`, `house_number`, `contact_number`, `post_code`, `street_name`, `suburb`, `password`, `user_type`, `school_code`) VALUES
-(19000005, 'Simbarashe', '', 'Sithole', '2018-10-09', 'coloured', 'male', 211, 2147483647, 1724, 'Ruimsig', 'Johannesburg', '25f9e794323b453885f5181f1b624d0b', 'Student', 5001);
+(19000005, 'Simbarashe', '', 'Sithole', '2018-10-09', 'coloured', 'male', 211, 2147483647, 1724, 'Ruimsig', 'Johannesburg', '25f9e794323b453885f5181f1b624d0b', 'Student', 5001),
+(19000007, 'Napitapi', 'Chiilee', 'Mukala', '2005-02-08', 'white', 'female', 32, 508270563, 1700, 'Willowbrooke', 'Rooderport', '25f9e794323b453885f5181f1b624d0b', 'Student', 22),
+(19000010, 'Bradely', 'Fasko', 'Smith', '2005-11-24', 'asian', 'male', 87, 712345563, 1563, 'Brown', 'Sandton', '25f9e794323b453885f5181f1b624d0b', 'Student', 22),
+(19000011, 'Xathi', 'Godfey', 'Quela', '2005-04-09', 'black', 'male', 78, 708270563, 1298, 'Cleveland', 'Fourways', '25f9e794323b453885f5181f1b624d0b', 'Student', 22);
 
 -- --------------------------------------------------------
 
@@ -365,13 +386,13 @@ ALTER TABLE `administrator`
 -- AUTO_INCREMENT for table `attendance`
 --
 ALTER TABLE `attendance`
-  MODIFY `record_number` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=112;
+  MODIFY `record_number` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=117;
 
 --
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `guardian`
@@ -383,13 +404,13 @@ ALTER TABLE `guardian`
 -- AUTO_INCREMENT for table `results`
 --
 ALTER TABLE `results`
-  MODIFY `result_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=349;
+  MODIFY `result_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=614;
 
 --
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `student_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19000006;
+  MODIFY `student_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19000013;
 
 --
 -- AUTO_INCREMENT for table `teacher`
