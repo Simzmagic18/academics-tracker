@@ -11,7 +11,7 @@ if($_POST["view"] != '')
     $update_query = "UPDATE comments SET comment_status = 1 WHERE comment_status=0";
     mysqli_query($con, $update_query);
 }
-$query = "SELECT * FROM comments ORDER BY comment_id DESC LIMIT 5";
+$query = "SELECT * FROM comments ORDER BY comment_id DESC LIMIT 2";
 $result = mysqli_query($con, $query);
 $output = '';
 if(mysqli_num_rows($result) > 0)
@@ -20,7 +20,7 @@ if(mysqli_num_rows($result) > 0)
  {
    $output .= '
    <li>
-   <a href="#">
+   <a href="view.php">
    <strong>'.$row["comment_subject"].'</strong><br />
    <small><em>'.$row["comment_text"].'</em></small>
    </a>
@@ -30,8 +30,8 @@ if(mysqli_num_rows($result) > 0)
  }
 }
 else{
-     $output .= '
-     <li><a href="#" class="text-bold text-italic"> No New Notifications ></li>';
+    $output .= '
+    <li><a href="#" class="text-bold text-italic"> No New Notifications Found </a></li>';
 }
 
 

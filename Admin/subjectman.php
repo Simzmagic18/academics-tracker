@@ -1,12 +1,8 @@
 <!DOCTYPE html>
 <?php
-$con = mysqli_connect("localhost","root","","academicsTracker2");
 
-// Check connection
-if (mysqli_connect_errno())
-  {
-  echo "Failed to connect to MySQL: " . mysqli_connect_error();
-  }
+include ('conn.php');
+
 ?>
 
    
@@ -42,7 +38,7 @@ if (mysqli_connect_errno())
 			<nav class="main_nav_container">
 				<div class="main_nav">
 					<ul class="main_nav_list">
-						<li class="main_nav_item"><a href="index.html">home</a></li>
+						<li class="main_nav_item"><a href="Administrator.html">home</a></li>
 						<li class="main_nav_item"><a href="#">about us</a></li>
 						<li class="main_nav_item"><a href="courses.html">courses</a></li>
 						<li class="main_nav_item"><a href="elements.html">elements</a></li>
@@ -76,7 +72,7 @@ if (mysqli_connect_errno())
 		<div class="menu_inner menu_mm">
 			<div class="menu menu_mm">
 				<ul class="menu_list menu_mm">
-					<li class="menu_item menu_mm"><a href="index.html">Home</a></li>
+					<li class="menu_item menu_mm"><a href="Administrator.html">Home</a></li>
 					<li class="menu_item menu_mm"><a href="#">About us</a></li>
 					<li class="menu_item menu_mm"><a href="courses.html">Courses</a></li>
 					<li class="menu_item menu_mm"><a href="elements.html">Elements</a></li>
@@ -119,7 +115,7 @@ if (mysqli_connect_errno())
 	<div class="contact">
 		<div class="container">
 				<div class="col-lg-8">
-                                    <h2> Enter Subject Level</h2>
+                                    <h2> Enter Grade</h2>
                                     <form class="search">
                                         
                                     <input type="text" placeholder="Search..." name="query">
@@ -127,27 +123,26 @@ if (mysqli_connect_errno())
                                     
                                     </form>
    <?php
+
     $query = $_GET['query']; 
     $min_length = 1;
     if(strlen($query) >= $min_length){ 
         //$query = htmlspecialchars($con, $query); 
-        $query = mysqli_real_escape_string($con, $query);
+        $query = mysqli_real_escape_string($conn, $query);
         
-        $raw_results = mysqli_query($con, "SELECT * FROM subject
-            WHERE (`subject_grade` LIKE '%".$query."%') OR (`subject_grade` LIKE '%".$query."%')") or die(mysqli_error());
+        $raw_results = mysqli_query($conn, "SELECT * FROM subject
+            WHERE (`subject_grade` LIKE '%".$query."%') OR (`subject_grade` LIKE '%" .$query."%')") or die(mysqli_error());
              if(mysqli_num_rows($raw_results) > 0){ // if one or more rows are returned do following
              
             while($results = mysqli_fetch_array($raw_results)){
             
             
-            
-
+        
               
-            
-  
-         echo   "<p><tr>".$results['subject_grade']."</tr>".$results['subject_name']."</p>";
+        	 
+         echo   "<p><tr>".$results['subject_name']."</p>";
  
-  
+		 
             }
              
         }

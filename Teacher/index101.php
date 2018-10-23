@@ -22,63 +22,62 @@
      
 <div class="super_container">
 
-	<!-- Header -->
-	<header class="header d-flex flex-row">
-		<div class="header_content d-flex flex-row align-items-center">
-			<!-- Logo -->
-                        <div class="logo_container"><a href="teachers.html">
-				<div class="logo">
-					<img src="images/logo.png" alt="">
-					<span>AT: Teacher</span>
-                                </div></a>
-			</div>
-
-			<!-- Main Navigation -->
-			<nav class="main_nav_container">
-				<div class="main_nav">
-					<ul class="main_nav_list">
-						<li class="main_nav_item"><a href="#">About Us</a></li>
-						<li class="main_nav_item"><a href="contact.html">Contact Us</a></li>
-					</ul>
-				</div>
-			</nav>
-		</div>
-		<div class="header_side d-flex flex-row justify-content-center align-items-center">
-                    <div class="dropdown dropdown-center">
-                        <button class="dropbtn">PROFILE</button>
-                        <div class="dropdown-content">
-                            <a href="Profile.html">USER DETAILS</a>
-                            <a href="index.html">LOGOUT</a>
+		<!-- Header -->
+                <header class="header d-flex flex-row">
+            <div class="header_content d-flex flex-row align-items-center">
+                    <!-- Logo -->
+                    <div class="logo_container">
+                        <div class="logo">
+                            <img src="images/ATlogo221.png" alt="logo" width="64px" height="66px">&nbsp;
+                            <span>AT: Teacher</span>
                         </div>
                     </div>
+
+                    <!-- Main Navigation -->
+                    <nav class="main_nav_container">
+                            <div class="main_nav">
+                                    <ul class="main_nav_list">
+                                            <li class="main_nav_item"><a href="teachers.html">HOME</a></li>
+                                            <li class="main_nav_item"><a href="../about.html">ABOUT US</a></li>
+                                            <li class="main_nav_item"><a href="../contact.html">CONTACT US</a></li>
+                                            <li class="main_nav_item"><a href="profile.html">PROFILE</a></li>
+                                    </ul>
+                            </div>
+                    </nav>
+            </div>
+            <div class="header_side d-flex flex-row justify-content-center align-items-center">
+                <a href="logout.php"><span>LOGOUT</span></a>
+            </div>
+
+            <!-- Hamburger -->
+            <div class="hamburger_container">
+                    <i class="fas fa-bars trans_200"></i>
+            </div>
+            
+            
+    </header>
+
+    <!-- Menu -->
+    <div class="menu_container menu_mm">
+
+            <!-- Menu Close Button -->
+            <div class="menu_close_container">
+                    <div class="menu_close"></div>
+            </div>
+
+            <!-- Menu Items -->
+            <div class="menu_inner menu_mm">
+                <div class="menu menu_mm">
+                    <ul class="menu_list menu_mm">
+                        <li class="menu_item menu_mm"><a href="teachers.html">HOME</a></li>
+                        <li class="menu_item menu_mm"><a href="../about.html">ABOUT US</a></li>
+                        <li class="menu_item menu_mm"><a href="../contact.html">CONTACT US</a></li>
+                        <li class="menu_item menu_mm"><a href="profile.html">PROFILE</a></li>
+                        <li class="menu_item menu_mm"><a href="logout.php">LOGOUT</a></li>
+                    </ul>
                 </div>
-
-		<!-- Hamburger -->
-		<div class="hamburger_container">
-			<i class="fas fa-bars trans_200"></i>
-		</div>
-
-	</header>
-     
-     <!-- Menu -->
-	<div class="menu_container menu_mm">
-
-		<!-- Menu Close Button -->
-		<div class="menu_close_container">
-			<div class="menu_close"></div>
-		</div>
-
-		<!-- Menu Items -->
-		<div class="menu_inner menu_mm">
-			<div class="menu menu_mm">
-				<ul class="menu_list menu_mm">
-					<li class="menu_item menu_mm"><a href="index.html">Home</a></li>
-					<li class="menu_item menu_mm"><a href="about.html">About us</a></li>
-					<li class="menu_item menu_mm"><a href="contact.html">Contact</a></li>
-				</ul>
-			</div>
-		</div>
-	</div>
+            </div>
+    </div>
 	
 	<!-- Home -->
 	<div class="home">
@@ -109,54 +108,29 @@
      <input type="text" name="subject" id="subject" class="form-control">
     </div>
     <div class="form-group">
-     <label>Enter Comment</label>
-     <textarea name="comment" id="comment" class="form-control" rows="5"></textarea>
-    </div>
-    <div class="form-group">
      <input type="submit" name="post" id="post" class="btn btn-info" value="Post" />
     </div>
    </form>
    
+   <button class="button" onclick="goBack()"> Back </button>
+
+<script>
+           function goBack() {
+           window.history.back();
+          }
+              </script>
+
+
   </div>
   
   <!-- Footer -->
-<footer class="footer">
-    <div class="container">
-            <!-- Footer Content -->
-            <div class="footer_content">
-                    <div class="row">
 
-                          
-                                    <!-- Logo -->
-                                    <div class="logo_container">
-                                            <div class="logo">
-                                                    <img src="images/logo.png" alt="">
-                                                    <span>Academic Tracker</span>
-                                            </div>
-                                    </div>
-                            </div>
-</div>
-</div>
+            <!-- Footer Content -->
+        
                             
 
                                       <!-- Footer Copyright -->
-            <div class="footer_bar d-flex flex-column flex-sm-row align-items-center">
-                    <div class="footer_copyright">
-                            <span>
-                            All rights reserved by Monash South Africa
-                            </span>
-                    </div>
-                    <div class="footer_social ml-sm-auto">
-                            <ul class="menu_social">
-                                    <li class="menu_social_item"><a href="https://www.facebook.com/monashsouthafrica"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li class="menu_social_item"><a href="https://twitter.com/monash_sa?lang=en"><i class="fab fa-twitter"></i></a></li>
-                                    <li class="menu_social_item"><a href="https://www.linkedin.com/edu/monash-south-africa-169003"><i class="fab fa-linkedin-in"></i></a></li>
-                                    <li class="menu_social_item"><a href="https://www.instagram.com/monash_sa/"><i class="fab fa-instagram"></i></a></li>
-                            </ul>
-                    </div>
-            </div>
-    </div>
-</footer>
+           
 
  </body>
 </html>

@@ -16,7 +16,14 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
 	$cPassword = mysqli_real_escape_string($conn, $_POST['cPassword']);
 	$password = mysqli_real_escape_string($conn, $_POST['password']);
 	
-	
+	// Information sent from Form to Contacts
+	$hNum = mysqli_real_escape_string($conn, $_POST['house_number']);
+	$street = mysqli_real_escape_string($conn, $_POST['street_name']);
+	$suburb = mysqli_real_escape_string($conn, $_POST['suburb']);
+	$pCode = mysqli_real_escape_string($conn, $_POST['post_code']);
+	$cNum = mysqli_real_escape_string($conn, $_POST['contact_number']);
+
+
 
 	if ($password != $cPassword) {
 
@@ -27,7 +34,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
 else{
 
 	$password = md5($password); //Password Encrypted
-	$sql = "INSERT INTO guardian (guardian_first_name,guardian_middle_name,guardian_last_name,date_of_birth,ethnicity,gender,user_type, school_code, student_id, password) values('$name', '$mname','$lname','$dob','$race','$gen','$type', '$scode', '$id', '$password')";
+	$sql = "INSERT INTO guardian (guardian_first_name,guardian_middle_name,guardian_last_name,date_of_birth,ethnicity,gender, house_number,street_name,suburb, post_code, contact_number, user_type, school_code, student_id, password) values('$name', '$mname','$lname','$dob','$race','$gen', '$hNum', '$street', '$suburb', '$pCode', '$cNum','$type', '$scode', '$id', '$password')";
 	$result = mysqli_query($conn, $sql);
 
  if(mysqli_query($conn, $sql)) {
@@ -36,6 +43,9 @@ else{
 
  }
   else {
+  
+  
+           header("Location: demo.html");
 
 	echo "ERROR: Could Not Able To Execute $sql. " . mysqli_error($conn);
 

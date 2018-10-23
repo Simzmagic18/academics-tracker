@@ -3,6 +3,7 @@ include('conn.php');
 //include('session.php'); 
 
 //$result=mysqli_query($conn, "select * from student where student_id='$session_id'")or die('Error In Session');
+//
 //$row=mysqli_fetch_array($result);
  
 

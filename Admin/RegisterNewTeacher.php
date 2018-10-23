@@ -15,7 +15,14 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
 	$cPassword = mysqli_real_escape_string($conn, $_POST['cPassword']);
 	$password = mysqli_real_escape_string($conn, $_POST['password']);
 	
-	
+		// Information sent from Form to Contacts
+	$hNum = mysqli_real_escape_string($conn, $_POST['house_number']);
+	$street = mysqli_real_escape_string($conn, $_POST['street_name']);
+	$suburb = mysqli_real_escape_string($conn, $_POST['suburb']);
+	$pCode = mysqli_real_escape_string($conn, $_POST['post_code']);
+	$cNum = mysqli_real_escape_string($conn, $_POST['contact_number']);
+
+
 
 	if ($password != $cPassword) {
 
@@ -26,21 +33,25 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
 else{
 
 	$password = md5($password); //Password Encrypted
-	$sql = "INSERT INTO teacher (teacher_first_name,teacher_middle_name,teacher_last_name,date_of_birth,ethnicity,gender,user_type, school_code, password) values('$name', '$mname','$lname','$dob','$race','$gen','$type', '$scode','$password')";
+	$sql = "INSERT INTO teacher (teacher_first_name,teacher_middle_name,teacher_last_name,date_of_birth,ethnicity,gender, house_number,street_name,suburb, post_code, contact_number,user_type, school_code, password) values('$name', '$mname','$lname','$dob','$race','$gen', '$hNum', '$street', '$suburb', '$pCode', '$cNum', '$type', '$scode','$password')";
 	$result = mysqli_query($conn, $sql);
 
 	if(mysqli_query($conn, $sql)) {
 
 		header("Location: successfulRecord3.html");//  echo "Records Inserted Successfully.";
-	
+		die();
 	 }
 	  else {
+	  
+	     header("Location: demo.html");
+
 	
 		echo "ERROR: Could Not Able To Execute $sql. " . mysqli_error($conn);
 	
 	  }
 }		
-
+//close of connection
+mysqli_close($conn); 
 } 
 
 ?>
@@ -139,7 +150,7 @@ else{
 			<h3>User Information</h3><br>
 			
 
-<form action="<?php $_SERVER['PHP_SELF'];?>" method="post" enctype="multipart/form-data" onsubmit = "return validateAllFields(this)>
+<form action="<?php $_SERVER['PHP_SELF'];?>" method="post" enctype="multipart/form-data" onsubmit = "return validateAllFields(this) onsubmit="this.submit.disabled = 'disabled'>
 
 <label for="teacher_first_name"><b>First Name <abbr class="req" title="required">*</abbr></b></label> <span id="error-fname" span style = "float: right"></span><br>
             <input type="text" name="teacher_first_name" id ="teacher_first_name" onblur ="validateFirstName(teacher_first_name)"  maxlength = "20" required /><br>
