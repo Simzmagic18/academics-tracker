@@ -106,46 +106,40 @@ include ('session.php');
 
 <div class="super_container">
 
- <!-- Header -->
- <header class="header d-flex flex-row">
+  <!-- Header -->
+  <header class="header d-flex flex-row">
             <div class="header_content d-flex flex-row align-items-center">
                     <!-- Logo -->
-                    <div class="logo_container"><a href="Parent_Guardian.html">
-                            <div class="logo">
-                                <img src="images/ATlogo221.png" alt="logo" width="64px" height="66px">&nbsp;
-                                <span>AT: Guardian</span>
-                            </div></a>
+                    <div class="logo_container">
+                        <div class="logo">
+                            <img src="images/ATlogo221.png" alt="logo" width="64px" height="66px">&nbsp;
+                            <span>AT: Guardian</span>
+                        </div>
                     </div>
 
                     <!-- Main Navigation -->
                     <nav class="main_nav_container">
                             <div class="main_nav">
                                     <ul class="main_nav_list">
-				    	<li class="main_nav_item"><a href="Guardian.html">HOME</a></li>
-					<li class="main_nav_item"><a href="../about.html">ABOUT US</a></li>
-					<li class="main_nav_item"><a href="../contact.html">CONTACT US</a></li>
-					<li class="main_nav_item"><a href="profile.html">PROFILE</a></li>
-					<li class="main_nav_item"><a href="logout.php">LOGOUT</a></li>
+                                            <li class="main_nav_item"><a href="Guardian.html">HOME</a></li>
+                                            <li class="main_nav_item"><a href="../about.html">ABOUT US</a></li>
+                                            <li class="main_nav_item"><a href="../contact.html">CONTACT US</a></li>
+                                            <li class="main_nav_item"><a href="profile.html">PROFILE</a></li>
                                     </ul>
                             </div>
                     </nav>
             </div>
-        
-        <div class="header_side d-flex flex-row justify-content-center align-items-center"
-     		<ul class="nav navbar-nav navbar-right">
-      			<li class="dropdown dropdown-toggle"><a href="#" data-toggle="dropdown">
-	       			<span class="label label-pill label-danger count" style="border-radius:15px;"></span> 
-	       			<span class="glyphicon glyphicon-bell" style="font-size:18px;"></span>
-				</a>
-       		<ul class="dropdown-menu"></ul></li></ul>
-	</div>
-            
+            <div class="header_side d-flex flex-row justify-content-center align-items-center">
+                <a href="logout.php"><span>LOGOUT</span></a>
+            </div>
 
             <!-- Hamburger -->
             <div class="hamburger_container">
                     <i class="fas fa-bars trans_200"></i>
             </div>
-            </header>
+            
+            
+    </header>
 
     <!-- Menu -->
     <div class="menu_container menu_mm">
@@ -160,10 +154,10 @@ include ('session.php');
                 <div class="menu menu_mm">
                     <ul class="menu_list menu_mm">
                         <li class="menu_item menu_mm"><a href="Guardian.html">HOME</a></li>
-			<li class="menu_item menu_mm"><a href="../about.html">ABOUT US</a></li>
-			<li class="menu_item menu_mm"><a href="../contact.html">CONTACT US</a></li>					
-			<li class="menu_item menu_mm"><a href="profile.html">PROFILE</a></li>
-			<li class="menu_item menu_mm"><a href="logout.php">LOGOUT</a></li>
+                        <li class="menu_item menu_mm"><a href="../about.html">ABOUT US</a></li>
+                        <li class="menu_item menu_mm"><a href="../contact.html">CONTACT US</a></li>
+                        <li class="menu_item menu_mm"><a href="profile.html">PROFILE</a></li>
+                        <li class="menu_item menu_mm"><a href="logout.php">LOGOUT</a></li>
                     </ul>
                 </div>
             </div>
@@ -175,7 +169,7 @@ include ('session.php');
 			<div class="home_background prlx" style="background-image:url(images/contact_background.jpg)"></div>
 		</div>
 		<div class="home_content">
-			<h6>Welcome: <?php echo $row['student_id'];?> </h6>
+		<h1>Welcome: <h1> <h2 align="center"><?php echo $row['student_id']; ?> </h2>
                         
 		</div>
 	</div>
