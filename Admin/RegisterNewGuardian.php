@@ -43,6 +43,9 @@ else{
 
  }
   else {
+  
+  
+           header("Location: demo.html");
 
 	echo "ERROR: Could Not Able To Execute $sql. " . mysqli_error($conn);
 
