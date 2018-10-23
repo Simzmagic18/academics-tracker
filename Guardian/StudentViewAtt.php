@@ -3,7 +3,8 @@
 <?php
 
 include('conn.php');//Database Connection
-session_start();
+include('session.php');
+//session_start();
 
 	
                 

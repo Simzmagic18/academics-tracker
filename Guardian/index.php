@@ -1,9 +1,9 @@
-<?php
+<?php //session_start();
 include('conn.php');
-//session_start();
+
 //include ('session.php');
 
-//$session_id = $_SESSION['guardian_id'];
+//$session_id = $_SESSION['student_id'];
 
  //$result = mysqli_query($conn, "SELECT * from guardian where guardian_id = '$session_id'" ) or die('Error in session.');
  //$row = mysqli_fetch_array($result);
@@ -25,7 +25,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
 	if($res == 1)
 	{
 		echo 'Password is valid!';
-	//	$_SESSION['student_id']= $username;
+		$_SESSION['student_id']= $username;
 		header("Location: home.php"); 
 
 		//header("Location: welcome.php");
