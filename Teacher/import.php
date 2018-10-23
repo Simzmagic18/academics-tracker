@@ -1,11 +1,7 @@
 <?php
-$conn = mysqli_connect("localhost", "root", "", "academicsTracker2");
- 
-// Check connection
-if($conn === false){
-    die("ERROR: Could not connect. " . mysqli_connect_error());
-}
+include('conn.php');//DB Connection
 
+$row = 1;
 if(isset($_POST["Import"])){
 		
 
@@ -15,20 +11,22 @@ if(isset($_POST["Import"])){
 		 if($_FILES["file"]["size"] > 0)
 		 {
 
-		  	$file = fopen($filename, "r");
+			  $file = fopen($filename, "r");
+			  
 	         while (($emapData = fgetcsv($file, 10000, ",")) !== FALSE)
 	         {
-	    
+				if($row == 1){ $row++; continue; }
 	          //It wiil insert a row to our subject table from our csv file`
-	           $sql = "INSERT into results (`student_id`, `subject_code`, `task_number`,`task_score`) 
-	            	values('$emapData[1]','$emapData[2]','$emapData[3]','$emapData[4]')";
+	           $sql = "INSERT into results (`student_id`, `subject_code`, `task_number`,`task_score`, `comments`) 
+	            	values('$emapData[1]','$emapData[2]','$emapData[3]','$emapData[4]','$emapData[5]')";
 	         //we are using mysql_query function. it returns a resource on true else False on error
 	          $result = mysqli_query($conn, $sql);
-				if(! $result )
+				
+			  if(! $result )
 				{
 					echo "<script type=\"text/javascript\">
-							alert(\"Invalid File:Please Upload CSV File.\");
-							window.location = \"index101.php\"
+							alert(\"Unsuccesful Upload, Please Make Sure It's A CSV File.\");
+							window.location = \"uploadmarks.php\"
 						</script>";
 				
 				}

@@ -150,7 +150,7 @@ mysqli_close($conn);
 			<h3>User Information</h3><br>
 			
 
-<form action="<?php $_SERVER['PHP_SELF'];?>" method="post" enctype="multipart/form-data" onsubmit = "return validateAllFields(this)>
+<form action="<?php $_SERVER['PHP_SELF'];?>" method="post" enctype="multipart/form-data" onsubmit = "return validateAllFields(this) onsubmit="this.submit.disabled = 'disabled'>
 
 <label for="teacher_first_name"><b>First Name <abbr class="req" title="required">*</abbr></b></label> <span id="error-fname" span style = "float: right"></span><br>
             <input type="text" name="teacher_first_name" id ="teacher_first_name" onblur ="validateFirstName(teacher_first_name)"  maxlength = "20" required /><br>
