@@ -36,7 +36,7 @@ else{
 	$sql = "INSERT INTO student (student_first_name,student_middle_name,student_last_name,date_of_birth,ethnicity,gender,house_number,street_name,suburb, post_code, contact_number,user_type, school_code, password) values('$name', '$mname','$lname','$dob','$race','$gen',  '$hNum', '$street', '$suburb', '$pCode', '$cNum', '$type', '$scode','$password')";
 	$result = mysqli_query($conn, $sql);
 
- if(mysqli_query($con, $sql)) {
+ if(mysqli_query($conn, $sql)) {
 
 	header("Location: successfulRecordStu.html");//  echo "Records Inserted Successfully.";
 
