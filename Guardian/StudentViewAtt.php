@@ -1,12 +1,11 @@
-
+ <!DOCTYPE html>
 
 <?php
-
-include('conn.php');//Database Connection
-include('session.php');
-//session_start();
-
-	
+//Step1
+include ('conn.php');
+include ('session.php');
+ $result = mysqli_query($conn, "select * from attendance where student_id = '$session_id'" ) or die('Error in session.');
+ $row = mysqli_fetch_array($result);
                 
 ?>
 
@@ -123,12 +122,10 @@ include('session.php');
 			<nav class="main_nav_container">
 				<div class="main_nav">
 					<ul class="main_nav_list">
-						<li class="main_nav_item"><a href="index.html">home</a></li>
-						<li class="main_nav_item"><a href="#">about us</a></li>
-						<li class="main_nav_item"><a href="courses.html">courses</a></li>
-						<li class="main_nav_item"><a href="elements.html">elements</a></li>
-						<li class="main_nav_item"><a href="news.html">news</a></li>
-						<li class="main_nav_item"><a href="#">contact</a></li>
+						<li class="main_nav_item"><a href="../index.html">home</a></li>
+						<li class="main_nav_item"><a href="../about.html">about us</a></li>
+						<li class="main_nav_item"><a href="../contact.html">contact</a></li>
+					    <li class="main_nav_item"><a href="logout.php">Logout</a></li>
 					</ul>
 				</div>
 			</nav>
@@ -191,60 +188,43 @@ include('session.php');
 			<div class="home_background prlx" style="background-image:url(images/contact_background.jpg)"></div>
 		</div>
 		<div class="home_content">
-			<h6>Welcome</h6>
+			<h6>Welcome<?php echo $row['student_id'];?> </h6>
                         
 		</div>
 	</div>
         
         <!-- TABLE -->
     
-		<table class="table table-bordered">
-			<thead>
-				  	<tr>
-				  		<th>Record Number</th>
-				  		<th>Subject Code</th>
-				  		<th>Grade</th>
-				  		<th>Date</th>
-				  		<th>Comment</th>
-                        <th>Status</th>
-				  		<th>Teacher ID</th>
-				  		<th>Student ID</th>
-				 		
-				 
-				  	</tr>	
-				  </thead>
-			<?php
-			 
-			  $login_session=$_SESSION['login_user'];
-			  echo $login_session;
-
-				$SQLSELECT = "SELECT * FROM attendance WHERE student_id ='$login_session";
-				$row =  mysqli_query($conn,$SQLSELECT);
-				//$row = mysqli_fetch_array($result_set);
-
-				if (!$row) {
-					printf("Error: %s\n", mysqli_error($conn));
-					exit();
-				}
-				else
-				{
-				?>
+    <table class="data-table">
+		<caption class="title">Student Records</caption>
+		<thead>
+			<tr>
+				<th>Student ID</th>
+				<th>Status</th>
+				 <th>Comment</th>
+                                
+                        </tr>
+		</thead>
+		<tbody>
+		<?php
+                
+                
+		//while ($row = mysqli_fetch_array($result))
+		{
+                    
+                    $id = $row['student_id'];
+                    $status = $row['status'];
+                    $comment = $row['comment'];
+                                       
+			echo '<tr>
+					<td>'.$id.'</td>
+					<td>'.$status. '</td>
+					<td>'.$comment.'</td>
+				</tr>';
+				
 			
-					<tr>
-						<td><?php echo $row['record_number']; ?></td>
-						<td><?php echo $row['subject_code']; ?></td>
-						<td><?php echo $row['grade_number']; ?></td>
-						<td><?php echo $row['date_today']; ?></td>
-						<td><?php echo $row['comment']; ?></td>
-                                                <td><?php echo $row['status']; ?></td>
-						<td><?php echo $row['teacher_id']; ?></td>
-						<td><?php echo $row['student_id']; ?></td>
-					
-
-					</tr>
-				<?php
-				}
-			?>
+		}?>
+		</tbody>
 		</table>
 	
 
@@ -349,8 +329,26 @@ include('session.php');
 				</div>
 			</div>
 
-			<!-- Footer -->
+			<!-- Footer Copyright -->
 
+			<div class="footer_bar d-flex flex-column flex-sm-row align-items-center">
+				<div class="footer_copyright">
+					<span><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></span>
+				</div>
+				<div class="footer_social ml-sm-auto">
+					<ul class="menu_social">
+						<li class="menu_social_item"><a href="#"><i class="fab fa-pinterest"></i></a></li>
+						<li class="menu_social_item"><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+						<li class="menu_social_item"><a href="#"><i class="fab fa-instagram"></i></a></li>
+						<li class="menu_social_item"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+						<li class="menu_social_item"><a href="#"><i class="fab fa-twitter"></i></a></li>
+					</ul>
+				</div>
+			</div>
+
+		</div>
 	</footer>
 
 </div>
