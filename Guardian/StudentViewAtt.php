@@ -1,20 +1,11 @@
  <!DOCTYPE html>
 
 <?php
-<<<<<<< HEAD
 //Step1
 include ('conn.php');
 include ('session.php');
  $result = mysqli_query($conn, "select * from attendance where student_id = '$session_id'" ) or die('Error in session.');
  $row = mysqli_fetch_array($result);
-=======
-
-include('conn.php');//Database Connection
-//include('session.php');
-//session_start();
-
-	
->>>>>>> 22bc08a4161f9d6653ea938fb9839d4d14cca6d7
                 
 ?>
 
@@ -115,7 +106,6 @@ include('conn.php');//Database Connection
 
 <div class="super_container">
 
-<<<<<<< HEAD
 	<!-- Header -->
 
 	<header class="header d-flex flex-row">
@@ -132,10 +122,11 @@ include('conn.php');//Database Connection
 			<nav class="main_nav_container">
 				<div class="main_nav">
 					<ul class="main_nav_list">
-						<li class="main_nav_item"><a href="../index.html">home</a></li>
-						<li class="main_nav_item"><a href="../about.html">about us</a></li>
+						<li class="main_nav_item"><a href="index.html">home</a></li>
+						<li class="main_nav_item"><a href="../about">about us</a></li>
 						<li class="main_nav_item"><a href="../contact.html">contact</a></li>
-					    <li class="main_nav_item"><a href="logout.php">Logout</a></li>
+			    	    <li class="main_nav_item"><a href="logout.php">logout</a></li>
+					
 					</ul>
 				</div>
 			</nav>
@@ -164,12 +155,11 @@ include('conn.php');//Database Connection
 		<div class="menu_inner menu_mm">
 			<div class="menu menu_mm">
 				<ul class="menu_list menu_mm">
-					<li class="menu_item menu_mm"><a href="index.html">Home</a></li>
-					<li class="menu_item menu_mm"><a href="#">About us</a></li>
-					<li class="menu_item menu_mm"><a href="courses.html">Courses</a></li>
-					<li class="menu_item menu_mm"><a href="elements.html">Elements</a></li>
-					<li class="menu_item menu_mm"><a href="news.html">News</a></li>
-					<li class="menu_item menu_mm"><a href="#">Contact</a></li>
+					<li class="menu_item menu_mm"><a href="../index.html">Home</a></li>
+					<li class="menu_item menu_mm"><a href="../about.html">About us</a></li>
+					<li class="menu_item menu_mm"><a href="../contact.html#">Contact</a></li>
+			    	<li class="menu_item menu_mm"><a href="../logout.php">Contact</a></li>
+					
 				</ul>
 
 				<!-- Menu Social -->
@@ -189,71 +179,7 @@ include('conn.php');//Database Connection
 
 		</div>
 
-=======
- <!-- Header -->
- <header class="header d-flex flex-row">
-            <div class="header_content d-flex flex-row align-items-center">
-                    <!-- Logo -->
-                    <div class="logo_container"><a href="Parent_Guardian.html">
-                            <div class="logo">
-                                <img src="images/ATlogo221.png" alt="logo" width="64px" height="66px">&nbsp;
-                                <span>AT: Guardian</span>
-                            </div></a>
-                    </div>
-
-                    <!-- Main Navigation -->
-                    <nav class="main_nav_container">
-                            <div class="main_nav">
-                                    <ul class="main_nav_list">
-				    	<li class="main_nav_item"><a href="Guardian.html">HOME</a></li>
-					<li class="main_nav_item"><a href="../about.html">ABOUT US</a></li>
-					<li class="main_nav_item"><a href="../contact.html">CONTACT US</a></li>
-					<li class="main_nav_item"><a href="profile.html">PROFILE</a></li>
-					<li class="main_nav_item"><a href="logout.php">LOGOUT</a></li>
-                                    </ul>
-                            </div>
-                    </nav>
-            </div>
-        
-        <div class="header_side d-flex flex-row justify-content-center align-items-center"
-     		<ul class="nav navbar-nav navbar-right">
-      			<li class="dropdown dropdown-toggle"><a href="#" data-toggle="dropdown">
-	       			<span class="label label-pill label-danger count" style="border-radius:15px;"></span> 
-	       			<span class="glyphicon glyphicon-bell" style="font-size:18px;"></span>
-				</a>
-       		<ul class="dropdown-menu"></ul></li></ul>
->>>>>>> 22bc08a4161f9d6653ea938fb9839d4d14cca6d7
 	</div>
-            
-
-            <!-- Hamburger -->
-            <div class="hamburger_container">
-                    <i class="fas fa-bars trans_200"></i>
-            </div>
-            </header>
-
-    <!-- Menu -->
-    <div class="menu_container menu_mm">
-
-            <!-- Menu Close Button -->
-            <div class="menu_close_container">
-                    <div class="menu_close"></div>
-            </div>
-
-            <!-- Menu Items -->
-            <div class="menu_inner menu_mm">
-                <div class="menu menu_mm">
-                    <ul class="menu_list menu_mm">
-                        <li class="menu_item menu_mm"><a href="Guardian.html">HOME</a></li>
-			<li class="menu_item menu_mm"><a href="../about.html">ABOUT US</a></li>
-			<li class="menu_item menu_mm"><a href="../contact.html">CONTACT US</a></li>					
-			<li class="menu_item menu_mm"><a href="profile.html">PROFILE</a></li>
-			<li class="menu_item menu_mm"><a href="logout.php">LOGOUT</a></li>
-                    </ul>
-                </div>
-            </div>
-    </div>
-
 	
 	<!-- Home -->
 
