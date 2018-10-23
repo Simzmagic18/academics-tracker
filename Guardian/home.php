@@ -2,9 +2,9 @@
 include('conn.php');
 //include('session.php'); 
 
-$result=mysqli_query($conn, "select * from student where student_id='$session_id'")or die('Error In Session');
+//$result=mysqli_query($conn, "select * from student where student_id='$session_id'")or die('Error In Session');
 //
-$row=mysqli_fetch_array($result);
+//$row=mysqli_fetch_array($result);
  
 
 //$result=mysqli_query($con, "select * from teacher where teacher_id='$session_id'")or die('Error In Session');
