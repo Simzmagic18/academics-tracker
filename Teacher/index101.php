@@ -109,10 +109,6 @@
      <input type="text" name="subject" id="subject" class="form-control">
     </div>
     <div class="form-group">
-     <label>Enter Comment</label>
-     <textarea name="comment" id="comment" class="form-control" rows="5"></textarea>
-    </div>
-    <div class="form-group">
      <input type="submit" name="post" id="post" class="btn btn-info" value="Post" />
     </div>
    </form>

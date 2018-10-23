@@ -22,7 +22,6 @@ if(mysqli_num_rows($result) > 0)
    <li>
    <a href="#">
    <strong>'.$row["comment_subject"].'</strong><br />
-   <small><em>'.$row["comment_text"].'</em></small>
    </a>
    </li>
    ';
@@ -31,7 +30,7 @@ if(mysqli_num_rows($result) > 0)
 }
 else{
      $output .= '
-     <li><a href="#" class="text-bold text-italic">No Noti Found</a></li>';
+     <li><a href="#" class="text-bold text-italic">No New Notifications Found</a></li>';
 }
 
 

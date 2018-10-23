@@ -1,10 +1,7 @@
 <?php
-$conn = mysqli_connect("localhost", "root", "", "academicsTracker2");
- 
-// Check connection
-if($conn === false){
-    die("ERROR: Could not connect. " . mysqli_connect_error());
-}
+include('conn.php');//DB Connection
+
+$row = 1;
 
 if(isset($_POST["Import"])){
 		
@@ -16,9 +13,10 @@ if(isset($_POST["Import"])){
 		 {
 
 		  	$file = fopen($filename, "r");
-	         while (($emapData = fgetcsv($file, 10000, ",")) !== FALSE)
+			  while (($emapData = fgetcsv($file, 10000, ",")) !== FALSE)
 	         {
-	    
+		
+				if($row == 1){ $row++; continue; }
 	          //It wiil insert a row to our subject table from our csv file`
 	           $sql = "INSERT into attendance (`subject_code`, `grade_number`,`date_today`,`comment`,`status`,`teacher_id`,`student_id`) 
 	            	values('$emapData[1]','$emapData[2]','$emapData[3]','$emapData[4]','$emapData[5]','$emapData[6]','$emapData[7]')";

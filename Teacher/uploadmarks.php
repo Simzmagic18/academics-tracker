@@ -1,10 +1,5 @@
 <?php 
-$conn = mysqli_connect("localhost", "root", "", "academicsTracker2");
- 
-// Check connection
-if($conn === false){
-    die("ERROR: Could not connect. " . mysqli_connect_error());
-}
+include('conn.php');//DB Connection
 
 ?>	
 <html lang="en">
@@ -249,7 +244,8 @@ if($conn === false){
 				  		<th>Student ID</th>
 				  		<th>Subject Code</th>
 				  		<th>Task Number</th>
-				  		<th>Score</th>
+						  <th>Score</th>
+						  <th>Comments</th>
 				 		
 				 
 				  	</tr>	
@@ -267,7 +263,7 @@ if($conn === false){
 						<td><?php echo $row['subject_code']; ?></td>
 						<td><?php echo $row['task_number']; ?></td>
 						<td><?php echo $row['task_score']; ?></td>
-					
+						<td><?php echo $row['comments']; ?></td>
 
 					</tr>
 				<?php
