@@ -13,11 +13,11 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
 	session_start();
 
 	//Username and Password sent from Form
-	$username = mysqli_real_escape_string($conn, $_POST['guardian_id']);
+	$username = mysqli_real_escape_string($conn, $_POST['student_id']);
 	$password = mysqli_real_escape_string($conn, $_POST['password']);
 	$password = md5($password);
 	$_SESSION['login_user']=$username;
-	$sql = "SELECT * FROM guardian WHERE guardian_id = '$username' AND '$password'";
+	$sql = "SELECT * FROM guardian WHERE student_id = '$username' AND '$password'";
 	$query = mysqli_query($conn, $sql);
 	$res= mysqli_num_rows($query);
 	
@@ -49,7 +49,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
     <h3>Login here</h3>
 	
     <div class="form-item">
-		<input type="text" name="guardian_id" required="required" placeholder="ID" autofocus required></input>
+		<input type="text" name="student_id" required="required" placeholder="ID" autofocus required></input>
     </div>
     
     <div class="form-item">
