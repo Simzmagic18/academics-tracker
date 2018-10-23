@@ -1,0 +1,6 @@
+Record ID,Subject Code,Grade Number,Date Today,Comments,Status,Teacher ID,Student ID
+1,123,5,9-Oct,On time,Present,200123,19000005
+2,123,5,9-Oct,Late,Present,200123,19000007
+3,123,5,9-Oct,N/A,Absent,200123,19000010
+4,123,5,9-Oct,Excused,Absent,200123,19000011
+,,,,,,,
