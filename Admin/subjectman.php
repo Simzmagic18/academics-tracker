@@ -131,7 +131,7 @@ include ('conn.php');
         $query = mysqli_real_escape_string($conn, $query);
         
         $raw_results = mysqli_query($conn, "SELECT * FROM subject
-            WHERE (`subject_grade` LIKE '%".$query."%') OR (`subject_grade` LIKE '%" .$query."%')") or die(mysqli_error($conn));
+            WHERE (`subject_grade` LIKE '%".$query."%') OR (`subject_grade` LIKE '%" .$query."%')") or die(mysqli_error());
              if(mysqli_num_rows($raw_results) > 0){ // if one or more rows are returned do following
              
             while($results = mysqli_fetch_array($raw_results)){

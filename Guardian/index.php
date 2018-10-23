@@ -17,7 +17,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
 	$password = mysqli_real_escape_string($conn, $_POST['password']);
 	$password = md5($password);
 	$_SESSION['login_user']=$username;
-	$sql = "SELECT * FROM guardian WHERE student_id = '$username' AND '$password'";
+	$sql = "SELECT * FROM student WHERE student_id = '$username' AND '$password'";
 	$query = mysqli_query($conn, $sql);
 	$res= mysqli_num_rows($query);
 	
