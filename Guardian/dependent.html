@@ -12,6 +12,8 @@
 <link rel="stylesheet" type="text/css" href="styles/courses_responsive.css"-->
 <link rel="stylesheet" type="text/css" href="styles/elements_styles.css">
 <link rel="stylesheet" type="text/css" href="styles/elements_responsive.css">
+<link rel="stylesheet" type="text/css" href="styles/buttons.css">
+<link rel="stylesheet" type="text/css" href="styles/menuDropDown.css">
 </head>
 <body>
 
@@ -83,72 +85,49 @@
         </div>
     </div>
 
-    <!-- Boxed links to marks and attendance -->
-    <div class="elements">
-		<div class="container">
-			<!-- Attendance -->
-			<div class="loaders"><a href="StudentViewAtt.php">
-				<div class="row">
-					<div class="col">
-						<div class="elements_title"> Attendance Percentage</div>
-					</div>
-				</div>
-				<!-- Loader -->
-				<div class="row elements_loaders_container">
-					<div class="col-lg-3 loader_col">
-						<div class="loader" data-perc="0.75"></div>
-					</div>
-				</div></a>
-			</div>
-			
-			<!-- Marks in progress bars -->
-			<div class="pbars_accordions">
-				<div class="row">
-					<div class="col-lg-12">
-						<div class="elements_title"> Subjects and Their Averages </div>
-					</div>
-				</div>
-				<!-- Progress bars -->
-				<div class="row pbars_accordions_container">   
-					<div class="col-lg-6">
-						<div class="elements_progress_bars">
-							<div class="pbar_container">
-								<ul class="progress_bar_container col_12 clearfix">
-									<a href="view.php"> 
-									<li class="pb_item">
-										<h3 style="color:black">English</h3>
-										<div id="skill_1_pbar" class="skill_bars" data-perc="0.85"></div>
-									</li></a><br>
-									<a href="view.php"> 
-									<li class="pb_item">
-										<h3 style="color:black">Maths</h3>
-										<div id="skill_2_pbar" class="skill_bars" data-perc="1"></div>
-									</li></a><br>
-									<a href="view.php"> 
-									<li class="pb_item">
-										<h3 style="color:black">History</h3>
-										<div id="skill_3_pbar" class="skill_bars" data-perc="0.45"></div>
-									</li></a><br>
-									<a href="view.php"> 
-									<li class="pb_item">
-										<h3 style="color:black">Geography</h3>
-										<div id="skill_4_pbar" class="skill_bars" data-perc="0.75"></div>
-									</li></a>
-								</ul> 
-							</div>
-						</div>
-					</div>   
-				</div>
-				
-			</div>
-		</div>
-	</div>
+    <!-- Subjects -->
+    <div class="popular page_section">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="section_title text-center">
+                            <h1> Attendance </h1>
+                    </div>
+                </div>
+            </div><br><br><br><br>           
+            <div class="row course_boxes" style="margin:auto">
+                <div style="margin:auto">
+                    <div>
+                        <a href="DSubjectAM.html"><button class="button"><h2> Attendance </h2></button></a>
+                    </div>
+                </div>
+            </div><br><br>
+            <div class="row">
+                <div class="col">
+                    <div class="section_title text-center">
+                            <h1> Subjects </h1>
+                    </div>
+                </div>
+            </div><br><br><br><br>           
+            <div class="row course_boxes" style="margin:auto">
+                <div style="margin:auto">
+                    <div>
+                        <a href="DSubjectAM.html"><button class="button"><h2> Mathematics </h2></button></a>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <a href="DSubjectAM.html"><button class="button"><h2> English </h2></button></a>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <a href="DSubjectAM.html"><button class="button"><h2> Geography </h2></button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- footer -->
     <div class="footer">
-                <Span>
-                    Academics Tracker All rights reserved
-                </Span>
+        <Span>
+            Academics Tracker All rights reserved
+        </Span>
     </div>
 </div>
 

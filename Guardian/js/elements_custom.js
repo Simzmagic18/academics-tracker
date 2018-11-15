@@ -196,9 +196,9 @@ $(document).ready(function()
 
 	function initProgressBars()
 	{
-		if($('.skill_bars').length)
+		if($('.skill_bars1').length)
 		{
-			var bars = $('.skill_bars');
+			var bars = $('.skill_bars1');
 
 			bars.each(function()
 			{
@@ -219,6 +219,62 @@ $(document).ready(function()
 						easing: 'easeInOut',
 						duration: 1400,
 						color: '#ffb606',
+						trailColor: '#ffffff',
+						trailWidth: 1,
+						svgStyle: {display: 'block', width: '100%', height: '100%'},
+						text: {
+							style: {
+								// Text color.
+								// Default: same as stroke color (options.color)
+								fontFamily: 'Open Sans',
+								textAlign: 'right',
+								fontSize: '14px',
+								width: '40px',
+								color: '#1a1a1a',
+								position: 'absolute',
+								right: 0,
+								top: '-33px',
+								padding: 0,
+								margin: 0,
+								transform: null
+								},
+								autoStyleContainer: false
+						},
+						from: {color: '#00bcd5'},
+						to: {color: '#00bcd5'},
+						step: function(state, bar) {
+						bar.setText(Math.round(bar.value() * 100) + ' %');
+						}
+		    		});
+		    		pbar.animate(elePerc);
+		    	})
+		    	.addTo(ctrl);
+			})
+		}
+		
+		if($('.skill_bars2').length)
+		{
+			var bars = $('.skill_bars2');
+
+			bars.each(function()
+			{
+				var ele = $(this);
+	    		var elePerc = ele.data('perc');
+	    		var eleName = '#' + ele.attr('id');
+
+	    		var statsScene = new ScrollMagic.Scene({
+		    		triggerElement: this,
+		    		triggerHook: 'onEnter',
+		    		reverse:false
+		    	})
+		    	.on('start', function()
+		    	{
+		    		var pbar = new ProgressBar.Line(eleName, 
+		    		{
+		    			strokeWidth: 0.5,
+						easing: 'easeInOut',
+						duration: 1400,
+						color: '#ff4500',
 						trailColor: '#ffffff',
 						trailWidth: 1,
 						svgStyle: {display: 'block', width: '100%', height: '100%'},
