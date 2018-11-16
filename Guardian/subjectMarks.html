@@ -90,18 +90,18 @@
     <!-- Title -->
     <br>
     <div class="section_title text-center">
-        <h1 style="text-align:center">Maths</h1>
+        <h1 style="text-align:center"> Subject Name </h1>
     </div>
 
     <!-- bar graph -->
     <br><br>
-    <div id="chartContainer" style="height: 300px; width: 50%; margin: auto"></div>
+    <h2 style="color:black; text-align:center; font-weight: bold"> Performance Results Bar Graph </h2>
+    <div class="container"><canvas id="chart1" style="height:200px; width: 50%"></canvas></div>
 
     <!-- Overall marks and attendance -->
     <!--div class="elements">
-        <div class="container"-->            
-                <!-- Progress bars -->
-                <!--div class="row pbars_accordions_container" style="margin-left: 30%">   
+        <div class="container">
+                <div class="row pbars_accordions_container" style="margin-left: 30%">   
                     <div class="col-lg-6">
                         <div class="elements_progress_bars">
                             <div style="justify-items: center; display: inline">
@@ -135,48 +135,46 @@
             </div>
         </div>
     </div-->
-
+    
     <div class="popular page_section">
         <div class="container"> 
+            <h2 style="color:black; text-align:center; font-weight: bold"> Performance Results Table </h2><br>
             <div class="row">
-                <form method="post" style="margin:auto">
-                    <table class="w3-table w3-bordered w3-centered" style="color:black">
-                        <tr>
-                            <th> Task </th>
-                            <th> Mark </th>
-                            <th> Total </th>
-                            <th> Average (%) </th>
-                            <th> Class Average (%) </th>
-                        </tr>
-                        <tr class="w3-hover-amber">
-                            <td> Assignment 1 </td>
-                            <td> 30 </td>
-                            <td> 40 </td>
-                            <td> 85 </td>
-                            <td> 90 </td>
-                        </tr>
-                        <tr class="w3-hover-amber">
-                            <td> Exercise 1 </td>
-                            <td> 20 </td>
-                            <td> 20 </td>
-                            <td> 100 </td>
-                            <td> 90 </td>
-                        </tr>
-                        <tr><td></td><td></td><td></td><td></td><td></td></tr>
-                        <tr class="w3-hover-orange" style="font-weight:bold">
-                            <td> Totals </td>
-                            <td>&nbsp;</td><td>&nbsp;</td>
-                            <td> 185 </td>
-                            <td> 180 </td>
-                        </tr>
-                        <tr class="w3-hover-orange" style="font-weight:bold">
-                            <td> Averages </td>
-                            <td>&nbsp;</td><td>&nbsp;</td>
-                            <td> 92.5 </td>
-                            <td> 90 </td>
-                        </tr>
-                    </table>
-                </form>
+                <table class="w3-table w3-bordered w3-centered" style="color:black; margin:auto">
+                    <tr>
+                        <th> Task </th>
+                        <th> Mark </th>
+                        <th> Total </th>
+                        <th> Average (%) </th>
+                        <th> Class Average (%) </th>
+                    </tr>
+                    <tr class="w3-hover-amber">
+                        <td> Assignment 1 </td>
+                        <td> 30 </td>
+                        <td> 40 </td>
+                        <td> 85 </td>
+                        <td> 90 </td>
+                    </tr>
+                    <tr class="w3-hover-amber">
+                        <td> Exercise 1 </td>
+                        <td> 20 </td>
+                        <td> 20 </td>
+                        <td> 100 </td>
+                        <td> 90 </td>
+                    </tr>
+                    <tr class="w3-hover-orange" style="font-weight:bold">
+                        <td> Totals </td>
+                        <td>&nbsp;</td><td>&nbsp;</td>
+                        <td> 185 </td>
+                        <td> 180 </td>
+                    </tr>
+                    <tr class="w3-hover-orange" style="font-weight:bold">
+                        <td> Averages </td>
+                        <td>&nbsp;</td><td>&nbsp;</td>
+                        <td> 92.5 </td>
+                        <td> 90 </td>
+                    </tr>
+                </table>
             </div>
             <br>
             <script>
@@ -215,8 +213,9 @@
 <script src="plugins/easing/easing.js"></script>
 <script src="js/courses_custom.js"></script>
 <script src="js/elements_custom.js"></script>
-<script src="js/barGraph.js"></script>
-<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+<script src="js/MyGraphs.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.min.js"></script>
 
 </body>
 </html>
