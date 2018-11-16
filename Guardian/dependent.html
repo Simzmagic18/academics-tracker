@@ -8,13 +8,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" type="text/css" href="styles/bootstrap4/bootstrap.min.css">
 <link href="plugins/fontawesome-free-5.0.1/css/fontawesome-all.css" rel="stylesheet" type="text/css">
-<!--link rel="stylesheet" type="text/css" href="styles/courses_styles.css">
-<link rel="stylesheet" type="text/css" href="styles/courses_responsive.css"-->
+<link rel="stylesheet" type="text/css" href="styles/courses_styles.css">
+<link rel="stylesheet" type="text/css" href="styles/courses_responsive.css">
 <link rel="stylesheet" type="text/css" href="styles/elements_styles.css">
 <link rel="stylesheet" type="text/css" href="styles/elements_responsive.css">
 <link rel="stylesheet" type="text/css" href="styles/buttons.css">
 <link rel="stylesheet" type="text/css" href="styles/menuDropDown.css">
-</head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" /></head>
 <body>
 
 <div class="super_container">
@@ -22,35 +22,42 @@
     <!-- Header -->
     <header class="header d-flex flex-row">
         <div class="header_content d-flex flex-row align-items-center">
-            <!-- Logo -->
-            <div class="logo_container"><a href="index.html">
-                <div class="logo">
-                    <img src="images/ATlogo221.png" alt="logo" width="64px" height="66px">&nbsp;
-                    <span>AT: Guardian</span>
-                </div></a>
-            </div>
-
-            <!-- Main Navigation -->
-            <nav class="main_nav_container">
-                <div class="main_nav">
-                    <ul class="main_nav_list">
-                        <li class="main_nav_item"><a href="Guardian.html">HOME</a></li>
-                        <li class="main_nav_item"><a href="../about.html">ABOUT US</a></li>
-                        <li class="main_nav_item"><a href="../contact.html">CONTACT US</a></li>
-                        <li class="main_nav_item"><a href="profile.html">PROFILE</a></li>
-                    </ul>
+                <!-- Logo -->
+                <div class="logo_container">
+                        <div class="logo">
+                            <img src="images/ATlogo221.png" alt="logo" width="64px" height="66px">&nbsp;
+                            <span>AT: Guardian</span>
+                        </div>
                 </div>
-            </nav>
+
+                <!-- Main Navigation -->
+                <nav class="main_nav_container">
+                        <div class="main_nav">
+                                <ul class="main_nav_list">
+                                    <li class="main_nav_item"><a href="Guardian.html">HOME</a></li>
+                                    <li class="main_nav_item"><a href="../about.html">ABOUT US</a></li>
+                                    <li class="main_nav_item"><a href="../contact.html">CONTACT US</a></li>
+                                    <li class="main_nav_item"><a href="profile.html">PROFILE</a></li>
+                                    <li class="main_nav_item"><a href="logout.php">LOGOUT</a></li>
+                                </ul>
+                        </div>
+                </nav>
         </div>
-            <div class="header_side d-flex flex-row justify-content-center align-items-center">
-                <a href="logout.php"><span>LOGOUT</span></a>
-            </div>
+        
+        <div class="header_side d-flex flex-row justify-content-center align-items-center"
+     		<ul class="nav navbar-nav navbar-right">
+      			<li class="dropdown dropdown-toggle"><a href="#" data-toggle="dropdown">
+	       			<span class="label label-pill label-danger count" style="border-radius:15px;"></span> 
+	       			<span class="glyphicon glyphicon-bell" style="font-size:18px;"></span>
+				</a>
+               <ul class="dropdown-menu"></ul></li>
+            </ul>
+        </div>            
 
-            <!-- Hamburger -->
-            <div class="hamburger_container">
+        <!-- Hamburger -->
+        <div class="hamburger_container">
                 <i class="fas fa-bars trans_200"></i>
-            </div>
-
+        </div>
     </header>
 
     <!-- Menu -->
@@ -81,43 +88,33 @@
             <div class="home_background prlx" style="background-image:url(images/courses_background.jpg)"></div>
         </div>
         <div class="home_content">
-            <h1>Dependent's Name Here</h1>
+            <h1>Dependent's Name</h1>
         </div>
-    </div>
+    </div><br>
 
     <!-- Subjects -->
-    <div class="popular page_section">
-        <div class="container">
-            <div class="row">
-                <div class="col">
-                    <div class="section_title text-center">
-                            <h1> Attendance </h1>
-                    </div>
-                </div>
-            </div><br><br><br><br>           
+    
+            <div class="section_title text-center">
+                <h1> Attendance </h1>
+            </div><br>           
             <div class="row course_boxes" style="margin:auto">
                 <div style="margin:auto">
                     <div>
-                        <a href="Attendance.html"><button class="button"><h2> Attendance </h2></button></a>
+                        <a href="Attendance.html"><button class="button"><span> Attendance </span></button></a>
                     </div>
+                </div>
+            </div><br>
+            <div class="section_title text-center">
+                <h1> Subjects </h1>
+            </div><br>           
+            <div class="row course_boxes" style="margin:auto">
+                <div style="margin:auto">
+                    <a href="subjectMarks.html"><button class="button"><span> Mathematics </span></button></a>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a href="subjectMarks.html"><button class="button"><span> English </span></button></a>
                 </div>
             </div><br><br>
-            <div class="row">
-                <div class="col">
-                    <div class="section_title text-center">
-                            <h1> Subjects </h1>
-                    </div>
-                </div>
-            </div><br><br><br><br>           
-            <div class="row course_boxes" style="margin:auto">
-                <div style="margin:auto">
-                    <div>
-                        <a href="subjectMarks.html"><button class="button"><h2> Mathematics </h2></button></a>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <a href="subjectMarks.html"><button class="button"><h2> English </h2></button></a>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 
