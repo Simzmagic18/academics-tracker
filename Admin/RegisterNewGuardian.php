@@ -236,8 +236,8 @@ else{
 
 			<hr>
 
-            <label for="student_id"><b>Link With Student ID <abbr class="req" title="required">*</abbr>:</b></label> <span id="error-adid" span style = "float: right"></span><br>
-            <input type="text" name="student_id" id="student_id" onblur = "validatestudentID (student_id)" maxlength="8"  required><br>
+            <label for="email"><b>Email Address<abbr class="req" title="required">*</abbr>:</b></label> <span id="error-adid" span style = "float: right"></span><br>
+                   <input type="email" name="email" id="email" required><br> <!--change in php-->
 
 			<hr>
 

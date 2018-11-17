@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>AT: Teacher</title>
+<title>AT: Subjects</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="Course Project">
@@ -12,6 +12,8 @@
 <link rel="stylesheet" type="text/css" href="styles/courses_responsive.css">
 <link rel="stylesheet" type="text/css" href="styles/buttons.css">
 <link rel="stylesheet" type="text/css" href="styles/menuDropDown.css">
+<link rel = "stylesheet" href = "https://www.w3schools.com/lib/w3.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
 </head>
 <body>
 <div class="super_container">
@@ -23,7 +25,7 @@
                     <div class="logo_container"><a href="teachers.html">
                             <div class="logo">
                                     <img src="images/ATlogo221.png" alt="logo" width="64px" height="66px">&nbsp;
-                                    <span>AT: Teacher</span>
+                                    <span>AT: Subjects</span>
                             </div></a>
                     </div>
 
@@ -42,8 +44,7 @@
             <div class="header_side d-flex flex-row justify-content-center align-items-center">
                         <a href="logout.php"><span>LOGOUT</span></a>
                     </div>
-                </div>
-            </div>
+                
 
             <!-- Hamburger -->
             <div class="hamburger_container">
@@ -82,52 +83,82 @@
                     <h1> Teacher </h1>
             </div>
     </div>
-
-    <!-- Popular -->
-    <div class="popular page_section">
-        <!-- uPLOADS -->
-        <div class="container">
-            <div class="row">
-                <div class="col">
-                    <div class="section_title text-center">
-                        <h1> Uploads </h1>
-                    </div>
-                </div>
-            </div>
-            <div class="row course_boxes" style="margin:auto">
-                <!-- Attendance -->
-                <div style="margin:auto">
-                    <div>
-                        <a href="attendance.php"><button class="button"><h2>&nbsp;&nbsp;Attendance&nbsp;&nbsp;</h2></button></a>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <a href="attendance.php"><button class="button"><h2>&nbsp;&nbsp;&nbsp;Marks&nbsp;&nbsp;&nbsp;</h2></button></a>
-                    </div>
-                </div>
-            </div>
-        </div>
+   
+    <div class="section_title text-center">
+        <h1> Department Monitoring </h1>
     </div>
-    
-    <div class="popular page_section">
-        <!-- HOD RIGHTS -->
+    <div class="w3-container w3-padding-16 w3-white"><h1>Subject 1</h1></div>
+    <div class="w3-row">
+        
+    </div>
+    <div class="w3-row">
+        <div class="w3-container w3-padding-16">
+            <table class = "w3-table w3-bordered w3-round w3-white">
+             
+                <thead>
+                    <tr>
+                        <th>Student</th>
+                        <th>Assessment Type</th>
+                        <th>Possible Mark</th>
+                        <th>Attained Mark</th>
+                        <th>Percentage</th>
+                        <th>Class Average</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Tapiwa Mavende</td>
+                        <td>Homework</td>
+                        <td> 25</td>
+                        <td>20</td>
+                        <td>80%</td>
+                        <td>75%</td>
+                    </tr>
+            </table>
+        </div>
         <div class="container">
-            <div class="row">
-                <div class="col">
-                    <div class="section_title text-center">
-                        <h1> Department Monitoring </h1>
-                    </div>
-                </div>
-            </div><br><br><br><br>      
-            <div align="center">
-                <form action="search.php" method="GET">
-                    <select class="dropbtn2" >
-                        <option class="option">-SEARCH BY-</option>
-                        <option class="option">TEACHER_ID</option>
-                    </select> &nbsp;&nbsp;
-                <input type="query" name="query" id="query" placeholder="query">
-                <button class="button"><i class="fa fa-search"></i></button>
-                </form>
-            </div>
-        </div>	
+            <canvas id="myChart"></canvas>
+        </div>
+        
+        <script>
+            let myChart = document.getElementById('myChart').getContext('2d');
+            
+            let subjectChart = new Chart(myChart, {
+                type:'bar',
+                data:{
+                    labels:['Assessment 1', 'Assessment 2','Assessment 3','Assessment 4'],
+                    datasets:[{
+                            label:'Subject Summary',
+                            data:[20,30,55,75.4
+                            ],
+                            backgroundColor:'#ffb606'
+                    }]
+                },
+                options:{
+                    title:{
+                        display:true,
+                        text:'Subject Overview',
+                        fontSize:30
+                    },
+                    legend:{
+                        position:'right'
+                    },
+                    scales:{
+                        yAxes:[{
+                            ticks:{
+                                beginAtZero:true,
+                                suggestedMax:100
+                            }
+                        }],
+                    xAxes:[{
+                           
+                                barThickness:90   
+                    }]
+                    }
+                }
+                
+            });
+        </script>
     </div>
 </div>
 
@@ -151,3 +182,4 @@
 
 </body>
 </html>
+
