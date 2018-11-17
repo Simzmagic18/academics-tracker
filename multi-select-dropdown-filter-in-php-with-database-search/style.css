@@ -1,0 +1,23 @@
+body{width:610px;}
+#demo-grid {margin-bottom:30px;}
+#demo-grid .txt-heading{background-color: #D3F5B8;}
+#demo-grid table{width:100%;background-color:#F0F0F0;}
+
+#demo-grid table th{text-align:left;}
+#demo-grid table td{background-color:#FFFFFF;}
+.search-box {border: 1px solid #F0F0F0;background-color:#C8EEFD;margin: 10px 0px;}
+button#Filter {
+    padding: 5px 30px;
+    background: #586e75;
+    border: #485c61 1px solid;
+    color: #FFF;
+    border-radius: 2px;
+    cursor: pointer;
+    margin-left: 20px;
+    margin-bottom: 5px;
+}
+select#Place {
+    margin-left: 20px;
+    margin-top: 12px;
+    padding-bottom: 25px;
+}

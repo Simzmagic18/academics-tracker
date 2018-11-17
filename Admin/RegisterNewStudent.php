@@ -11,9 +11,9 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
     $race = mysqli_real_escape_string($conn, $_POST['ethnicity']);
     $gen = mysqli_real_escape_string($conn, $_POST['gender']);
 	$type = mysqli_real_escape_string($conn, $_POST['user_type']);
-	$scode = mysqli_real_escape_string($conn, $_POST['school_code']);
-	$cPassword = mysqli_real_escape_string($conn, $_POST['cPassword']);
-	$password = mysqli_real_escape_string($conn, $_POST['password']);
+	$ccode = mysqli_real_escape_string($conn, $_POST['class_code']);
+	$cguardian= mysqli_real_escape_string($conn, $_POST['cguardian']);
+	$guardian_id = mysqli_real_escape_string($conn, $_POST['guardian_id']);
 	
 		// Information sent from Form to Contacts
 		$hNum = mysqli_real_escape_string($conn, $_POST['house_number']);
@@ -24,30 +24,37 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
 	
 	
 
-	if ($password != $cPassword) {
+	if ($guardian_id != $cguardian) {
 
-			echo "Please Check Your Passwords!";
+			echo "Please Check id";
 
 }
 
 else{
 
-	$password = md5($password); //Password Encrypted
-	$sql = "INSERT INTO student (student_first_name,student_middle_name,student_last_name,date_of_birth,ethnicity,gender,house_number,street_name,suburb, post_code, contact_number,user_type, school_code, password) values('$name', '$mname','$lname','$dob','$race','$gen',  '$hNum', '$street', '$suburb', '$pCode', '$cNum', '$type', '$scode','$password')";
-	$result = mysqli_query($conn, $sql);
-
- if(mysqli_query($con, $sql)) {
-
-	header("Location: successfulRecordStu.html");//  echo "Records Inserted Successfully.";
-
- }
-  else {
-  
+	
+    
+    
+    $sql2 = "INSERT INTO profile (geneder,ethnicity,DOB,contact_number,house_number,postcode,suburb,street_name) values('$gen', '$race', '$dob', '$cNum', '$hNum', '$pCode', '$suburb','$street')";
+    if(mysqli_query($conn, $sql2))
+    {
+			$profile_id_query = $conn->query('SELECT profile_ID FROM profile ORDER BY profile_ID DESC LIMIT 1');
+			//$row = mysqli_num_rows($profile_id_query);
+			//$profile_id_query = $conn->query('SELECT profile_ID FROM profile WHERE profile_ID ='.$row);
+			$row1 = $profile_id_query->fetch_assoc();
+			//echo $row1['profile_ID'];
+			$profileID = $row1['profile_ID'];
+	
+			//$result = mysqli_query($conn, $sql);
+			//$result2 = mysqli_query($conn, $sql2);
+			
+			$sql =  "INSERT INTO student (student_first_name,student_middle_name,student_last_name,guardian_ID,class_ID,profile_ID) values('$name', '$mname','$lname','$guardian_id','$ccode','$profileID')";
+			if(mysqli_query($conn, $sql)) header("Location: successfulRecordStu.html");//  echo "Records Inserted Successfully.";
+			else header("Location: demo.html");
+    }
+	else {
      header("Location: demo.html");
-
-
-	echo "ERROR: Could Not Able To Execute $sql. " . mysqli_error($conn);
-
+	//echo "ERROR: Could Not Able To Execute $sql. " . mysqli_error($conn);
   }
 
 }		
@@ -55,6 +62,7 @@ else{
 } 
 
 ?>
+
 <!doctype html>
 <html>
 <head>
@@ -217,8 +225,8 @@ else{
 
             <h3>School Information</h3><br>
 
-			<label for="school_code"><b>School ID</b></label> <span id="error-sid" span style = "float: right"></span><br>
-            <input type="text" id = "school_code" name="school_code"  maxlength = "4" ><br>
+			<label for="school_code"><b>Class ID</b></label> <span id="error-sid" span style = "float: right"></span><br>
+            <input type="text" id = "class_code" name="class_code"  maxlength = "4" ><br>
 
 			<hr>
 
@@ -229,16 +237,16 @@ else{
 			<hr>
            
 			
-			<label for="password"><b>Create Password <abbr class="req" title="required">*</abbr>:</b></label> <span id="error-pass" span style = "float: right"></span><br>
-            <input type="password" name="password" id="password" onblur = "validateCreatePassword (password)" size="25" required><br>
+			<label for="password"><b>guardian_id <abbr class="req" title="required">*</abbr>:</b></label> <span id="error-pass" span style = "float: right"></span><br>
+            <input type="text" name="guardian_id" id="guardian_id" onblur = "validateCreatePassword (guardian_id)" size="25" required><br>
 			
 			
 
 			<hr>
            
 			
-		   <label for="cPassword"><b>Confirm Password <abbr class="req" title="required">*</abbr>:</b></label> <span id="error-pass2" span style = "float: right"></span><br>
-		   <input type="password" name="cPassword" id="cPassword" onblur = "validateConfirmPassword (cPassword)"  size="25" required><br>
+		   <label for="cPassword"><b>Confirm id <abbr class="req" title="required">*</abbr>:</b></label> <span id="error-pass2" span style = "float: right"></span><br>
+		   <input type="text" name="cguardian" id="cguardian" onblur = "validateConfirmPassword (cPassword)"  size="25" required><br>
 		   
 		   <hr>
 
