@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 
 <?php
-//Step1
-include ('conn.php');
-include ('session.php');
-$result=mysqli_query($conn, "select * from results where student_id='$session_id'")or die('Error In Session');
-$row=mysqli_fetch_array($result);
+	//Step1
+	include ('conn.php');
+	include ('session.php');
+	$result=mysqli_query($conn, "select * from results where student_id='$session_id'")or die('Error In Session');
+	$row=mysqli_fetch_array($result);
 ?>
 
 <html lang="en">
@@ -105,8 +105,8 @@ $row=mysqli_fetch_array($result);
 
 <div class="super_container">
 
-	 <!-- Header -->
-	 <header class="header d-flex flex-row">
+	<!-- Header -->
+	<header class="header d-flex flex-row">
             <div class="header_content d-flex flex-row align-items-center">
                     <!-- Logo -->
                     <div class="logo_container">
@@ -163,7 +163,6 @@ $row=mysqli_fetch_array($result);
     </div>
 	
 	<!-- Home -->
-
 	<div class="home">
 		<div class="home_background_container prlx_parent">
 			<div class="home_background prlx" style="background-image:url(images/contact_background.jpg)"></div>
@@ -174,63 +173,39 @@ $row=mysqli_fetch_array($result);
 		</div>
 	</div>
         
-        <!-- TABLE -->
-    
+	<!-- TABLE -->
     <table class="data-table">
-		<caption class="title">Student Records</caption>
+		<caption class="title">Performance Records</caption>
 		<thead>
 			<tr>
-				<th>Student ID</th>
-				<th>Subject Code</th>
-				 <th>Score</th>
-                                
-                        </tr>
+				<th>Task</th>
+				<th>Score</th>
+				<th>Total</th>
+				<th>Percentage</th>  
+				<th>Class Average</th>     
+			</tr>
 		</thead>
-		<tbody>
-		
-		<?php
-                
-                
-		//($row = mysqli_fetch_array($result))
-		{
-                    
-                    $id = $row['student_id'];
-                    $code = $row['subject_code'];
-                    $marks = $row['task_score'];
-                                       
-			echo '<tr>
-					<td>'.$id.'</td>
-					<td>'.$code. '</td>
-					<td>'.$marks.'</td>
-				</tr>';
-			
-		}?>
+		<tbody>		
+			<?php  //needs edit   
+			//($row = mysqli_fetch_array($result))
+			{
+						$id = $row['student_id'];
+						$code = $row['subject_code'];
+						$marks = $row['task_score'];
+										
+				echo '<tr>
+						<td>'.$id.'</td>
+						<td>'.$code. '</td>
+						<td>'.$marks.'</td>
+					</tr>';
+			}?>
 		</tbody>
-		</table>
-	
-
-	<div class="contact">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-8">
-					
-					
-						
-				</div>
-
-				
-
-			</div>
-
-		</div>
-	</div>
+	</table>
 
 	<!-- Footer -->
-
 	<div class="footer">
-	<Span>Academics Tracker All rights reserved</Span>
-</div>
-
+		<Span>Academics Tracker All rights reserved</Span>
+	</div>
 </div>
 
 <script src="js/jquery-3.2.1.min.js"></script>

@@ -785,15 +785,23 @@ section
 }
 .pb_item h4
 {
-	color: #1a1a1a;
+	/*color: #1a1a1a;*/
+	color: #C88E00
 	font-weight: 400 !important;
 	padding-left: 2px;
 	margin-bottom: 13px;
 }
-.skill_bars
+.skill_bars1
 {
 	height: 5px;
+
 }
+.skill_bars2
+{
+	height: 5px;
+
+}
+
 
 /*********************************
 8.3 Accordions

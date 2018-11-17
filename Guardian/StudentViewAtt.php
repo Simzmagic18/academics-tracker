@@ -1,17 +1,16 @@
  <!DOCTYPE html>
 
 <?php
-//Step1
-include ('conn.php');
-include ('session.php');
- $result = mysqli_query($conn, "select * from attendance where student_id = '$session_id'" ) or die('Error in session.');
- $row = mysqli_fetch_array($result);
-                
+	//Step1
+	include ('conn.php');
+	include ('session.php');
+	$result = mysqli_query($conn, "select * from attendance where student_id = '$session_id'" ) or die('Error in session.');
+	$row = mysqli_fetch_array($result);				
 ?>
 
 <html lang="en">
 <head>
-<title>Course - Contact</title>
+<title>Dependent's Attendance Record</title>
 <style type="text/css">
 		body {
 			font-size: 15px;
@@ -106,39 +105,37 @@ include ('session.php');
 
 <div class="super_container">
 
-  <!-- Header -->
-  <header class="header d-flex flex-row">
-            <div class="header_content d-flex flex-row align-items-center">
-                    <!-- Logo -->
-                    <div class="logo_container">
-                        <div class="logo">
-                            <img src="images/ATlogo221.png" alt="logo" width="64px" height="66px">&nbsp;
-                            <span>AT: Guardian</span>
-                        </div>
-                    </div>
+  	<!-- Header -->
+  	<header class="header d-flex flex-row">
+		<div class="header_content d-flex flex-row align-items-center">
+				<!-- Logo -->
+				<div class="logo_container">
+					<div class="logo">
+						<img src="images/ATlogo221.png" alt="logo" width="64px" height="66px">&nbsp;
+						<span>AT: Guardian</span>
+					</div>
+				</div>
 
-                    <!-- Main Navigation -->
-                    <nav class="main_nav_container">
-                            <div class="main_nav">
-                                    <ul class="main_nav_list">
-                                            <li class="main_nav_item"><a href="Guardian.html">HOME</a></li>
-                                            <li class="main_nav_item"><a href="../about.html">ABOUT US</a></li>
-                                            <li class="main_nav_item"><a href="../contact.html">CONTACT US</a></li>
-                                            <li class="main_nav_item"><a href="profile.html">PROFILE</a></li>
-                                    </ul>
-                            </div>
-                    </nav>
-            </div>
-            <div class="header_side d-flex flex-row justify-content-center align-items-center">
-                <a href="logout.php"><span>LOGOUT</span></a>
-            </div>
+				<!-- Main Navigation -->
+				<nav class="main_nav_container">
+						<div class="main_nav">
+								<ul class="main_nav_list">
+										<li class="main_nav_item"><a href="Guardian.html">HOME</a></li>
+										<li class="main_nav_item"><a href="../about.html">ABOUT US</a></li>
+										<li class="main_nav_item"><a href="../contact.html">CONTACT US</a></li>
+										<li class="main_nav_item"><a href="profile.html">PROFILE</a></li>
+								</ul>
+						</div>
+				</nav>
+		</div>
+		<div class="header_side d-flex flex-row justify-content-center align-items-center">
+			<a href="logout.php"><span>LOGOUT</span></a>
+		</div>
 
-            <!-- Hamburger -->
-            <div class="hamburger_container">
-                    <i class="fas fa-bars trans_200"></i>
-            </div>
-            
-            
+		<!-- Hamburger -->
+		<div class="hamburger_container">
+				<i class="fas fa-bars trans_200"></i>
+		</div>   
     </header>
 
     <!-- Menu -->
@@ -163,7 +160,7 @@ include ('session.php');
             </div>
     </div>
 
-
+	<!-- Home -->
 	<div class="home">
 		<div class="home_background_container prlx_parent">
 			<div class="home_background prlx" style="background-image:url(images/contact_background.jpg)"></div>
@@ -174,61 +171,38 @@ include ('session.php');
 		</div>
 	</div>
         
-        <!-- TABLE -->
-    
+    <!-- TABLE -->    
     <table class="data-table">
-		<caption class="title">Student Records</caption>
+		<caption class="title">Attendance Record</caption>
 		<thead>
 			<tr>
-				<th>Student ID</th>
+				<th>Student ID</th> <!-- this should be date -->
 				<th>Status</th>
-				 <th>Comment</th>
-                                
-                        </tr>
+				<th>Comment</th>
+            </tr>
 		</thead>
 		<tbody>
-		<?php
-                
-                
-		//while ($row = mysqli_fetch_array($result))
-		{
-                    
-                    $id = $row['student_id'];
-                    $status = $row['status'];
-                    $comment = $row['comment'];
-                                       
+		<?php     
+			//while ($row = mysqli_fetch_array($result))
+			{
+				$id = $row['student_id'];
+				$status = $row['status'];
+				$comment = $row['comment'];
+									
 			echo '<tr>
 					<td>'.$id.'</td>
 					<td>'.$status. '</td>
 					<td>'.$comment.'</td>
 				</tr>';
-				
-			
-		}?>
+			}
+		?>
 		</tbody>
-		</table>
-	
-
-	<div class="contact">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-8">
-					
-					
-						
-				</div>
-
-				
-
-			</div>
-
-		</div>
-	</div>
+	</table>
 
 	<!-- Footer -->
-
 	<div class="footer">
-	<Span>Academics Tracker All rights reserved</Span>
+		<span>Academics Tracker All rights reserved</span>
+	</div>
 </div>
 
 <script src="js/jquery-3.2.1.min.js"></script>

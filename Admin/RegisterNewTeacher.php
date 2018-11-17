@@ -10,10 +10,11 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
     $dob = mysqli_real_escape_string($conn, $_POST['date_of_birth']);
     $race = mysqli_real_escape_string($conn, $_POST['ethnicity']);
     $gen = mysqli_real_escape_string($conn, $_POST['gender']);
-	$type = mysqli_real_escape_string($conn, $_POST['user_type']);
-	$scode = mysqli_real_escape_string($conn, $_POST['school_code']);
+	$email = mysqli_real_escape_string($conn, $_POST['email']);
+	$dcode = mysqli_real_escape_string($conn, $_POST['Department']);
 	$cPassword = mysqli_real_escape_string($conn, $_POST['cPassword']);
 	$password = mysqli_real_escape_string($conn, $_POST['password']);
+	$scode = mysqli_real_escape_string($conn, $_POST['subjectcode']);
 	
 		// Information sent from Form to Contacts
 	$hNum = mysqli_real_escape_string($conn, $_POST['house_number']);
@@ -31,27 +32,31 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
 }
 
 else{
-
-	$password = md5($password); //Password Encrypted
-	$sql = "INSERT INTO teacher (teacher_first_name,teacher_middle_name,teacher_last_name,date_of_birth,ethnicity,gender, house_number,street_name,suburb, post_code, contact_number,user_type, school_code, password) values('$name', '$mname','$lname','$dob','$race','$gen', '$hNum', '$street', '$suburb', '$pCode', '$cNum', '$type', '$scode','$password')";
-	$result = mysqli_query($conn, $sql);
-
-	if(mysqli_query($conn, $sql)) {
-
-		header("Location: successfulRecord3.html");//  echo "Records Inserted Successfully.";
-		die();
-	 }
-	  else {
-	  
-	     header("Location: demo.html");
-
+$password = md5($password); //Password Encrypted
 	
-		echo "ERROR: Could Not Able To Execute $sql. " . mysqli_error($conn);
+	 $sql2 = "INSERT INTO profile (geneder,ethnicity,DOB,contact_number,house_number,postcode,suburb,street_name) values('$gen', '$race', '$dob', '$cNum', '$hNum', '$pCode', '$suburb','$street')";
+    if(mysqli_query($conn, $sql2))
+   {
+			$profile_id_query = $conn->query('SELECT profile_ID FROM profile ORDER BY profile_ID DESC LIMIT 1');
+			//$row = mysqli_num_rows($profile_id_query);
+			//$profile_id_query = $conn->query('SELECT profile_ID FROM profile WHERE profile_ID ='.$row);
+			$row1 = $profile_id_query->fetch_assoc();
+			//echo $row1['profile_ID'];
+			$profileID = $row1['profile_ID'];
 	
-	  }
+			//$result = mysqli_query($conn, $sql);
+			//$result2 = mysqli_query($conn, $sql2);
+			
+			$sql =  "INSERT INTO teacher (teacher_first_name, teacher_middle_name,teacher_last_name,department_ID,profile_ID,password,email,subject_ID) values('$name', '$mname','$lname','$dcode','$profileID','$password','$email', '$scode' )";
+			if(mysqli_query($conn, $sql)) header("Location: successfulRecordStu.html");// echo "Records Inserted Successfully.";
+			else /*header("Location: demo.html");*/ echo "ERROR: Could Not Able To Execute $sql. " . mysqli_error($conn);
+}
+else {
+ header("Location: demo.html");
+echo "ERROR: Could Not Able To Execute $sql. " . mysqli_error($conn);
+ }
+
 }		
-//close of connection
-mysqli_close($conn); 
 } 
 
 ?>
@@ -222,16 +227,23 @@ mysqli_close($conn);
 			            
             <h3>School Information</h3><br>
 			
-			<label for="school_code"><b>School ID</b></label> <span id="error-sid" span style = "float: right"></span><br>
-            <input type="text" id = "school_code" name="school_code"  maxlength = "4" ><br>
+			<label for="Department"><b>Department</b></label> <span id="error-sid" span style = "float: right"></span><br>
+            <input type="text" id = "Department" name="Department"  maxlength = "4" ><br>
 			
-			<hr>
 			
-			<b>User Type:</b><br>
-            <label for="teacher">Teacher <abbr class="req" title="required">*</abbr></label>
-			<input  type="radio" name="user_type" id="teacher" value="Teacher" readonly><br>
-			<label for="teacher">Head Of Department</label>
-			<input  type="radio" name="user_type" id="user_type" value="HOD" readonly style="vertical-align: middle" ><br>
+			
+			<hr> 
+
+			<label for="Department"><b>Subject</b></label> <span id="error-sid" span style = "float: right"></span><br>
+            <input type="text" id = "subjectcode" name="subjectcode"  maxlength = "255" ><br>
+			
+			
+			<hr> 
+
+			<label for="Department"><b>E-mail</b></label> <span id="error-sid" span style = "float: right"></span><br>
+            <input type="email" id = "email" name="email"  maxlength = "255" ><br>
+			
+			
 			
 			<hr>
            
