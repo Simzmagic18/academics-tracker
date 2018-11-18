@@ -10,8 +10,35 @@
 <link href="plugins/fontawesome-free-5.0.1/css/fontawesome-all.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" type="text/css" href="styles/courses_styles.css">
 <link rel="stylesheet" type="text/css" href="styles/courses_responsive.css">
+<link rel="stylesheet" type="text/css" href="styles/elements_styles.css">
+<link rel="stylesheet" type="text/css" href="styles/elements_responsive.css">
 <link rel="stylesheet" type="text/css" href="styles/buttons.css">
 <link rel="stylesheet" type="text/css" href="styles/menuDropDown.css">
+<link rel="stylesheet" type="text/css" href="styles/hTabs.css">
+<style>
+    #myInput {
+        width: 100%;
+        font-size: 16px; 
+        padding: 12px 20px 12px 40px;
+        border: 1px solid #ffb606; 
+        margin-bottom: 12px;
+    }
+
+    table, td, th {    
+        border: 1px solid #ffb606;
+        text-align: left;
+    }
+    
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+    
+    th, td {
+        padding: 15px;
+        word-wrap:break-word;
+    }
+        </style>
 </head>
 <body>
 <div class="super_container">
@@ -84,30 +111,201 @@
     </div>
 
     <!-- Popular -->
-    <div class="popular page_section">
-        <!-- uPLOADS -->
-        <div class="container">
-            <div class="row">
-                <div class="col">
-                    <div class="section_title text-center">
-                            <h1> Uploads </h1>
+ 
+        <!-- classes -->
+    <!--div> &nbsp; </div>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="section_title text-center">
+                        <h1> Classes </h1>
+                </div>
+            </div>
+        </div><br><br>          
+        <div class="row course_boxes" style="margin:auto">
+            <div style="margin:auto">
+                <div>
+                    <a href="class.html"><button class="button" onclick="#"><h2>&nbsp;&nbsp; Class 1 &nbsp;&nbsp;</h2></button></a>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a href="class.html"><button class="button" onclick="#"><h2>&nbsp;&nbsp;&nbsp; Class 2 &nbsp;&nbsp;&nbsp;</h2></button></a>
+                </div>
+            </div>
+        </div>
+    </div-->
+    <div> &nbsp; </div>
+
+    <!-- tabs-->
+    <div class="container">
+        <!-- Tab links -->
+        <div class="tab">
+            <button class="tablinks" onclick="openTab(event, 'Class1')" id="defaultOpen"><h2>Class 1</h2></button>
+            <button class="tablinks" onclick="openTab(event, 'Class2')"><h2>Class 2</h2></button>
+            <button class="tablinks" onclick="openTab(event, 'Class3')"><h2>Class 3</h2></button>
+        </div><br>
+        <!-- Tab content -->
+        <div id="Class1" class="tabcontent">
+            <div class="elements_accordions">
+                <div class="accordion_container">
+                    <div class="accordion d-flex flex-row align-items-center"> View Past Attendace </div>
+                    <div class="accordion_panel"><br>
+                        <!--content-->
+                        <table style="color:black">
+                            <tr>
+                                <th> Student Name &nbsp;</th>
+                                <th> 01/10/2018 &nbsp;</th>
+                                <th> Comment &nbsp;</th>
+                            </tr>
+                            <tr>
+                                <td>Peter Griffin</td>
+                                <td>Present</td>
+                                <td> &nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td>Lois Daniels</td>
+                                <td>Absent</td>
+                                <td>Excused</td>
+                            </tr>
+                        </table>
+                        <div id="averageCount1"></div>
                     </div>
                 </div>
-            </div><br><br><br><br>           
-            <div class="row course_boxes" style="margin:auto">
-                <!-- Attendance -->
-                <div style="margin:auto">
-                    <div>
-                        <a href="attendance.php"><button class="button"><h2>&nbsp;&nbsp;Attendance&nbsp;&nbsp;</h2></button></a>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <a href="uploadmarks.php"><button class="button"><h2>&nbsp;&nbsp;&nbsp;Marks&nbsp;&nbsp;&nbsp;</h2></button></a>
+                <div class="accordion_container">
+                    <div class="accordion d-flex flex-row align-items-center"> Record Attendance </div>
+                    <div class="accordion_panel">
+                        <!--content-->
+                        <table style="color:black">
+                                <tr>
+                                    <th> Student Name &nbsp;</th>
+                                    <th> 01/10/2018 &nbsp;</th>
+                                    <th> Comment &nbsp;</th>
+                                </tr>
+                                <tr>
+                                    <td>Peter Griffin</td>
+                                    <td>Present</td>
+                                    <td> &nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td>Lois Daniels</td>
+                                    <td>Absent</td>
+                                    <td>Excused</td>
+                                </tr>
+                            </table>
+                            <div id="averageCount1"></div>
+                        </div>                    
+                    </div>
+                </div>
+                <div class="accordion_container">
+                    <div class="accordion d-flex flex-row align-items-center"> View Past Marks </div>
+                    <div class="accordion_panel">
+                        <!--content-->
+                        <table style="color:black">
+                                <tr>
+                                    <th> Student Name &nbsp;</th>
+                                    <th> 01/10/2018 &nbsp;</th>
+                                    <th> Comment &nbsp;</th>
+                                </tr>
+                                <tr>
+                                    <td>Peter Griffin</td>
+                                    <td>Present</td>
+                                    <td> &nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td>Lois Daniels</td>
+                                    <td>Absent</td>
+                                    <td>Excused</td>
+                                </tr>
+                            </table>
+                            <div id="averageCount1"></div>
+                        </div>                    
+                    </div>
+                </div>
+                <div class="accordion_container">
+                    <div class="accordion d-flex flex-row align-items-center"> Record Marks </div>
+                    <div class="accordion_panel">
+                            <!--content-->
+                            <table style="color:black">
+                                    <tr>
+                                        <th> Student Name &nbsp;</th>
+                                        <th> Tasks &nbsp;</th>
+                                        <th> Comment &nbsp;</th>
+                                    </tr>
+                                    <tr>
+                                        <td>Peter Griffin</td>
+                                        <td>Present</td>
+                                        <td> &nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Lois Daniels</td>
+                                        <td>Absent</td>
+                                        <td>Excused</td>
+                                    </tr>
+                                </table>
+                                <div id="averageCount1"></div>
+                            </div>                    
+                        </div>
+                </div>
+            </div>
+        </div>
+        <div id="Class2" class="tabcontent">
+            <div class="elements_accordions">
+                <div class="accordion_container">
+                    <div class="accordion d-flex flex-row align-items-center"> View Past Attendace </div>
+                    <div class="accordion_panel">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vestibulum, quam tincidunt venenatis ultrices, est libero mattis ante, ac consectetur diam neque eget quam.</p>
+                    </div>
+                </div>
+                <div class="accordion_container">
+                    <div class="accordion d-flex flex-row align-items-center"> Record Attendance </div>
+                    <div class="accordion_panel">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vestibulum, quam tincidunt venenatis ultrices, est libero mattis ante, ac consectetur diam neque eget quam.</p>
+                    </div>
+                </div>
+                <div class="accordion_container">
+                    <div class="accordion d-flex flex-row align-items-center"> View Past Marks </div>
+                    <div class="accordion_panel">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vestibulum, quam tincidunt venenatis ultrices, est libero mattis ante, ac consectetur diam neque eget quam.</p>
+                    </div>
+                </div>
+                <div class="accordion_container">
+                    <div class="accordion d-flex flex-row align-items-center"> Record Marks </div>
+                    <div class="accordion_panel">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vestibulum, quam tincidunt venenatis ultrices, est libero mattis ante, ac consectetur diam neque eget quam.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="Class3" class="tabcontent">
+            <div class="elements_accordions">
+                <div class="accordion_container">
+                    <div class="accordion d-flex flex-row align-items-center"> View Past Attendace </div>
+                    <div class="accordion_panel">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vestibulum, quam tincidunt venenatis ultrices, est libero mattis ante, ac consectetur diam neque eget quam.</p>
+                    </div>
+                </div>
+                <div class="accordion_container">
+                    <div class="accordion d-flex flex-row align-items-center"> Record Attendance </div>
+                    <div class="accordion_panel">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vestibulum, quam tincidunt venenatis ultrices, est libero mattis ante, ac consectetur diam neque eget quam.</p>
+                    </div>
+                </div>
+                <div class="accordion_container">
+                    <div class="accordion d-flex flex-row align-items-center"> View Past Marks </div>
+                    <div class="accordion_panel">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vestibulum, quam tincidunt venenatis ultrices, est libero mattis ante, ac consectetur diam neque eget quam.</p>
+                    </div>
+                </div>
+                <div class="accordion_container">
+                    <div class="accordion d-flex flex-row align-items-center"> Record Marks </div>
+                    <div class="accordion_panel">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vestibulum, quam tincidunt venenatis ultrices, est libero mattis ante, ac consectetur diam neque eget quam.</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    
-    <br>
+
+    <!-- footer -->
+    <div> &nbsp; </div>
     <div class="footer">
                 <Span>
                     Academics Tracker All rights reserved
@@ -127,6 +325,30 @@
 <script src="plugins/easing/easing.js"></script>
 <script src="js/courses_custom.js"></script>
 <script src="js/dropDown.js"></script>
+<script src="js/hTabs.js"></script>
+<script src="js/elements_custom.js"></script>
+<script>
+    function myFunction() {
+        // Declare variables 
+        var input, filter, table, tr, td, i;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("myTable");
+        tr = table.getElementsByTagName("tr");
+    
+        // Loop through all table rows, and hide those who don't match the search query
+        for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[0];
+        if (td) {
+            if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+            } else {
+            tr[i].style.display = "none";
+            }
+        } 
+        }
+    }
+</script>
 
 </body>
 </html>
