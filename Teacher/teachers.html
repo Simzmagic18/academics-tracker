@@ -15,6 +15,9 @@
 <link rel="stylesheet" type="text/css" href="styles/buttons.css">
 <link rel="stylesheet" type="text/css" href="styles/menuDropDown.css">
 <link rel="stylesheet" type="text/css" href="styles/hTabs.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" type="text/css" href="styles/hoverText.css">
 <style>
     #myInput {
         width: 100%;
@@ -25,7 +28,7 @@
     }
 
     table, td, th {    
-        border: 1px solid #ffb606;
+        border-bottom: 1px #ffb606;
         text-align: left;
     }
     
@@ -38,9 +41,15 @@
         padding: 15px;
         word-wrap:break-word;
     }
-        </style>
+
+    .tr:hover {
+        background-color: #ffb606;
+    }
+</style>
+
 </head>
 <body>
+
 <div class="super_container">
 
     <!-- Header -->
@@ -111,8 +120,7 @@
     </div>
 
     <!-- Popular -->
- 
-        <!-- classes -->
+    <!-- classes -->
     <!--div> &nbsp; </div>
     <div class="container">
         <div class="row">
@@ -140,17 +148,83 @@
         <div class="tab">
             <button class="tablinks" onclick="openTab(event, 'Class1')" id="defaultOpen"><h2>Class 1</h2></button>
             <button class="tablinks" onclick="openTab(event, 'Class2')"><h2>Class 2</h2></button>
-            <button class="tablinks" onclick="openTab(event, 'Class3')"><h2>Class 3</h2></button>
         </div><br>
         <!-- Tab content -->
         <div id="Class1" class="tabcontent">
             <div class="elements_accordions">
                 <div class="accordion_container">
-                    <div class="accordion d-flex flex-row align-items-center"> View Past Attendace </div>
+                    <div class="accordion d-flex flex-row align-items-center" style="color:black; font-weight: bold"> View Past Attendace </div>
                     <div class="accordion_panel"><br>
                         <!--content-->
-                        <table style="color:black">
+                        <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="elements_title"  style="text-align:center; font-weight: bold"> Overall Attendance Average  </div>
+                                </div>
+                            </div>
+                            <a href="StudentViewAtt.php">
+                            <div class="row elements_loaders_container"  style="float: inherit; margin-left: 40%">
+                                <div class="col-lg-3 loader_col">
+                                    <div class="loader" data-perc="0.5"></div>
+                                </div>
+                            </div></a>
+                            <br><br>
+                        <table class="w3-bordered" style="color:black; overflow-x:auto;">
+                            <tr style="background-color: #ffb606">
+                                <th> Student Name &nbsp;</th>
+                                <th> 01/10/2018 &nbsp;</th>
+                                <th> Comment &nbsp;</th>
+                            </tr>
+                            <tr c>
+                                <td>Peter Griffin</td>
+                                <td>Present</td>
+                                <td> &nbsp;</td>
+                            </tr>
                             <tr>
+                                <td>Lois Daniels</td>
+                                <td>Absent</td>
+                                <td>Excused</td>
+                            </tr>
+                        </table>
+                        <div id="averageCount1"></div>
+                    </div>
+                </div>
+                <div class="accordion_container">
+                    <div class="accordion d-flex flex-row align-items-center" style="color:black; font-weight: bold"> Record Attendance </div>
+                    <div class="accordion_panel" style="overflow-x:auto;"><br>
+                        <table class="w3-bordered" style="color:black; overflow-x:auto">
+                                <tr style="background-color: #ffb606">
+                                    <th> Student Name &nbsp;</th>
+                                    <th> 01/10/2018 &nbsp;</th>
+                                    <th> Comment &nbsp;</th>
+                                </tr>
+                                <tr>
+                                    <td> Peter Griffin </td>
+                                    <td>
+                                        <select id="status">
+                                            <option id="present" selected>Present</option>
+                                            <option id="Absent">Absent</option>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <input class="w3-input" id="comment" type="text" placeholder="comment">
+                                    </td>
+                                </tr>
+                            </table>
+                            <div id="averageCount1"></div>
+                    </div>
+                </div>
+                <div class="accordion_container">
+                    <div class="accordion d-flex flex-row align-items-center" style="color:black; font-weight: bold"> View Past Marks </div>
+                    <div class="accordion_panel"><br>
+                        <!--content-->
+                        <!-- bar graph -->
+                        <br><br>
+                        <h2 style="color:black; text-align:center; font-weight: bold"> Performance Results Bar Graph </h2>
+                        <canvas id="chart1" style="height:200px; width: 50%"></canvas>
+                        
+                        <!-- table -->
+                        <table class="w3-bordered" style="color:black; overflow-x:auto;">
+                            <tr style="background-color: #ffb606">
                                 <th> Student Name &nbsp;</th>
                                 <th> 01/10/2018 &nbsp;</th>
                                 <th> Comment &nbsp;</th>
@@ -170,134 +244,148 @@
                     </div>
                 </div>
                 <div class="accordion_container">
-                    <div class="accordion d-flex flex-row align-items-center"> Record Attendance </div>
-                    <div class="accordion_panel">
+                    <div class="accordion d-flex flex-row align-items-center" style="color:black; font-weight: bold"> Record Marks </div>
+                    <div class="accordion_panel"><br>
                         <!--content-->
-                        <table style="color:black">
-                                <tr>
-                                    <th> Student Name &nbsp;</th>
-                                    <th> 01/10/2018 &nbsp;</th>
-                                    <th> Comment &nbsp;</th>
-                                </tr>
-                                <tr>
-                                    <td>Peter Griffin</td>
-                                    <td>Present</td>
-                                    <td> &nbsp;</td>
-                                </tr>
-                                <tr>
-                                    <td>Lois Daniels</td>
-                                    <td>Absent</td>
-                                    <td>Excused</td>
-                                </tr>
-                            </table>
-                            <div id="averageCount1"></div>
-                        </div>                    
+                        <table class="w3-bordered" style="color:black; overflow-x:auto;">
+                            <tr style="background-color: #ffb606">
+                                <th> Student Name &nbsp;</th>
+                                <th> Tasks &nbsp;</th>
+                                <th> Comment &nbsp;</th>
+                            </tr>
+                            <tr>
+                                <td>Peter Griffin</td>
+                                <td>Present</td>
+                                <td> &nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td>Lois Daniels</td>
+                                <td>Absent</td>
+                                <td>Excused</td>
+                            </tr>
+                        </table>
+                        <div id="averageCount1"></div>
                     </div>
-                </div>
-                <div class="accordion_container">
-                    <div class="accordion d-flex flex-row align-items-center"> View Past Marks </div>
-                    <div class="accordion_panel">
-                        <!--content-->
-                        <table style="color:black">
-                                <tr>
-                                    <th> Student Name &nbsp;</th>
-                                    <th> 01/10/2018 &nbsp;</th>
-                                    <th> Comment &nbsp;</th>
-                                </tr>
-                                <tr>
-                                    <td>Peter Griffin</td>
-                                    <td>Present</td>
-                                    <td> &nbsp;</td>
-                                </tr>
-                                <tr>
-                                    <td>Lois Daniels</td>
-                                    <td>Absent</td>
-                                    <td>Excused</td>
-                                </tr>
-                            </table>
-                            <div id="averageCount1"></div>
-                        </div>                    
-                    </div>
-                </div>
-                <div class="accordion_container">
-                    <div class="accordion d-flex flex-row align-items-center"> Record Marks </div>
-                    <div class="accordion_panel">
-                            <!--content-->
-                            <table style="color:black">
-                                    <tr>
-                                        <th> Student Name &nbsp;</th>
-                                        <th> Tasks &nbsp;</th>
-                                        <th> Comment &nbsp;</th>
-                                    </tr>
-                                    <tr>
-                                        <td>Peter Griffin</td>
-                                        <td>Present</td>
-                                        <td> &nbsp;</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Lois Daniels</td>
-                                        <td>Absent</td>
-                                        <td>Excused</td>
-                                    </tr>
-                                </table>
-                                <div id="averageCount1"></div>
-                            </div>                    
-                        </div>
                 </div>
             </div>
         </div>
         <div id="Class2" class="tabcontent">
             <div class="elements_accordions">
                 <div class="accordion_container">
-                    <div class="accordion d-flex flex-row align-items-center"> View Past Attendace </div>
-                    <div class="accordion_panel">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vestibulum, quam tincidunt venenatis ultrices, est libero mattis ante, ac consectetur diam neque eget quam.</p>
+                    <div class="accordion d-flex flex-row align-items-center" style="color:black; font-weight: bold"> View Past Attendace </div>
+                    <div class="accordion_panel"><br>
+                        <!--content-->
+                        <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="elements_title"  style="text-align:center; font-weight: bold"> Overall Attendance Average  </div>
+                                </div>
+                            </div>
+                            <a href="StudentViewAtt.php">
+                            <div class="row elements_loaders_container"  style="float: inherit; margin-left: 40%">
+                                <div class="col-lg-3 loader_col">
+                                    <div class="loader" data-perc="1"></div>
+                                </div>
+                            </div></a>
+                            <br><br>
+                        <table class="w3-bordered" style="color:black; overflow-x:auto;">
+                            <tr style="background-color: #ffb606">
+                                <th> Student Name &nbsp;</th>
+                                <th> 01/10/2018 &nbsp;</th>
+                                <th> Comment &nbsp;</th>
+                            </tr>
+                            <tr>
+                                <td>Peter Griffin</td>
+                                <td>Present</td>
+                                <td> &nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td>Lois Daniels</td>
+                                <td>Present</td>
+                                <td>&nbsp;</td>
+                            </tr>
+                        </table>
+                        <div id="averageCount1"></div>
                     </div>
                 </div>
                 <div class="accordion_container">
-                    <div class="accordion d-flex flex-row align-items-center"> Record Attendance </div>
-                    <div class="accordion_panel">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vestibulum, quam tincidunt venenatis ultrices, est libero mattis ante, ac consectetur diam neque eget quam.</p>
+                    <div class="accordion d-flex flex-row align-items-center" style="color:black; font-weight: bold"> Record Attendance </div>
+                    <div class="accordion_panel"><br>
+                        <table class="w3-bordered" style="color:black; overflow-x:auto">
+                                <tr style="background-color: #ffb606">
+                                    <th> Student Name &nbsp;</th>
+                                    <th> 01/10/2018 &nbsp;</th>
+                                    <th> Comment &nbsp;</th>
+                                </tr>
+                                <tr>
+                                    <td>Peter Griffin</td>
+                                    <td>Present</td>
+                                    <td> &nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td>Lois Daniels</td>
+                                    <td>Absent</td>
+                                    <td>Excused</td>
+                                </tr>
+                            </table>
+                            <div id="averageCount1"></div>
                     </div>
                 </div>
                 <div class="accordion_container">
-                    <div class="accordion d-flex flex-row align-items-center"> View Past Marks </div>
-                    <div class="accordion_panel">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vestibulum, quam tincidunt venenatis ultrices, est libero mattis ante, ac consectetur diam neque eget quam.</p>
+                    <div class="accordion d-flex flex-row align-items-center" style="color:black; font-weight: bold"> View Past Marks </div>
+                    <div class="accordion_panel"><br>
+                        <!--content-->
+                        <!-- bar graph -->
+                        <br><br>
+                        <h2 style="color:black; text-align:center; font-weight: bold"> Performance Results Bar Graph </h2>
+                        <canvas id="chart2" style="height:200px; width: 50%"></canvas>
+                        
+                        <!-- table -->
+                        <table class="w3-bordered" style="color:black; overflow-x:auto">
+                            <tr style="background-color: #ffb606">
+                                <th> Student Name &nbsp;</th>
+                                <th> Assignment 1 (%)&nbsp;</th>
+                                <th> Exercise 1 (%)&nbsp;</th>
+                            </tr>
+                            <tr>
+                                <td>Peter Griffin</td>
+                                <td> 60 </td>
+                                <td> 89 </td>
+                            </tr>
+                            <tr>
+                                <td>Lois Daniels</td>
+                                <td> 70 </td>
+                                <td> 80 </td>
+                            </tr>
+                        </table>
+                        <div id="averageCount1"></div>
                     </div>
                 </div>
                 <div class="accordion_container">
-                    <div class="accordion d-flex flex-row align-items-center"> Record Marks </div>
-                    <div class="accordion_panel">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vestibulum, quam tincidunt venenatis ultrices, est libero mattis ante, ac consectetur diam neque eget quam.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div id="Class3" class="tabcontent">
-            <div class="elements_accordions">
-                <div class="accordion_container">
-                    <div class="accordion d-flex flex-row align-items-center"> View Past Attendace </div>
-                    <div class="accordion_panel">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vestibulum, quam tincidunt venenatis ultrices, est libero mattis ante, ac consectetur diam neque eget quam.</p>
-                    </div>
-                </div>
-                <div class="accordion_container">
-                    <div class="accordion d-flex flex-row align-items-center"> Record Attendance </div>
-                    <div class="accordion_panel">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vestibulum, quam tincidunt venenatis ultrices, est libero mattis ante, ac consectetur diam neque eget quam.</p>
-                    </div>
-                </div>
-                <div class="accordion_container">
-                    <div class="accordion d-flex flex-row align-items-center"> View Past Marks </div>
-                    <div class="accordion_panel">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vestibulum, quam tincidunt venenatis ultrices, est libero mattis ante, ac consectetur diam neque eget quam.</p>
-                    </div>
-                </div>
-                <div class="accordion_container">
-                    <div class="accordion d-flex flex-row align-items-center"> Record Marks </div>
-                    <div class="accordion_panel">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vestibulum, quam tincidunt venenatis ultrices, est libero mattis ante, ac consectetur diam neque eget quam.</p>
+                    <div class="accordion d-flex flex-row align-items-center" style="color:black; font-weight: bold"> Record Marks </div>
+                    <div class="accordion_panel"><br>
+                        <!--content-->
+                        <table class="w3-bordered" style="color:black; overflow-x:auto">
+                            <tr style="background-color: #ffb606">
+                                <th> Student Name </th>
+                                <th>
+                                    Task Name:&nbsp;<input class="w3-input" type="text" id="taskName"><p style="color:black; font-style:italic">Record mark as a percentage</p>
+                                </th>
+                            </tr>
+                            <tr>
+                                <td> Peter Griffin </td>
+                                <td><input class="w3-input" type="text" id="mark" placeholder="Mark"></td>
+                            </tr>
+                            <tr>
+                                <td>Lois Daniels</td>
+                                <td><input class="w3-input" type="text" id="mark" placeholder="Mark"></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <button id="submit" class="button" value="Submit Marks" onclick="function()">Submit Marks</button>
+                                </td>
+                            </tr>
+                        </table>
+                        <div id="averageCount1"></div>
                     </div>
                 </div>
             </div>
@@ -322,11 +410,18 @@
 <script src="plugins/greensock/animation.gsap.min.js"></script>
 <script src="plugins/greensock/ScrollToPlugin.min.js"></script>
 <script src="plugins/scrollTo/jquery.scrollTo.min.js"></script>
+<script src="plugins/progressbar/progressbar.min.js"></script>
 <script src="plugins/easing/easing.js"></script>
 <script src="js/courses_custom.js"></script>
 <script src="js/dropDown.js"></script>
 <script src="js/hTabs.js"></script>
 <script src="js/elements_custom.js"></script>
+<script src="js/graph1.js"></script>
+<script src="js/graph2.js"></script>
+<script src="js/graph3.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.min.js"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script>
     function myFunction() {
         // Declare variables 
