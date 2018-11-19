@@ -1,3 +1,21 @@
+<?php 
+include('conn.php');
+require_once("session.php");
+?>
+
+<?php
+$query = " SELECT * FROM `guardian` WHERE guardian_id = '{$_SESSION['user']}' ";
+$run_query = mysqli_query($conn, $query);
+    
+if(mysqli_num_rows($run_query) == 1){
+while($result = mysqli_fetch_assoc($run_query)){
+$user_fname = $result['guardian_first_name'];
+$user_lname = $result['guardian_last_name'];
+
+}
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,7 +52,7 @@
                 <nav class="main_nav_container">
                         <div class="main_nav">
                                 <ul class="main_nav_list">
-                                    <li class="main_nav_item"><a href="Guardian.html">HOME</a></li>
+                                    <li class="main_nav_item"><a href="Guardian2.html">HOME</a></li>
                                     <li class="main_nav_item"><a href="../about.html">ABOUT US</a></li>
                                     <li class="main_nav_item"><a href="../contact.html">CONTACT US</a></li>
                                     <li class="main_nav_item"><a href="profile.html">PROFILE</a></li>
@@ -72,7 +90,7 @@
         <div class="menu_inner menu_mm">
             <div class="menu menu_mm">
                 <ul class="menu_list menu_mm">
-                    <li class="menu_item menu_mm"><a href="Guardian.html">HOME</a></li>
+                    <li class="menu_item menu_mm"><a href="Guardian2.html">HOME</a></li>
                     <li class="menu_item menu_mm"><a href="../about.html">ABOUT US</a></li>
                     <li class="menu_item menu_mm"><a href="../contact.html">CONTACT US</a></li>
                     <li class="menu_item menu_mm"><a href="profile.html">PROFILE</a></li>
@@ -88,35 +106,37 @@
             <div class="home_background prlx" style="background-image:url(images/courses_background.jpg)"></div>
         </div>
         <div class="home_content">
-            <h1>Dependent's Name</h1>
+            <h1><?php echo $user_fname." ".$user_lname; ?></h1>
         </div>
     </div><br>
 
     <!-- Subjects -->
-    
-            <div class="section_title text-center">
-                <h1> Attendance </h1>
-            </div><br>           
-            <div class="row course_boxes" style="margin:auto">
-                <div style="margin:auto">
-                    <div>
-                        <a href="Attendance.html"><button class="button"><span> Attendance </span></button></a>
-                    </div>
-                </div>
-            </div><br>
-            <div class="section_title text-center">
-                <h1> Subjects </h1>
-            </div><br>           
-            <div class="row course_boxes" style="margin:auto">
-                <div style="margin:auto">
-                    <a href="subjectMarks.html"><button class="button"><span> Mathematics </span></button></a>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <a href="subjectMarks.html"><button class="button"><span> English </span></button></a>
-                </div>
-            </div><br><br>
+    <div class="section_title text-center">
+        <h1> Subjects </h1>
+    </div><br>           
+    <div class="row course_boxes" style="margin:auto">
+        <div style="margin:auto">
+            <a href="subjects.html"><button class="button"><span> Mathematics </span></button></a>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="subjects.html"><button class="button"><span> English </span></button></a>
         </div>
     </div>
+    <br><br>
+    <script>
+        function goBack(){
+            window.history.back();
+        }
+    </script>
+    <div class="row course_boxes" style="margin:auto">
+        <div style="margin:auto">
+            <div>
+                <button class="button" onclick="goBack()"> Back </button>
+            </div>
+        </div>
+    </div>
+    <br><br>
+</div>
 
     <!-- footer -->
     <div class="footer">
