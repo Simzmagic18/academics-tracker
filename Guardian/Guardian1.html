@@ -1,3 +1,11 @@
+<?php
+
+$link = mysqli_connect("localhost", "root", "", "academicstracker2");
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -96,7 +104,7 @@
             <div class="row">
                 <div class="col">
                     <div class="section_title text-center">
-                            <h1> Dependent's Name </h1>
+                            <h1> Dependent's Name <?php echo $_GET['fname']; ?> </h1>
                     </div>
                 </div>
             </div><br><br>

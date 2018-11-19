@@ -1,0 +1,106 @@
+/* generic css */
+
+body {
+	font-family:sans-serif;
+	font-size:4vmin; /* unit relative to smallest viewport size */
+}
+h1 {
+    text-align:center;
+}
+pre {
+    font-size:0.7em;
+    background:gainsboro;
+    padding:0.5ex 0.5em;
+    margin:0 1em 0 2em;
+    overflow-x:scroll; /* default 'visible' */
+}
+/* styling tabs css ( designed for visualize/identify elements ^^ )*/
+
+.tabContent {
+    border:1px solid olive;
+    padding:0.5ex;
+}
+.tabsWrapper {
+    border:1px solid red;
+}
+.outterTabs {
+    border-color:blue;
+    padding:0.5ex;
+}
+.tabsWrapper>label {
+    display:inline-block; /* default 'inline' which produce some overlay */
+    border:2px solid transparent;
+    padding:0.5ex;
+}
+.outterTabs>label {
+    background:orange;
+    color:red;
+}
+.innerTabs>label {
+    background:yellow;
+    color:olive;
+}
+.tabsWrapper>input[type=radio]:checked+label {
+    border-color:black;
+    color:black;
+    font-weight:bold;
+}
+
+/* specific tabs css */
+
+/*
+    Use of '>' css operator allows more safe targetting, by select only direct child, instead any child in descendants ^^
+*/
+
+.tabsWrapper>input[type=radio] {
+    display:none; /* retrieve element from page display */
+}
+.tabsWrapper>label {
+    white-space:nowrap; /* avoid auto new line inside tab label */
+}
+.tabsWrapper>input[type=radio]:not(:checked)+label {
+    cursor:pointer; /* hand cursor for clickable (unchecked) tab labels */
+}
+.tabsWrapper>.tabContent {
+    display:none; /* default hide contents */
+}
+.tabsWrapper>input[type=radio]:checked+label+input+label+input+label+.tabContent,
+.tabsWrapper>input[type=radio]:checked+label+input+label+.tabContent+.tabContent,
+.tabsWrapper>input[type=radio]:checked+label+.tabContent+.tabContent+.tabContent {
+    display:block; /* show content for each tab specific target */
+}
+
+/*
+    Used only in the last inner tabs group, for example purpose of more generic rules handling differents count of tabs in different groups without too much weighing the Html source code to keep it better readable/understandable...
+    
+    Html used as kind of ('wraptabs' class not used, but 'tansWrapper' one, for keeping global styling rules of others tabs groups in this running tuorial):
+    
+    <div class="wraptabs wrap2tabs">
+        <input type="radio" id="cmdTab0" name="commandTab"> 
+        <label for="cmdTab0">item 0</label>
+        <input type="radio" id="cmdTab1" name="commandTab"> 
+        <label for="cmdTab1">item 0</label>
+        <div class="tabContent">
+    </div>
+*/
+
+.wraptabs>.tabContent, .wraptabs>input[type=radio] {
+    display:none; /* default hide contents and radio elements */
+}
+.wraptabs>label {
+    white-space:nowrap; /* avoid auto new line inside tab label */
+}
+.wraptabs:not(:checked)+label {
+    cursor:pointer; /* hand cursor for clickable (unchecked) tab labels */
+}
+.wrap2tabs>input[type=radio]:checked+label+input+label+.tabContent,
+.wrap2tabs>input[type=radio]:checked+label+.tabContent+.tabContent,
+.wrap3tabs>input[type=radio]:checked+label+input+label+input+label+.tabContent,
+.wrap3tabs>input[type=radio]:checked+label+input+label+.tabContent+.tabContent,
+.wrap3tabs>input[type=radio]:checked+label+.tabContent+.tabContent+.tabContent,
+.wrap4tabs>input[type=radio]:checked+label+input+label+input+label+input+label+.tabContent,
+.wrap4tabs>input[type=radio]:checked+label+input+label+input+label+.tabContent+.tabContent,
+.wrap4tabs>input[type=radio]:checked+label+input+label+.tabContent+.tabContent+.tabContent,
+.wrap4tabs>input[type=radio]:checked+label+.tabContent+.tabContent+.tabContent+.tabContent {
+    display:block; /* show content for each tab specific target */
+}

@@ -25,26 +25,26 @@
     <!-- Header -->
     <header class="header d-flex flex-row">
         <div class="header_content d-flex flex-row align-items-center">
-                <!-- Logo -->
-                <div class="logo_container">
-                        <div class="logo">
-                            <img src="images/ATlogo221.png" alt="logo" width="64px" height="66px">&nbsp;
-                            <span>AT: Guardian</span>
-                        </div>
-                </div>
+            <!-- Logo -->
+            <div class="logo_container">
+                    <div class="logo">
+                        <img src="images/ATlogo221.png" alt="logo" width="64px" height="66px">&nbsp;
+                        <span>AT: Guardian</span>
+                    </div>
+            </div>
 
-                <!-- Main Navigation -->
-                <nav class="main_nav_container">
-                        <div class="main_nav">
-                                <ul class="main_nav_list">
-                                    <li class="main_nav_item"><a href="Guardian.html">HOME</a></li>
-                                    <li class="main_nav_item"><a href="../about.html">ABOUT US</a></li>
-                                    <li class="main_nav_item"><a href="../contact.html">CONTACT US</a></li>
-                                    <li class="main_nav_item"><a href="profile.html">PROFILE</a></li>
-                                    <li class="main_nav_item"><a href="logout.php">LOGOUT</a></li>
-                                </ul>
-                        </div>
-                </nav>
+            <!-- Main Navigation -->
+            <nav class="main_nav_container">
+                    <div class="main_nav">
+                            <ul class="main_nav_list">
+                                <li class="main_nav_item"><a href="Guardian.html">HOME</a></li>
+                                <li class="main_nav_item"><a href="../about.html">ABOUT US</a></li>
+                                <li class="main_nav_item"><a href="../contact.html">CONTACT US</a></li>
+                                <li class="main_nav_item"><a href="profile.html">PROFILE</a></li>
+                                <li class="main_nav_item"><a href="logout.php">LOGOUT</a></li>
+                            </ul>
+                    </div>
+            </nav>
         </div>
         
         <div class="header_side d-flex flex-row justify-content-center align-items-center"
@@ -98,74 +98,66 @@
     <!-- Title -->
     <br><div class="section_title text-center">
         <h1 style="text-align:center"> Attendance Record </h1>
-    </div>
+    </div> <br>
 
     <!-- Attendance loader -->
-    <div class="elements">
-        <div class="container">
-            <div class="loaders">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="elements_title"  style="text-align:center"> Overall Attendance Average  </div>
-                    </div>
-                </div>
-                <a href="StudentViewAtt.php">
-                <div class="row elements_loaders_container"  style="float: inherit; margin-left: 40%">
-                    <div class="col-lg-3 loader_col">
-                        <div class="loader" data-perc="0.5"></div>
-                    </div>
-                </div></a>
-                <br><br><br><br><br><br>
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="elements_title"  style="text-align:center"> Attendance Record Table  </div>
-                    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="elements_title"  style="text-align:center"> Overall Attendance Average  </div>
+        </div>
+    </div>
+    <a href="StudentViewAtt.php">
+    <div class="row elements_loaders_container"  style="float: inherit; margin-left: 40%">
+        <div class="col-lg-3 loader_col">
+            <div class="loader" data-perc="0.5"></div>
+        </div>
+    </div></a>
+    <br><br><br>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="elements_title"  style="text-align:center"> Attendance Record Table </div>
+        </div>
+    </div><br>
+
+    <!-- Table --> 
+    <div class="container">
+        <div class="row">
+            <table class="w3-table w3-bordered w3-centered" style="color:black; margin: auto">
+                <tr>
+                    <th> Date </th>
+                    <th> Status </th>
+                    <th> Comment </th>
+                </tr>
+                <tr class="w3-hover-amber">
+                    <td> 01/10/2018 </td>
+                    <td> Present </td>
+                    <td> &nbsp; </td>
+                </tr>
+                <tr class="w3-hover-amber">
+                    <td> 02/10/2018 </td>
+                    <td> Absent </td>
+                    <td> Excused </td>
+                </tr>
+                <tr class="w3-hover-orange" style="font-weight:bold">
+                    <td> Days Present </td>
+                    <td> 1 </td>
+                </tr>
+            </table>
+        </div>
+        <br>
+        <script>
+        function goBack(){
+            window.history.back();
+        }
+        </script>
+        <div class="row course_boxes" style="margin:auto">
+            <div style="margin:auto">
+                <div>
+                    <button class="button" onclick="goBack()"> Back </button>
                 </div>
             </div>
         </div>
     </div>
-
-    <!-- Table -->
-    <div class="popular page_section">
-        <div class="container"> 
-            <div class="row">
-                <table class="w3-table w3-bordered w3-centered" style="color:black; margin: auto">
-                    <tr>
-                        <th> Date </th>
-                        <th> Status </th>
-                        <th> Comment </th>
-                    </tr>
-                    <tr class="w3-hover-amber">
-                        <td> 01/10/2018 </td>
-                        <td> Present </td>
-                        <td> &nbsp; </td>
-                    </tr>
-                    <tr class="w3-hover-amber">
-                        <td> 02/10/2018 </td>
-                        <td> Absent </td>
-                        <td> Excused </td>
-                    </tr>
-                    <tr class="w3-hover-orange" style="font-weight:bold">
-                        <td> Days Present </td>
-                        <td> 1 </td>
-                    </tr>
-                </table>
-            </div>
-            <br>
-            <script>
-            function goBack(){
-                window.history.back();
-            }
-            </script>
-            <div class="row course_boxes" style="margin:auto">
-                <div style="margin:auto">
-                    <div>
-                        <button class="button" onclick="goBack()"> Back </button>
-                    </div>
-                </div>
-            </div>
-        </div>		
-        </div>
 
     <!-- footer -->
     <div class="footer">

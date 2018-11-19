@@ -1,7 +1,7 @@
 <?php
 include 'DBController.php';
 $db_handle = new DBController();
-$countryResult = $db_handle->runQuery("SELECT DISTINCT user_type FROM teacher ORDER BY user_type ASC");
+$countryResult = $db_handle->runQuery("SELECT DISTINCT name FROM teacher ORDER BY name ASC");
 ?>
 <html>
 <head>
@@ -18,7 +18,7 @@ $countryResult = $db_handle->runQuery("SELECT DISTINCT user_type FROM teacher OR
                         <?php
                         if (! empty($countryResult)) {
                             foreach ($countryResult as $key => $value) {
-                                echo '<option value="' . $countryResult[$key]['user_type'] . '">' . $countryResult[$key]['user_type'] . '</option>';
+                                echo '<option value="' . $countryResult[$key]['name'] . '">' . $countryResult[$key]['name'] . '</option>';
                             }
                         }
                         ?>
@@ -42,17 +42,17 @@ $countryResult = $db_handle->runQuery("SELECT DISTINCT user_type FROM teacher OR
                 <?php
                     $query = "SELECT * from teacher";
                     $i = 0;
-                    $selectedOptionCount = count($_POST['user_type']);
+                    $selectedOptionCount = count($_POST['department_ID']);
                     $selectedOption = "";
                     while ($i < $selectedOptionCount) {
-                        $selectedOption = $selectedOption . "'" . $_POST['user_type'][$i] . "'";
+                        $selectedOption = $selectedOption . "'" . $_POST['department_ID'][$i] . "'";
                         if ($i < $selectedOptionCount - 1) {
                             $selectedOption = $selectedOption . ", ";
                         }
                         
                         $i ++;
                     }
-                    $query = $query . " WHERE user_type in (" . $selectedOption . ")";
+                    $query = $query . " WHERE department in (" . $selectedOption . ")";
                     
                     $result = $db_handle->runQuery($query);
                 }
@@ -62,7 +62,7 @@ $countryResult = $db_handle->runQuery("SELECT DISTINCT user_type FROM teacher OR
                 <tr>
                         <td><div class="col" id="user_data_1"><?php echo $result[$key]['teacher_id']; ?></div></td>
                         <td><div class="col" id="user_data_2"><?php echo $result[$key]['teacher_first_name']; ?> </div></td>
-                        <td><div class="col" id="user_data_3"><?php echo $result[$key]['user_type']; ?> </div></td>
+                        <td><div class="col" id="user_data_3"><?php echo $result[$key]['teacher_first_name']; ?> </div></td>
                     </tr>
                 <?php
                     }

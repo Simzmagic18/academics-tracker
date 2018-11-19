@@ -3,6 +3,25 @@ $link = mysqli_connect("localhost", "root", "", "academicstracker2");
 
 ?>
 
+<?php 
+include('conn.php');
+require_once("session.php");
+?>
+
+<?php
+$query = " SELECT * FROM `HOD` WHERE HOD_id = '{$_SESSION['user']}' ";
+$run_query = mysqli_query($conn, $query);
+    
+if(mysqli_num_rows($run_query) == 1){
+while($result = mysqli_fetch_assoc($run_query)){
+$user_fname = $result['HOD_first_name'];
+$user_lname = $result['HOD_last_name'];
+
+}
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,7 +48,7 @@ $link = mysqli_connect("localhost", "root", "", "academicstracker2");
                     <div class="logo_container"><a href="teachers.html">
                             <div class="logo">
                                     <img src="images/ATlogo221.png" alt="logo" width="64px" height="66px">&nbsp;
-                                    <span>AT: Teacher</span>
+                                    <span>AT: Head Of Department</span>
                             </div></a>
                     </div>
 
@@ -37,7 +56,7 @@ $link = mysqli_connect("localhost", "root", "", "academicstracker2");
                     <nav class="main_nav_container">
                             <div class="main_nav">
                                     <ul class="main_nav_list">
-                                            <li class="main_nav_item"><a href="teacherHOD.html">HOME</a></li>
+                                            <li class="main_nav_item"><a href="teacherHOD.php">HOME</a></li>
                                             <li class="main_nav_item"><a href="../about.html">ABOUT US</a></li>
                                             <li class="main_nav_item"><a href="../contact.html">CONTACT US</a></li>
                                             <li class="main_nav_item"><a href="profile.html">PROFILE</a></li>
@@ -69,7 +88,7 @@ $link = mysqli_connect("localhost", "root", "", "academicstracker2");
             <div class="menu_inner menu_mm">
                 <div class="menu menu_mm">
                     <ul class="menu_list menu_mm">
-                            <li class="menu_item menu_mm"><a href="teachersHOD.html">HOME</a></li>
+                            <li class="menu_item menu_mm"><a href="teachersHOD.php">HOME</a></li>
                             <li class="menu_item menu_mm"><a href="../about.html">ABOUT US</a></li>
                             <li class="menu_item menu_mm"><a href="../contact.html">CONTACT US</a></li>
                             <li class="menu_item menu_mm"><a href="profile.html">PROFILE</a></li>
@@ -85,7 +104,7 @@ $link = mysqli_connect("localhost", "root", "", "academicstracker2");
                     <div class="home_background prlx" style="background-image:url(images/courses_background.jpg)"></div>
             </div>
             <div class="home_content">
-                    <h1> Teacher </h1>
+                    <h1> <?php echo $user_fname." ".$user_lname; ?>  </h1>
             </div>
     </div>
    
@@ -110,71 +129,86 @@ $link = mysqli_connect("localhost", "root", "", "academicstracker2");
                 <a href="Subjects.html"> <img class="classimg" src="classes.svg" alt="classes" style="width:100%"></a>
                 <div class="class-label">
                     <a href="Subjects.html">Subject 1</a>
+    <div class="row">
+        <div class="tab">
+            <button class="tablinks" onclick="openTab(event, 'Subject')" id="defaultOpen">Subjects</button>
+            <button class="tablinks" onclick="openTab(event, 'Teacher')">Teachers</button>
+            <button class="tablinks" onclick="openTab(event, 'MyClass')">My Classes</button>
+        </div>
+
+        <div id="Subject" class="tabcontent">
+            <h2>Subjects</h2>
+            
+            <div class="w3-row-padding">
+                <div class="column">
+                    <a href="Subjects.html"> <img class="classimg" src="classes.svg" alt="classes" style="width:100%"></a>
+                    <div class="class-label">
+                        <a href="Subjects.html">Subject 1</a>
+                    </div>
+                </div>
+                <div class="column">
+                    <a href=""> <img class="classimg" src="classes.svg" alt="classes" style="width:100%"></a>
+                    <div class="class-label">
+                        <a href="">Subject 2</a>
+                    </div>
+                </div>
+                <div class="column">
+                    <a href=""> <img class="classimg" src="classes.svg" alt="classes" style="width:100%"></a>
+                    <div class="class-label">
+                        <a href="">Subject 3</a>
+                    </div>
                 </div>
             </div>
-            <div class="column">
-                <a href=""> <img class="classimg" src="classes.svg" alt="classes" style="width:100%"></a>
-                <div class="class-label">
-                    <a href="">Subject 2</a>
+            
+        </div>
+
+        <div id="Teacher" class="tabcontent">
+            <h2>Teachers</h2>
+            <div class="row">
+                <div class="column">
+                    <a href=""> <img class="classimg" src="Teacher.svg" alt="classes" style="width:100%"></a>
+                    <div class="class-label">
+                        <a href="">Teacher 1</a>
+                    </div>
                 </div>
-            </div>
-            <div class="column">
-                <a href=""> <img class="classimg" src="classes.svg" alt="classes" style="width:100%"></a>
-                <div class="class-label">
-                    <a href="">Subject 3</a>
+                <div class="column">
+                    <a href=""> <img class="classimg" src="Teacher.svg" alt="classes" style="width:100%"></a>
+                    <div class="class-label">
+                        <a href="">Teacher 2</a>
+                    </div>
+                </div>
+                <div class="column">
+                    <a href=""> <img class="classimg" src="Teacher.svg" alt="classes" style="width:100%"></a>
+                    <div class="class-label">
+                        <a href="">Teacher 3</a>
+                    </div>
+                </div>
+            </div> 
+        </div>
+
+        <div id="MyClass" class="tabcontent">
+            <h2>My Classes</h2>
+            <div class="w3-row-padding">
+                <div class="column">
+                    <a href="Subjects.html"> <img class="classimg" src="classes.svg" alt="classes" style="width:100%"></a>
+                    <div class="class-label">
+                        <a href="teachers.html">Class 1</a>
+                    </div>
+                </div>
+                <div class="column">
+                    <a href=""> <img class="classimg" src="classes.svg" alt="classes" style="width:100%"></a>
+                    <div class="class-label">
+                        <a href="">Class 2</a>
+                    </div>
+                </div>
+                <div class="column">
+                    <a href=""> <img class="classimg" src="classes.svg" alt="classes" style="width:100%"></a>
+                    <div class="class-label">
+                        <a href="">Class 3</a>
+                    </div>
                 </div>
             </div>
         </div>
-        
-    </div>
-
-    <div id="Teacher" class="tabcontent">
-        <h2>Teachers</h2>
-        <div class="row">
-            <div class="column">
-                <a href=""> <img class="classimg" src="Teacher.svg" alt="classes" style="width:100%"></a>
-                <div class="class-label">
-                    <a href="">Teacher 1</a>
-                </div>
-            </div>
-            <div class="column">
-                <a href=""> <img class="classimg" src="Teacher.svg" alt="classes" style="width:100%"></a>
-                <div class="class-label">
-                    <a href="">Teacher 2</a>
-                </div>
-            </div>
-            <div class="column">
-                <a href=""> <img class="classimg" src="Teacher.svg" alt="classes" style="width:100%"></a>
-                <div class="class-label">
-                    <a href="">Teacher 3</a>
-                </div>
-            </div>
-        </div> 
-    </div>
-
-    <div id="MyClass" class="tabcontent">
-        <h2>My Classes</h2>
-        <div class="w3-row-padding">
-            <div class="column">
-                <a href="Subjects.html"> <img class="classimg" src="classes.svg" alt="classes" style="width:100%"></a>
-                <div class="class-label">
-                    <a href="teachers.html">Class 1</a>
-                </div>
-            </div>
-            <div class="column">
-                <a href=""> <img class="classimg" src="classes.svg" alt="classes" style="width:100%"></a>
-                <div class="class-label">
-                    <a href="">Class 2</a>
-                </div>
-            </div>
-            <div class="column">
-                <a href=""> <img class="classimg" src="classes.svg" alt="classes" style="width:100%"></a>
-                <div class="class-label">
-                    <a href="">Class 3</a>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <script>
         function openTab(evt, cityName) {
@@ -196,6 +230,25 @@ $link = mysqli_connect("localhost", "root", "", "academicstracker2");
     </script>
    </div>
 </div>
+        <script>
+            function openTab(evt, cityName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+                for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(cityName).style.display = "block";
+            evt.currentTarget.className += " active";
+            }
+
+            // Get the element with id="defaultOpen" and click on it
+            document.getElementById("defaultOpen").click();
+        </script>
+    </div>
     
 
 <!-- Footer -->
