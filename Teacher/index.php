@@ -1,32 +1,74 @@
 <?php
 include('conn.php');
 
+/*
 if($_SERVER['REQUEST_METHOD'] == "POST")
 {
-	
 	session_start();
+
 	//Username and Password sent from Form
-	$username = mysqli_real_escape_string($conn, $_POST['teacher_id']);
+	$username = mysqli_real_escape_string($conn, $_POST['student_id']);
 	$password = mysqli_real_escape_string($conn, $_POST['password']);
 	$password = md5($password);
 	$_SESSION['login_user']=$username;
-	$sql = "SELECT * FROM teacher WHERE teacher_id='$username' AND '$password'";
+	$sql = "SELECT * FROM student WHERE student_id = '$username' AND '$password'";
 	$query = mysqli_query($conn, $sql);
-	$res=mysqli_num_rows($query);
+	$res= mysqli_num_rows($query);
 	
 	//If result match $username and $password Table row must be 1 row
 	if($res == 1)
 	{
 		echo 'Password is valid!';
-		//$_SESSION['teacher_id']=$res['teacher_id'];
+		$_SESSION['student_id']= $username;
 		header("Location: home.php"); 
 
 		//header("Location: welcome.php");
 	}
 	else
 	{
-		echo 'Invalid Username and Password Combination';
+	
+	}	echo 'Invalid Username and Password Combination';
 	}
+*/
+
+?>
+
+<?php
+if(isset($_POST['submit'])){
+
+//Username and Password sent from Form
+$login_email = mysqli_real_escape_string($conn, $_POST['email']);
+$login_password = mysqli_real_escape_string($conn, $_POST['password']);
+$login_password = md5($login_password);  
+
+if(empty($login_email)){
+$error_msg = "E-mail Field Can not be empty";
+}
+
+elseif(empty($login_password)){
+$error_msg = "Password Field Can not be empty";
+}
+
+else{
+$query = " SELECT * FROM `teacher` WHERE `email` = '{$login_email}' AND `password` = '{$login_password}' ";
+$run_query = mysqli_query($conn, $query);
+            
+if(mysqli_num_rows($run_query) == 1){
+session_start();
+                
+while($result = mysqli_fetch_assoc($run_query)){
+
+echo 'Password is valid!';
+$user_id = $result['teacher_id'];
+$_SESSION['user'] = $user_id;
+
+header("Location:home.php");
+}
+}
+else{
+$error_msg = "Login Failed";
+}
+}
 }
 ?>
 
@@ -37,11 +79,11 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
 <body>
 <div class="form-wrapper">
   
-<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+<form method='POST' action="<?php echo $_SERVER["PHP_SELF"]; ?>">
     <h3>Login here</h3>
 	
     <div class="form-item">
-		<input type="text" name="teacher_id" required="required" placeholder="ID" autofocus required></input>
+		<input type="text" name="email" required="required" placeholder="Enter E-mail" autofocus required></input>
     </div>
     
     <div class="form-item">
