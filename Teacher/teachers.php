@@ -1,21 +1,19 @@
 <?php 
-include('conn.php');
-require_once("session.php");
+    include('conn.php');
+    require_once("session.php");
 ?>
 
 <?php
-$query = " SELECT * FROM `teacher` WHERE teacher_id = '{$_SESSION['user']}' ";
-$run_query = mysqli_query($conn, $query);
-    
-if(mysqli_num_rows($run_query) == 1){
-while($result = mysqli_fetch_assoc($run_query)){
-$user_fname = $result['teacher_first_name'];
-$user_lname = $result['teacher_last_name'];
-
-}
-}
+    $query = " SELECT * FROM `teacher` WHERE teacher_id = '{$_SESSION['user']}' ";
+    $run_query = mysqli_query($conn, $query);
+        
+    if(mysqli_num_rows($run_query) == 1){
+        while($result = mysqli_fetch_assoc($run_query)){
+            $user_fname = $result['teacher_first_name'];
+            $user_lname = $result['teacher_last_name'];
+        }
+    }
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -70,7 +68,6 @@ $user_lname = $result['teacher_last_name'];
 <body>
 
 <div class="super_container">
-
     <!-- Header -->
     <header class="header d-flex flex-row">
             <div class="header_content d-flex flex-row align-items-center">
@@ -136,30 +133,7 @@ $user_lname = $result['teacher_last_name'];
             <div class="home_content">
                     <h1> <?php echo $user_fname." ".$user_lname; ?> </h1>
             </div>
-    </div>
-
-    <!-- Popular -->
-    <!-- classes -->
-    <!--div> &nbsp; </div>
-    <div class="container">
-        <div class="row">
-            <div class="col">
-                <div class="section_title text-center">
-                        <h1> Classes </h1>
-                </div>
-            </div>
-        </div><br><br>          
-        <div class="row course_boxes" style="margin:auto">
-            <div style="margin:auto">
-                <div>
-                    <a href="class.html"><button class="button" onclick="#"><h2>&nbsp;&nbsp; Class 1 &nbsp;&nbsp;</h2></button></a>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <a href="class.html"><button class="button" onclick="#"><h2>&nbsp;&nbsp;&nbsp; Class 2 &nbsp;&nbsp;&nbsp;</h2></button></a>
-                </div>
-            </div>
-        </div>
-    </div-->
-    <div> &nbsp; </div>
+    </div><div> &nbsp; </div>
 
     <!-- tabs-->
     <div class="container">
@@ -273,7 +247,14 @@ $user_lname = $result['teacher_last_name'];
                                 <td> 95 </td>
                             </tr>
                         </table>
-                        <div id="averageCount1"></div>
+                        <script src="http://code.jquery.com/jquery-3.1.0.slim.min.js"></script>
+                        <script src="sumTable.js"></script>
+                        <script type="text/javascript">
+                            $(".first").sumTable({
+                            "skipFirstColumn" : true,
+                            "totalClass" : "className anotherClassName"
+                            });
+                        </script>
                     </div>
                 </div>
                 <div class="accordion_container">
@@ -433,7 +414,14 @@ $user_lname = $result['teacher_last_name'];
                                 <td> 80 </td>
                             </tr>
                         </table>
-                        <div id="averageCount1"></div>
+                        <script src="http://code.jquery.com/jquery-3.1.0.slim.min.js"></script>
+                        <script src="sumTable.js"></script>
+                        <script type="text/javascript">
+                            $(".first").sumTable({
+                            "skipFirstColumn" : true,
+                            "totalClass" : "className anotherClassName"
+                            });
+                        </script>
                     </div>
                 </div>
                 <div class="accordion_container">
@@ -476,6 +464,18 @@ $user_lname = $result['teacher_last_name'];
     </div>
 </div>
 
+<script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-36251023-1']);
+    _gaq.push(['_setDomainName', 'jqueryscript.net']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+</script>
 <script src="js/jquery-3.2.1.min.js"></script>
 <script src="styles/bootstrap4/popper.js"></script>
 <script src="styles/bootstrap4/bootstrap.min.js"></script>
