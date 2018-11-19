@@ -1,3 +1,8 @@
+<?php
+$link = mysqli_connect("localhost", "root", "", "academicstracker2");
+
+?>
+
 <?php 
 include('conn.php');
 require_once("session.php");
@@ -61,8 +66,8 @@ $user_lname = $result['HOD_last_name'];
             <div class="header_side d-flex flex-row justify-content-center align-items-center">
                         <a href="logout.php"><span>LOGOUT</span></a>
                     </div>
-                </div>
-            </div>
+                
+     
 
             <!-- Hamburger -->
             <div class="hamburger_container">
@@ -106,6 +111,23 @@ $user_lname = $result['HOD_last_name'];
         <h1> Department Monitoring </h1>
     </div>
     
+   <div class="row">
+    <div class="tab">
+        <button class="tablinks" onclick="openTab(event, 'Subject')" id="defaultOpen">Subjects</button>
+        <button class="tablinks" onclick="openTab(event, 'Teacher')">Teachers</button>
+        <button class="tablinks" onclick="openTab(event, 'MyClass')">My Classes</button>
+    </div>
+        
+    <div id="Subject" class="tabcontent">
+        <h2>Subjects</h2>
+        <?php
+        $sql = "SELECT subject_name FROM subject INNER JOIN hod ON subject.department_ID=hod.department_ID";
+        ?>
+        <div class="w3-row-padding">
+            <div class="column">
+                <a href="Subjects.html"> <img class="classimg" src="classes.svg" alt="classes" style="width:100%"></a>
+                <div class="class-label">
+                    <a href="Subjects.html">Subject 1</a>
     <div class="row">
         <div class="tab">
             <button class="tablinks" onclick="openTab(event, 'Subject')" id="defaultOpen">Subjects</button>
@@ -187,6 +209,26 @@ $user_lname = $result['HOD_last_name'];
             </div>
         </div>
 
+    <script>
+        function openTab(evt, cityName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(cityName).style.display = "block";
+        evt.currentTarget.className += " active";
+        }
+
+        // Get the element with id="defaultOpen" and click on it
+        document.getElementById("defaultOpen").click();
+    </script>
+   </div>
+</div>
         <script>
             function openTab(evt, cityName) {
             var i, tabcontent, tablinks;
