@@ -1,3 +1,23 @@
+<?php 
+include('conn.php');
+//include('session.php'); 
+require_once("session.php");
+//require_once("functions.php");
+?>
+
+<?php
+$query = " SELECT * FROM `guardian` WHERE guardian_id = '{$_SESSION['user']}' ";
+$run_query = mysqli_query($conn, $query);
+    
+if(mysqli_num_rows($run_query) == 1){
+while($result = mysqli_fetch_assoc($run_query)){
+$user_fname = $result['guardian_first_name'];
+$user_lname = $result['guardian_last_name'];
+
+}
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -88,7 +108,7 @@
             <div class="home_background prlx" style="background-image:url(images/courses_background.jpg)"></div>
         </div>
         <div class="home_content">
-            <h1>Dependent's Name</h1>
+            <h1><?php echo $user_fname." ".$user_lname; ?></h1>
         </div>
     </div><br>
 
