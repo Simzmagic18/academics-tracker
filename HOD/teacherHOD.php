@@ -1,3 +1,22 @@
+<?php 
+include('conn.php');
+require_once("session.php");
+?>
+
+<?php
+$query = " SELECT * FROM `HOD` WHERE HOD_id = '{$_SESSION['user']}' ";
+$run_query = mysqli_query($conn, $query);
+    
+if(mysqli_num_rows($run_query) == 1){
+while($result = mysqli_fetch_assoc($run_query)){
+$user_fname = $result['HOD_first_name'];
+$user_lname = $result['HOD_last_name'];
+
+}
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,7 +43,7 @@
                     <div class="logo_container"><a href="teachers.html">
                             <div class="logo">
                                     <img src="images/ATlogo221.png" alt="logo" width="64px" height="66px">&nbsp;
-                                    <span>AT: Teacher</span>
+                                    <span>AT: Head Of Department</span>
                             </div></a>
                     </div>
 
@@ -32,7 +51,7 @@
                     <nav class="main_nav_container">
                             <div class="main_nav">
                                     <ul class="main_nav_list">
-                                            <li class="main_nav_item"><a href="teacherHOD.html">HOME</a></li>
+                                            <li class="main_nav_item"><a href="teacherHOD.php">HOME</a></li>
                                             <li class="main_nav_item"><a href="../about.html">ABOUT US</a></li>
                                             <li class="main_nav_item"><a href="../contact.html">CONTACT US</a></li>
                                             <li class="main_nav_item"><a href="profile.html">PROFILE</a></li>
@@ -64,7 +83,7 @@
             <div class="menu_inner menu_mm">
                 <div class="menu menu_mm">
                     <ul class="menu_list menu_mm">
-                            <li class="menu_item menu_mm"><a href="teachersHOD.html">HOME</a></li>
+                            <li class="menu_item menu_mm"><a href="teachersHOD.php">HOME</a></li>
                             <li class="menu_item menu_mm"><a href="../about.html">ABOUT US</a></li>
                             <li class="menu_item menu_mm"><a href="../contact.html">CONTACT US</a></li>
                             <li class="menu_item menu_mm"><a href="profile.html">PROFILE</a></li>
@@ -80,7 +99,7 @@
                     <div class="home_background prlx" style="background-image:url(images/courses_background.jpg)"></div>
             </div>
             <div class="home_content">
-                    <h1> Teacher </h1>
+                    <h1> <?php echo $user_fname." ".$user_lname; ?>  </h1>
             </div>
     </div>
    

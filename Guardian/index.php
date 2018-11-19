@@ -1,36 +1,6 @@
 <?php
 include('conn.php');
 
-/*
-if($_SERVER['REQUEST_METHOD'] == "POST")
-{
-	session_start();
-
-	//Username and Password sent from Form
-	$username = mysqli_real_escape_string($conn, $_POST['student_id']);
-	$password = mysqli_real_escape_string($conn, $_POST['password']);
-	$password = md5($password);
-	$_SESSION['login_user']=$username;
-	$sql = "SELECT * FROM student WHERE student_id = '$username' AND '$password'";
-	$query = mysqli_query($conn, $sql);
-	$res= mysqli_num_rows($query);
-	
-	//If result match $username and $password Table row must be 1 row
-	if($res == 1)
-	{
-		echo 'Password is valid!';
-		$_SESSION['student_id']= $username;
-		header("Location: home.php"); 
-
-		//header("Location: welcome.php");
-	}
-	else
-	{
-	
-	}	echo 'Invalid Username and Password Combination';
-	}
-*/
-
 ?>
 
 <?php
@@ -66,7 +36,7 @@ header("Location:home.php");
 }
 }
 else{
-$error_msg = "Login Failed";
+$error_msg = "Invalid Username and Password Combination";
 }
 }
 }

@@ -1,8 +1,6 @@
 <?php 
-include('conn.php');
-//include('session.php'); 
+include('conn.php'); 
 require_once("session.php");
-//require_once("functions.php");
 ?>
 
 
