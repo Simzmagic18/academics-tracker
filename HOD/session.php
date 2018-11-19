@@ -1,8 +1,10 @@
 <?php
 session_start();
-if(isset($_SESSION['user'])){
+if(isset($_SESSION['user']) || isset($_SESSION['dep']) ){
         
-}else{
+}
+
+else{
 header("location:login.php?msg= No Access");
 }
 ?>

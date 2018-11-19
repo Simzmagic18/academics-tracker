@@ -4,14 +4,13 @@ require_once("session.php");
 ?>
 
 <?php
-$query = " SELECT * FROM `HOD` WHERE HOD_id = '{$_SESSION['user']}' ";
+$query = " SELECT * FROM `HOD` WHERE HOD_id = '{$_SESSION['user']}'"; 
 $run_query = mysqli_query($conn, $query);
     
 if(mysqli_num_rows($run_query) == 1){
 while($result = mysqli_fetch_assoc($run_query)){
 $user_fname = $result['HOD_first_name'];
 $user_lname = $result['HOD_last_name'];
-
 }
 }
 ?>
