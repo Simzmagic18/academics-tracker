@@ -174,12 +174,12 @@
                                 <th> 01/10/2018 &nbsp;</th>
                                 <th> Comment &nbsp;</th>
                             </tr>
-                            <tr c>
+                            <tr class="w3-hover-amber">
                                 <td>Peter Griffin</td>
                                 <td>Present</td>
                                 <td> &nbsp;</td>
                             </tr>
-                            <tr>
+                            <tr class="w3-hover-amber">
                                 <td>Lois Daniels</td>
                                 <td>Absent</td>
                                 <td>Excused</td>
@@ -192,25 +192,39 @@
                     <div class="accordion d-flex flex-row align-items-center" style="color:black; font-weight: bold"> Record Attendance </div>
                     <div class="accordion_panel" style="overflow-x:auto;"><br>
                         <table class="w3-bordered" style="color:black; overflow-x:auto">
-                                <tr style="background-color: #ffb606">
-                                    <th> Student Name &nbsp;</th>
-                                    <th> 01/10/2018 &nbsp;</th>
-                                    <th> Comment &nbsp;</th>
-                                </tr>
-                                <tr>
-                                    <td> Peter Griffin </td>
-                                    <td>
-                                        <select id="status">
-                                            <option id="present" selected>Present</option>
-                                            <option id="Absent">Absent</option>
-                                        </select>
-                                    </td>
-                                    <td>
-                                        <input class="w3-input" id="comment" type="text" placeholder="comment">
-                                    </td>
-                                </tr>
-                            </table>
-                            <div id="averageCount1"></div>
+                            <tr style="background-color: #ffb606">
+                                <th> Student Name &nbsp;</th>
+                                <th> 01/10/2018 &nbsp;</th>
+                                <th> Comment &nbsp;</th>
+                            </tr>
+                            <tr class="w3-hover-amber">
+                                <td> Peter Griffin </td>
+                                <td>
+                                    <select id="status">
+                                        <option id="present" selected>Present</option>
+                                        <option id="Absent">Absent</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <input class="w3-input" id="comment" type="text" placeholder="comment">
+                                </td>
+                            </tr>
+                            <tr class="w3-hover-amber">
+                                <td> Peter Griffin </td>
+                                <td>
+                                    <select id="status">
+                                        <option id="present" selected>Present</option>
+                                        <option id="Absent">Absent</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <input class="w3-input" id="comment" type="text" placeholder="comment">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><button id="submit" class="button" value="Submit Marks">Submit Marks</button></td>
+                            </tr>
+                        </table>
                     </div>
                 </div>
                 <div class="accordion_container">
@@ -223,21 +237,21 @@
                         <canvas id="chart1" style="height:200px; width: 50%"></canvas>
                         
                         <!-- table -->
-                        <table class="w3-bordered" style="color:black; overflow-x:auto;">
+                        <table class="w3-bordered" style="color:black; overflow-x:auto">
                             <tr style="background-color: #ffb606">
                                 <th> Student Name &nbsp;</th>
-                                <th> 01/10/2018 &nbsp;</th>
-                                <th> Comment &nbsp;</th>
+                                <th> Assignment 1 (%)&nbsp;</th>
+                                <th> Exercise 1 (%)&nbsp;</th>
                             </tr>
-                            <tr>
+                            <tr class="w3-hover-amber">
                                 <td>Peter Griffin</td>
-                                <td>Present</td>
-                                <td> &nbsp;</td>
+                                <td> 85 </td>
+                                <td> 100 </td>
                             </tr>
-                            <tr>
+                            <tr class="w3-hover-amber">
                                 <td>Lois Daniels</td>
-                                <td>Absent</td>
-                                <td>Excused</td>
+                                <td> 100 </td>
+                                <td> 95 </td>
                             </tr>
                         </table>
                         <div id="averageCount1"></div>
@@ -247,24 +261,27 @@
                     <div class="accordion d-flex flex-row align-items-center" style="color:black; font-weight: bold"> Record Marks </div>
                     <div class="accordion_panel"><br>
                         <!--content-->
-                        <table class="w3-bordered" style="color:black; overflow-x:auto;">
+                        <table class="w3-bordered" style="color:black; overflow-x:auto">
                             <tr style="background-color: #ffb606">
-                                <th> Student Name &nbsp;</th>
-                                <th> Tasks &nbsp;</th>
-                                <th> Comment &nbsp;</th>
+                                <th> Student Name </th>
+                                <th>
+                                    Task Name:&nbsp;<input class="w3-input" type="text" id="taskName"><p style="color:black; font-style:italic">Record mark as a percentage</p>
+                                </th>
                             </tr>
-                            <tr>
-                                <td>Peter Griffin</td>
-                                <td>Present</td>
-                                <td> &nbsp;</td>
+                            <tr class="w3-hover-amber">
+                                <td> Peter Griffin </td>
+                                <td><input class="w3-input" type="text" id="mark" placeholder="Mark"></td>
                             </tr>
-                            <tr>
+                            <tr class="w3-hover-amber">
                                 <td>Lois Daniels</td>
-                                <td>Absent</td>
-                                <td>Excused</td>
+                                <td><input class="w3-input" type="text" id="mark" placeholder="Mark"></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <button id="submit" class="button" value="Submit Marks">Submit Marks</button>
+                                </td>
                             </tr>
                         </table>
-                        <div id="averageCount1"></div>
                     </div>
                 </div>
             </div>
@@ -293,12 +310,12 @@
                                 <th> 01/10/2018 &nbsp;</th>
                                 <th> Comment &nbsp;</th>
                             </tr>
-                            <tr>
+                            <tr class="w3-hover-amber">
                                 <td>Peter Griffin</td>
                                 <td>Present</td>
                                 <td> &nbsp;</td>
                             </tr>
-                            <tr>
+                            <tr class="w3-hover-amber">
                                 <td>Lois Daniels</td>
                                 <td>Present</td>
                                 <td>&nbsp;</td>
@@ -310,24 +327,64 @@
                 <div class="accordion_container">
                     <div class="accordion d-flex flex-row align-items-center" style="color:black; font-weight: bold"> Record Attendance </div>
                     <div class="accordion_panel"><br>
-                        <table class="w3-bordered" style="color:black; overflow-x:auto">
-                                <tr style="background-color: #ffb606">
-                                    <th> Student Name &nbsp;</th>
-                                    <th> 01/10/2018 &nbsp;</th>
-                                    <th> Comment &nbsp;</th>
-                                </tr>
-                                <tr>
-                                    <td>Peter Griffin</td>
-                                    <td>Present</td>
-                                    <td> &nbsp;</td>
-                                </tr>
-                                <tr>
-                                    <td>Lois Daniels</td>
-                                    <td>Absent</td>
-                                    <td>Excused</td>
-                                </tr>
-                            </table>
-                            <div id="averageCount1"></div>
+                        <table class="w3-bordered" style="color:black; overflow-x:auto" oninput="sum()">
+                            <tr style="background-color: #ffb606">
+                                <th> Student Name &nbsp;</th>
+                                <th> 01/10/2018 &nbsp;</th>
+                                <th> Comment &nbsp;</th>
+                            </tr>
+                            <tr class="w3-hover-amber">
+                                <td>Peter Griffin</td>
+                                <td>
+                                    <select>
+                                        <option id="present" selected>Present</option>
+                                        <option id="absent">Absent</option>
+                                    </select>
+                                </td>
+                                <td><input class="w3-input" id="comment" placeholder="comment"></td>
+                            </tr>
+                            <tr class="w3-hover-amber">
+                                <td>Lois Daniels</td>
+                                <td>
+                                    <select id="status">
+                                        <option id="present" selected>Present</option>
+                                        <option id="absent">Absent</option>
+                                    </select>
+                                </td>
+                                <td><input class="w3-input" id="comment" placeholder="comment"></td>
+                            </tr>
+                            <tr class="w3-hover-amber">
+                                <td>Lois Daniels</td>
+                                <td>
+                                    <select id="status">
+                                        <option id="present" selected>Present</option>
+                                        <option id="absent">Absent</option>
+                                    </select>
+                                </td>
+                                <td><input class="w3-input" id="comment" placeholder="comment"></td>
+                            </tr>
+                            <tr>
+                                <td><button id="submit" class="button" value="Submit Marks">Submit Marks</button></td>
+                                <td> Total 
+                                    <script>
+                                        var present = 0;
+                                        if (present){
+                                            present = present ++;
+                                        }
+                                        document.write(present);
+                                    </script>
+                                    <script>
+                                        var att = new Array();
+                                        att["present"] = 1;
+                                        att["absent"] = 0;
+
+                                        function countPresent() {
+
+                                        }
+                                    </script>
+                                </td>
+                            </tr>
+                        </table>
                     </div>
                 </div>
                 <div class="accordion_container">
@@ -346,12 +403,12 @@
                                 <th> Assignment 1 (%)&nbsp;</th>
                                 <th> Exercise 1 (%)&nbsp;</th>
                             </tr>
-                            <tr>
+                            <tr class="w3-hover-amber">
                                 <td>Peter Griffin</td>
                                 <td> 60 </td>
                                 <td> 89 </td>
                             </tr>
-                            <tr>
+                            <tr class="w3-hover-amber">
                                 <td>Lois Daniels</td>
                                 <td> 70 </td>
                                 <td> 80 </td>
@@ -371,21 +428,20 @@
                                     Task Name:&nbsp;<input class="w3-input" type="text" id="taskName"><p style="color:black; font-style:italic">Record mark as a percentage</p>
                                 </th>
                             </tr>
-                            <tr>
+                            <tr class="w3-hover-amber">
                                 <td> Peter Griffin </td>
                                 <td><input class="w3-input" type="text" id="mark" placeholder="Mark"></td>
                             </tr>
-                            <tr>
+                            <tr class="w3-hover-amber">
                                 <td>Lois Daniels</td>
                                 <td><input class="w3-input" type="text" id="mark" placeholder="Mark"></td>
                             </tr>
                             <tr>
                                 <td>
-                                    <button id="submit" class="button" value="Submit Marks" onclick="function()">Submit Marks</button>
+                                    <button id="submit" class="button" value="Submit Marks">Submit Marks</button>
                                 </td>
                             </tr>
                         </table>
-                        <div id="averageCount1"></div>
                     </div>
                 </div>
             </div>
@@ -417,8 +473,6 @@
 <script src="js/hTabs.js"></script>
 <script src="js/elements_custom.js"></script>
 <script src="js/graph1.js"></script>
-<script src="js/graph2.js"></script>
-<script src="js/graph3.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.min.js"></script>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
