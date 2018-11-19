@@ -1,3 +1,8 @@
+<?php
+$link = mysqli_connect("localhost", "root", "", "academicstracker2");
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -43,8 +48,8 @@
             <div class="header_side d-flex flex-row justify-content-center align-items-center">
                         <a href="logout.php"><span>LOGOUT</span></a>
                     </div>
-                </div>
-            </div>
+                
+     
 
             <!-- Hamburger -->
             <div class="hamburger_container">
@@ -94,10 +99,12 @@
         <button class="tablinks" onclick="openTab(event, 'Teacher')">Teachers</button>
         <button class="tablinks" onclick="openTab(event, 'MyClass')">My Classes</button>
     </div>
-
+        
     <div id="Subject" class="tabcontent">
         <h2>Subjects</h2>
-        
+        <?php
+        $sql = "SELECT subject_name FROM subject INNER JOIN hod ON subject.department_ID=hod.department_ID";
+        ?>
         <div class="w3-row-padding">
             <div class="column">
                 <a href="Subjects.html"> <img class="classimg" src="classes.svg" alt="classes" style="width:100%"></a>
@@ -188,6 +195,7 @@
         document.getElementById("defaultOpen").click();
     </script>
    </div>
+</div>
     
 
 <!-- Footer -->

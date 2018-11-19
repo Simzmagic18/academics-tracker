@@ -21,7 +21,7 @@ include('conn.php');
     ?> </h3></center>
 	 <div class="reminder">
 	 
-	 <META http-equiv="refresh" content="2;URL=teacherHOD.html"> 
+	 <META http-equiv="refresh" content="2;URL=teacherHOD.php"> 
          <p><a href="teacherHOD.html">Click to Proceed</a></p>
    
     
