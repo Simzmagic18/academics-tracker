@@ -21,6 +21,7 @@ $error_msg = "Password Field Can not be empty";
 
 else{
 $query = " SELECT * FROM `HOD` WHERE `email` = '{$login_email}' AND `password` = '{$login_password}' ";
+
 $run_query = mysqli_query($conn, $query);
             
 if(mysqli_num_rows($run_query) == 1){
@@ -31,6 +32,8 @@ while($result = mysqli_fetch_assoc($run_query)){
 echo 'Password is valid!';
 $user_id = $result['HOD_id'];
 $_SESSION['user'] = $user_id;
+$dep_id = $result['department_ID'];
+$_SESSION['dep'] = $dep_id;
 
 header("Location:home.php");
 }
