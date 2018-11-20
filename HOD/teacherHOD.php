@@ -1,17 +1,21 @@
+<?php
+$link = mysqli_connect("localhost", "root", "", "academicstracker2");
+
+?>
+
 <?php 
 include('conn.php');
 require_once("session.php");
 ?>
 
 <?php
-$query = " SELECT * FROM `HOD` WHERE HOD_id = '{$_SESSION['user']}' ";
+$query = " SELECT * FROM `HOD` WHERE HOD_id = '{$_SESSION['user']}'"; 
 $run_query = mysqli_query($conn, $query);
     
 if(mysqli_num_rows($run_query) == 1){
 while($result = mysqli_fetch_assoc($run_query)){
 $user_fname = $result['HOD_first_name'];
 $user_lname = $result['HOD_last_name'];
-
 }
 }
 ?>
@@ -43,7 +47,7 @@ $user_lname = $result['HOD_last_name'];
                     <div class="logo_container"><a href="teachers.html">
                             <div class="logo">
                                     <img src="images/ATlogo221.png" alt="logo" width="64px" height="66px">&nbsp;
-                                    <span>AT: Head Of Department</span>
+                                    <span>AT: H.O.D</span>
                             </div></a>
                     </div>
 
@@ -62,8 +66,8 @@ $user_lname = $result['HOD_last_name'];
             <div class="header_side d-flex flex-row justify-content-center align-items-center">
                         <a href="logout.php"><span>LOGOUT</span></a>
                     </div>
-                </div>
-            </div>
+                
+     
 
             <!-- Hamburger -->
             <div class="hamburger_container">
@@ -107,6 +111,8 @@ $user_lname = $result['HOD_last_name'];
         <h1> Department Monitoring </h1>
     </div>
     
+        
+   
     <div class="row">
         <div class="tab">
             <button class="tablinks" onclick="openTab(event, 'Subject')" id="defaultOpen">Subjects</button>
@@ -114,20 +120,36 @@ $user_lname = $result['HOD_last_name'];
             <button class="tablinks" onclick="openTab(event, 'MyClass')">My Classes</button>
         </div>
 
+        
+        
         <div id="Subject" class="tabcontent">
             <h2>Subjects</h2>
-            
+            <?php
+         $sql = "SELECT subject_name FROM subject INNER JOIN hod ON subject.department_ID = hod.department_ID";
+         $result = mysqli_query($conn, $sql);
+         $datas = array();
+         if (mysqli_num_rows($result) > 0){
+             while($row = mysqli_fetch_assoc($result)){
+                 $datas[] = $row;
+                 
+             }
+         }
+         foreach($datas[0] as $data){
+         
+         }
+         foreach ($datas[1] as $dats)
+        ?>
             <div class="w3-row-padding">
                 <div class="column">
                     <a href="Subjects.html"> <img class="classimg" src="classes.svg" alt="classes" style="width:100%"></a>
                     <div class="class-label">
-                        <a href="Subjects.html">Subject 1</a>
+                    <a href="Subjects.html"><?php echo $data?></a>  
                     </div>
                 </div>
                 <div class="column">
                     <a href=""> <img class="classimg" src="classes.svg" alt="classes" style="width:100%"></a>
                     <div class="class-label">
-                        <a href="">Subject 2</a>
+                    <a href="Subjects.html"><?php echo $dats?></a>
                     </div>
                 </div>
                 <div class="column">
@@ -140,13 +162,31 @@ $user_lname = $result['HOD_last_name'];
             
         </div>
 
+
+
+
         <div id="Teacher" class="tabcontent">
             <h2>Teachers</h2>
+         <?php
+         $sqly = "SELECT CONCAT(teacher_first_name,' ', teacher_last_name) AS whole_name  FROM teacher INNER JOIN department ON department.department_ID = teacher.department_ID";
+         $results = mysqli_query($conn, $sqly);
+         $data = array();
+         if (mysqli_num_rows($results) > 0){
+             while($rows = mysqli_fetch_assoc($results)){
+                 $data[] = $rows;
+                 
+             }
+         }
+         foreach($data[0] as $dateach){
+         
+         }
+         
+        ?>
             <div class="row">
                 <div class="column">
                     <a href=""> <img class="classimg" src="Teacher.svg" alt="classes" style="width:100%"></a>
                     <div class="class-label">
-                        <a href="">Teacher 1</a>
+                        <a href=""><?php echo $dateach?></a>
                     </div>
                 </div>
                 <div class="column">
@@ -170,7 +210,7 @@ $user_lname = $result['HOD_last_name'];
                 <div class="column">
                     <a href="Subjects.html"> <img class="classimg" src="classes.svg" alt="classes" style="width:100%"></a>
                     <div class="class-label">
-                        <a href="teachers.html">Class 1</a>
+                        <a href="../Teacher/teachers.php">Class 1</a>
                     </div>
                 </div>
                 <div class="column">
@@ -188,6 +228,26 @@ $user_lname = $result['HOD_last_name'];
             </div>
         </div>
 
+    <script>
+        function openTab(evt, cityName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(cityName).style.display = "block";
+        evt.currentTarget.className += " active";
+        }
+
+        // Get the element with id="defaultOpen" and click on it
+        document.getElementById("defaultOpen").click();
+    </script>
+   </div>
+</div>
         <script>
             function openTab(evt, cityName) {
             var i, tabcontent, tablinks;
