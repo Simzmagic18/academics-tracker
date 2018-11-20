@@ -27,7 +27,7 @@ $user_lname = $result['guardian_last_name'];
     <center><h3>Welcome: <?php echo " " .$user_fname." ".$user_lname; ?> </h3></center>
 	 <div class="reminder">
 	 
-	 	<META http-equiv="refresh" content="2;URL=dependent.php"> 
+	 	<META http-equiv="refresh" content="2;URL=Guardian2.php"> 
 
 	 <p><a href="dependent.php">Click to Proceed</a></p>
     <p><a href="logout.php">Log out</a></p>
