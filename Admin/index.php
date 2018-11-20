@@ -2,7 +2,9 @@
 include('conn.php');
 //session_start();
 
+?>
 
+<?php
 if(isset($_POST['submit'])){
 
 //Username and Password sent from Form
@@ -28,7 +30,7 @@ session_start();
 while($result = mysqli_fetch_assoc($run_query)){
 
 echo 'Password is valid!';
-$user_id = $result['administrator_ID'];
+$user_id = $result['adminstrator_ID'];
 $_SESSION['user'] = $user_id;
 
 header("Location:home.php");
