@@ -5,17 +5,17 @@ window.onload = function () {
     let barChart = new Chart(chart1,{
         type:'bar',
         data:{
-            labels:['Assignment 1', 'Exercise 1'],
+            labels:['Assignment ', 'WW1 Quiz'],
             datasets:[{
                 label: 'Individual Marks %',
-                data:[85, 100],
+                data:[20, 50],
                 backgroundColor:'gold',
                 hoverBorderWidth:3,
                 hoverBorderColor:'black'
             },
             {
                 label: 'Class Average %',
-                data:[90, 90],
+                data:[70, 45],
                 backgroundColor:'orange',
                 hoverBorderWidth:3,
                 hoverBorderColor:'black'
