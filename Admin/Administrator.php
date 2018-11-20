@@ -1,3 +1,9 @@
+<?php 
+include('conn.php'); 
+require_once("session.php");
+
+include('home.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -81,7 +87,7 @@
 				<div class="home_background prlx" style="background-image:url(images/news_background.jpg)"></div>
 			</div>
 			<div class="home_content">
-				<h1>Welcome Administrator</h1>
+				<h1>Welcome: <?php echo $user_fname." ".$user_lname; ?></h1>
 			</div>
 		</div>
 

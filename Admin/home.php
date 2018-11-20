@@ -1,11 +1,22 @@
 <?php 
 include('conn.php'); 
-//include('session.php');
+require_once("session.php");
 
-//$result=mysqli_query($conn, "select * from aministrator where admin_id='$session_id'")or die('Error In Session');
-//$row=mysqli_fetch_array($result);
 ?>
 
+
+<?php
+$query = " SELECT * FROM `administrator` WHERE administrator_ID = '{$_SESSION['user']}' ";
+$run_query = mysqli_query($conn, $query);
+    
+if(mysqli_num_rows($run_query) == 1){
+while($result = mysqli_fetch_assoc($run_query)){
+$user_fname = $result['admin_first_name'];
+$user_lname = $result['admin_last_name'];
+
+}
+}
+?>
 
 <html>
 <head>
@@ -20,9 +31,9 @@ include('conn.php');
     ?> </h3></center>
 	 <div class="reminder">
 	 
-	 	<META http-equiv="refresh" content="2;URL=Administrator.html"> 
+	 	<META http-equiv="refresh" content="2;URL=Administrator.php"> 
 
-	 <p><a href="Administrator.html">Click to Proceed</a></p>
+	 <p><a href="Administrator.php">Click to Proceed</a></p>
     <p><a href="logout.php">Log out</a></p>
   </div>
 </div>

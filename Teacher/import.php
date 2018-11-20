@@ -18,8 +18,8 @@ if(isset($_POST["Import"])){
 	         {
 				if($row == 1){ $row++; continue; }
 	          //It wiil insert a row to our subject table from our csv file`
-	           $sql = "INSERT into results (`student_id`, `subject_code`, `task_number`,`task_score`, `comments`) 
-	            	values('$emapData[1]','$emapData[2]','$emapData[3]','$emapData[4]','$emapData[5]')";
+	           $sql = "INSERT into Task_Results (`student_id`, `taskscore`, `percentage`) 
+	            	values('$emapData[1]','$emapData[2]','$emapData[3]')";
 	         //we are using mysql_query function. it returns a resource on true else False on error
 	          $result = mysqli_query($conn, $sql);
 				
@@ -27,7 +27,7 @@ if(isset($_POST["Import"])){
 				{
 					echo "<script type=\"text/javascript\">
 							alert(\"Unsuccesful Upload, Please Make Sure It's A CSV File.\");
-							window.location = \"uploadmarks.php\"
+							window.location = \"teachers.php\"
 						</script>";
 				
 				}
@@ -37,7 +37,7 @@ if(isset($_POST["Import"])){
 	         //throws a message if data successfully imported to mysql database from excel file
 	         echo "<script type=\"text/javascript\">
 						alert(\"CSV File has been successfully Imported.\");
-						window.location = \"index101.php\"
+						window.location = \"teachers.php\"
 					</script>";
 	        
 			 
