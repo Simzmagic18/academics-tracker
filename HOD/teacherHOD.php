@@ -207,7 +207,7 @@ $user_lname = $result['HOD_last_name'];
                 <div class="column">
                     <a href="Subjects.html"> <img class="classimg" src="classes.svg" alt="classes" style="width:100%"></a>
                     <div class="class-label">
-                        <a href="teachers.html">Class 1</a>
+                        <a href="../Teacher/teachers.php">Class 1</a>
                     </div>
                 </div>
                 <div class="column">
