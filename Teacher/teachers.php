@@ -4,7 +4,7 @@ require_once("session.php");
 ?>
 
 <?php
-$query = " SELECT * FROM `teacher` WHERE teacher_id = '{$_SESSION['user']}' ";
+$query = " SELECT * FROM `teacher`  WHERE teacher_id = '{$_SESSION['user']}' ";
 $run_query = mysqli_query($conn, $query);
     
 if(mysqli_num_rows($run_query) == 1){
@@ -14,6 +14,8 @@ $user_lname = $result['teacher_last_name'];
 
 }
 }
+
+
 
 if(isset($_POST['submit'])){
     $date = mysqli_real_escape_string($conn, $_POST['date_t']);
@@ -174,7 +176,7 @@ if(isset($_POST['submit'])){
         <div class="row course_boxes" style="margin:auto">
             <div style="margin:auto">
                 <div>
-                    <a href="class.html"><button class="button" onclick="#"><h2>&nbsp;&nbsp; Class 1 &nbsp;&nbsp;</h2></button></a>
+                    <a href="class.html"><button class="button" onclick="#"><h2>&nbsp;&nbsp; Current Class &nbsp;&nbsp;</h2></button></a>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <a href="class.html"><button class="button" onclick="#"><h2>&nbsp;&nbsp;&nbsp; Class 2 &nbsp;&nbsp;&nbsp;</h2></button></a>
                 </div>
@@ -187,7 +189,7 @@ if(isset($_POST['submit'])){
     <div class="container">
         <!-- Tab links -->
         <div class="tab">
-            <button class="tablinks" onclick="openTab(event, 'Class1')" id="defaultOpen"><h2>Class 1</h2></button>
+            <button class="tablinks" onclick="openTab(event, 'Class1')" id="defaultOpen"><h2> Your Class  </h2></button>
         </div><br>
         <!-- Tab content -->
         <div id="Class1" class="tabcontent">
@@ -213,7 +215,7 @@ if(isset($_POST['submit'])){
 
                             <th>Student First Name</th><th>Student Middle Name</th><th>Student Last Name</th><th>Date</th><th>Status</th><th>Comment</th>
 		            </tr>	
-				  </thead>
+				  
 			<?php
                 $SQLSELECT = "SELECT * FROM student INNER JOIN attendance ON attendance.student_ID = student.student_ID";
                 
@@ -248,8 +250,7 @@ if(isset($_POST['submit'])){
                             <tr style="background-color: #ffb606">
 
                             <th>Student First Name</th><th>Student Middle Name</th><th>Student Last Name</th><th>Date</th><th>Status</th><th>Comment</th>
-		            </tr>	
-				  </thead>
+		            </tr>
 			<?php
                 $SQLSELECT = "SELECT * FROM student ";
                 $result_set =  mysqli_query($conn,$SQLSELECT);
@@ -283,32 +284,40 @@ if(isset($_POST['submit'])){
                     <div class="accordion_panel"><br>
                         <!--content-->
                         <!-- bar graph -->
-                        <br><br>
-                        <h2 style="color:black; text-align:center; font-weight: bold"> Performance Results Bar Graph </h2>
-                        <canvas id="chart1" style="height:200px; width: 50%"></canvas>
                         
-
 <table class="table table-bordered">
 
 
                         <!-- table -->
-                        <table class="w3-bordered" style="color:black; overflow-x:auto">
-                            <tr style="background-color: #ffb606">
-                                <th> Student Name &nbsp;</th>
-                                <th> Assignment 1 (%)&nbsp;</th>
-                                <th> Exercise 1 (%)&nbsp;</th>
-                            </tr>
-                            <tr class="w3-hover-amber">
-                                <td>Peter Griffin</td>
-                                <td> 85 </td>
-                                <td> 100 </td>
-                            </tr>
-                            <tr class="w3-hover-amber">
-                                <td>Lois Daniels</td>
-                                <td> 100 </td>
-                                <td> 95 </td>
-                            </tr>
-                        </table>
+                        <table class="table table-bordered">
+			<thead>
+				  	<tr>
+				  	
+                      <th>Student First Name</th><th>Student Middle Name</th><th>Student Last Name</th><th>Grade</th><th>Percentage</th><th>Task Score</th><th>Comment</th>
+				 
+				  	</tr>	
+				  </thead>
+			<?php
+				$query = "SELECT * FROM student INNER JOIN Task_Results ON Task_Results.student_ID = student.student_ID"; 
+				$set =  mysqli_query($conn,$query);
+				while($r = mysqli_fetch_array($set))
+				{
+				?>
+			
+					<tr>
+                        <td><?php echo $r['student_first_name']; ?></td>
+						<td><?php echo $r['student_middle_name']; ?></td>
+						<td><?php echo $r['student_last_name']; ?></td>
+						<td><?php echo $r['class_ID']; ?></td>
+						<td><?php echo $r['percentage']; ?></td>
+						<td><?php echo $r['taskscore']; ?></td>
+						<td><?php echo $r['task_ID']; ?></td>
+
+					</tr>
+				<?php
+				}
+			?>
+		</table>
                         <div id="averageCount1"></div>
                     </div>
                 </div>
@@ -316,170 +325,7 @@ if(isset($_POST['submit'])){
                     <div class="accordion d-flex flex-row align-items-center" style="color:black; font-weight: bold"> Record Marks </div>
                     <div class="accordion_panel"><br>
                         <!--content-->
-                        <table class="w3-bordered" style="color:black; overflow-x:auto">
-                            <tr style="background-color: #ffb606">
-                                <th> Student Name </th>
-                                <th>
-                                    Task Name:&nbsp;<input class="w3-input" type="text" id="taskName"><p style="color:black; font-style:italic">Record mark as a percentage</p>
-                                </th>
-                            </tr>
-                            <tr class="w3-hover-amber">
-                                <td> Peter Griffin </td>
-                                <td><input class="w3-input" type="text" id="mark" placeholder="Mark"></td>
-                            </tr>
-                            <tr class="w3-hover-amber">
-                                <td>Lois Daniels</td>
-                                <td><input class="w3-input" type="text" id="mark" placeholder="Mark"></td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <button id="submit" class="button" value="Submit Marks">Submit Marks</button>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div id="Class2" class="tabcontent">
-            <div class="elements_accordions">
-                <div class="accordion_container">
-                    <div class="accordion d-flex flex-row align-items-center" style="color:black; font-weight: bold"> View Past Attendace </div>
-                    <div class="accordion_panel"><br>
-                        <!--content-->
-                        <div class="row">
-                                <div class="col-lg-12">
-                                    <div class="elements_title"  style="text-align:center; font-weight: bold"> Overall Attendance Average  </div>
-                                </div>
-                            </div>
-                            <a href="StudentViewAtt.php">
-                            <div class="row elements_loaders_container"  style="float: inherit; margin-left: 40%">
-                                <div class="col-lg-3 loader_col">
-                                    <div class="loader" data-perc="1"></div>
-                                </div>
-                            </div></a>
-                            <br><br>
-                        <table class="w3-bordered" style="color:black; overflow-x:auto;">
-                            <tr style="background-color: #ffb606">
-                                <th> Student Name &nbsp;</th>
-                                <th> 01/10/2018 &nbsp;</th>
-                                <th> Comment &nbsp;</th>
-                            </tr>
-                            <tr class="w3-hover-amber">
-                                <td>Peter Griffin</td>
-                                <td>Present</td>
-                                <td> &nbsp;</td>
-                            </tr>
-                            <tr class="w3-hover-amber">
-                                <td>Lois Daniels</td>
-                                <td>Present</td>
-                                <td>&nbsp;</td>
-                            </tr>
-                        </table>
-                        <div id="averageCount1"></div>
-                    </div>
-                </div>
-                <div class="accordion_container">
-                    <div class="accordion d-flex flex-row align-items-center" style="color:black; font-weight: bold"> Record Attendance </div>
-                    <div class="accordion_panel"><br>
-                        <table class="w3-bordered" style="color:black; overflow-x:auto" oninput="sum()">
-                            <tr style="background-color: #ffb606">
-                                <th> Student Name &nbsp;</th>
-                                <th> 01/10/2018 &nbsp;</th>
-                                <th> Comment &nbsp;</th>
-                            </tr>
-                            <tr class="w3-hover-amber">
-                                <td>Peter Griffin</td>
-                                <td>
-                                    <select>
-                                        <option id="present" selected>Present</option>
-                                        <option id="absent">Absent</option>
-                                    </select>
-                                </td>
-                                <td><input class="w3-input" id="comment" placeholder="comment"></td>
-                            </tr>
-                            <tr class="w3-hover-amber">
-                                <td>Lois Daniels</td>
-                                <td>
-                                    <select id="status">
-                                        <option id="present" selected>Present</option>
-                                        <option id="absent">Absent</option>
-                                    </select>
-                                </td>
-                                <td><input class="w3-input" id="comment" placeholder="comment"></td>
-                            </tr>
-                            <tr class="w3-hover-amber">
-                                <td>Lois Daniels</td>
-                                <td>
-                                    <select id="status">
-                                        <option id="present" selected>Present</option>
-                                        <option id="absent">Absent</option>
-                                    </select>
-                                </td>
-                                <td><input class="w3-input" id="comment" placeholder="comment"></td>
-                            </tr>
-                            <tr>
-                                <td><button id="submit" class="button" value="Submit Marks">Submit Marks</button></td>
-                                <td> Total 
-                                    <script>
-                                        var present = 0;
-                                        if (present){
-                                            present = present ++;
-                                        }
-                                        document.write(present);
-                                    </script>
-                                    <script>
-                                        var att = new Array();
-                                        att["present"] = 1;
-                                        att["absent"] = 0;
-
-                                        function countPresent() {
-
-                                        }
-                                    </script>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
-                <div class="accordion_container">
-                    <div class="accordion d-flex flex-row align-items-center" style="color:black; font-weight: bold"> View Past Marks </div>
-                    <div class="accordion_panel"><br>
-                        <!--content-->
-                        <!-- bar graph -->
-                        <br><br>
-                        <h2 style="color:black; text-align:center; font-weight: bold"> Performance Results Bar Graph </h2>
-                        <canvas id="chart2" style="height:200px; width: 50%"></canvas>
-                        
-                        <!-- table -->
-                        <table class="w3-bordered" style="color:black; overflow-x:auto">
-                            <tr style="background-color: #ffb606">
-                                <th> Student Name &nbsp;</th>
-                                <th> Assignment 1 (%)&nbsp;</th>
-                                <th> Exercise 1 (%)&nbsp;</th>
-                            </tr>
-                            <tr class="w3-hover-amber">
-                                <td>Peter Griffin</td>
-                                <td> 60 </td>
-                                <td> 89 </td>
-                            </tr>
-                            <tr class="w3-hover-amber">
-                                <td>Lois Daniels</td>
-                                <td> 70 </td>
-                                <td> 80 </td>
-                            </tr>
-                        </table>
-                        <div id="averageCount1"></div>
-                    </div>
-                </div>
-                <div class="accordion_container">
-                    <div class="accordion d-flex flex-row align-items-center" style="color:black; font-weight: bold"> Record Marks </div>
-                    <div class="accordion_panel"><br>
-
-
-
-                        <!--content-->
-                        
+                          
                         <script>
             function ExportToTable() {  
              var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.xlsx|.xls)$/;  
@@ -589,13 +435,15 @@ if(isset($_POST['submit'])){
 							</div>
 						</div>
 					</fieldset>
-				</form>
-
+                </form>
+                
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+        
+                
+                
 
     <!-- footer -->
     <div> &nbsp; </div>
