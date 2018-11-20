@@ -236,7 +236,8 @@ if(isset($_POST['submit'])){
                     <div class="accordion d-flex flex-row align-items-center" style="color:black; font-weight: bold"> Record Attendance </div>
                     <div class="accordion_panel" style="overflow-x:auto;"><br>
                     
-                    <script>
+                   
+                   <script>
             function ExportToTable() {  
              var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.xlsx|.xls)$/;  
              /*Checks whether the file is a valid excel file*/  
@@ -357,8 +358,6 @@ if(isset($_POST['submit'])){
                 <div class="accordion_container">
                     <div class="accordion d-flex flex-row align-items-center" style="color:black; font-weight: bold"> View Past Marks </div>
                     <div class="accordion_panel"><br>
-                        <!--content-->
-                        <!-- bar graph -->
                         
 <table class="table table-bordered">
 

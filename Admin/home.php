@@ -6,7 +6,7 @@ require_once("session.php");
 
 
 <?php
-$query = " SELECT * FROM `administrator` WHERE administrator_ID = '{$_SESSION['user']}' ";
+$query = " SELECT * FROM `administrator` WHERE adminstrator_ID = '{$_SESSION['user']}' ";
 $run_query = mysqli_query($conn, $query);
     
 if(mysqli_num_rows($run_query) == 1){
