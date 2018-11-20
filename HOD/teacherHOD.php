@@ -48,7 +48,7 @@ $user_lname = $result['HOD_last_name'];
                     <div class="logo_container"><a href="teachers.html">
                             <div class="logo">
                                     <img src="images/ATlogo221.png" alt="logo" width="64px" height="66px">&nbsp;
-                                    <span>AT: Head Of Department</span>
+                                    <span>AT: H.O.D</span>
                             </div></a>
                     </div>
 
@@ -112,23 +112,8 @@ $user_lname = $result['HOD_last_name'];
         <h1> Department Monitoring </h1>
     </div>
     
-   <div class="row">
-    <div class="tab">
-        <button class="tablinks" onclick="openTab(event, 'Subject')" id="defaultOpen">Subjects</button>
-        <button class="tablinks" onclick="openTab(event, 'Teacher')">Teachers</button>
-        <button class="tablinks" onclick="openTab(event, 'MyClass')">My Classes</button>
-    </div>
         
-    <div id="Subject" class="tabcontent">
-        <h2>Subjects</h2>
-        <?php
-        $sql = "SELECT subject_name FROM subject INNER JOIN hod ON subject.department_ID=hod.department_ID";
-        ?>
-        <div class="w3-row-padding">
-            <div class="column">
-                <a href="Subjects.html"> <img class="classimg" src="classes.svg" alt="classes" style="width:100%"></a>
-                <div class="class-label">
-                    <a href="Subjects.html">Subject 1</a>
+   
     <div class="row">
         <div class="tab">
             <button class="tablinks" onclick="openTab(event, 'Subject')" id="defaultOpen">Subjects</button>
@@ -136,20 +121,36 @@ $user_lname = $result['HOD_last_name'];
             <button class="tablinks" onclick="openTab(event, 'MyClass')">My Classes</button>
         </div>
 
+        
+        
         <div id="Subject" class="tabcontent">
             <h2>Subjects</h2>
-            
+            <?php
+         $sql = "SELECT subject_name FROM subject INNER JOIN hod ON subject.department_ID = hod.department_ID";
+         $result = mysqli_query($conn, $sql);
+         $datas = array();
+         if (mysqli_num_rows($result) > 0){
+             while($row = mysqli_fetch_assoc($result)){
+                 $datas[] = $row;
+                 
+             }
+         }
+         foreach($datas[0] as $data){
+         
+         }
+         foreach ($datas[1] as $dats)
+        ?>
             <div class="w3-row-padding">
                 <div class="column">
                     <a href="Subjects.html"> <img class="classimg" src="classes.svg" alt="classes" style="width:100%"></a>
                     <div class="class-label">
-                        <a href="Subjects.html">Subject 1</a>
+                    <a href="Subjects.html"><?php echo $data?></a>  
                     </div>
                 </div>
                 <div class="column">
                     <a href=""> <img class="classimg" src="classes.svg" alt="classes" style="width:100%"></a>
                     <div class="class-label">
-                        <a href="">Subject 2</a>
+                    <a href="Subjects.html"><?php echo $dats?></a>
                     </div>
                 </div>
                 <div class="column">
@@ -164,11 +165,26 @@ $user_lname = $result['HOD_last_name'];
 
         <div id="Teacher" class="tabcontent">
             <h2>Teachers</h2>
+         <?php
+         $sqly = "SELECT CONCAT(teacher_first_name,' ', teacher_last_name) AS whole_name  FROM teacher INNER JOIN department ON department.department_ID = teacher.department_ID";
+         $results = mysqli_query($conn, $sqly);
+         $data = array();
+         if (mysqli_num_rows($results) > 0){
+             while($rows = mysqli_fetch_assoc($results)){
+                 $data[] = $rows;
+                 
+             }
+         }
+         foreach($data[0] as $dateach){
+         
+         }
+         
+        ?>
             <div class="row">
                 <div class="column">
                     <a href=""> <img class="classimg" src="Teacher.svg" alt="classes" style="width:100%"></a>
                     <div class="class-label">
-                        <a href="">Teacher 1</a>
+                        <a href=""><?php echo $dateach?></a>
                     </div>
                 </div>
                 <div class="column">
