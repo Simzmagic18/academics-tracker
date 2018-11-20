@@ -113,7 +113,7 @@ $user_lname = $result['student_last_name'];
             <div class="home_background prlx" style="background-image:url(images/courses_background.jpg)"></div>
         </div>
         <div class="home_content">
-            <h1><?php echo $user_fname." ".$user_lname; ?></h1>
+            <h1></h1>
         </div>
     </div>
 
