@@ -19,7 +19,7 @@ if(isset($_POST["Import"])){
 				if($row == 1){ $row++; continue; }
 	          //It wiil insert a row to our subject table from our csv file`
 	           $sql = "INSERT into attendance (`subject_ID`, `student_ID`,`status`,`comments`,`date`,) 
-	            	values('$emapData[1]','$emapData[2]','$emapData[3]','$emapData[4]','$emapData[5]')";
+	            	values('$emapData[1]','$emapData[2]','$emapData[3]','$emapData[4]','$emapData[5]','$emapData[6]')";
 	         //we are using mysql_query function. it returns a resource on true else False on error
 	          $result = mysqli_query($conn, $sql);
 				if(! $result )
