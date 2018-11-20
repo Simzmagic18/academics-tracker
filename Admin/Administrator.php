@@ -1,8 +1,20 @@
 <?php 
 include('conn.php'); 
 require_once("session.php");
+?>
 
-include('home.php');
+<?php
+$query = " SELECT * FROM `administrator`  WHERE adminstrator_ID = '{$_SESSION['user']}' ";
+$run_query = mysqli_query($conn, $query);
+    
+if(mysqli_num_rows($run_query) == 1){
+while($result = mysqli_fetch_assoc($run_query)){
+	$user_fname = $result['admin_first_name'];
+	$user_lname = $result['admin_last_name'];
+
+}
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

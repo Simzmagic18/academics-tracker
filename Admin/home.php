@@ -6,7 +6,7 @@ require_once("session.php");
 
 
 <?php
-$query = " SELECT * FROM `administrator` WHERE administrator_ID = '{$_SESSION['user']}' ";
+$query = " SELECT * FROM `administrator` WHERE adminstrator_ID = '{$_SESSION['user']}' ";
 $run_query = mysqli_query($conn, $query);
     
 if(mysqli_num_rows($run_query) == 1){
@@ -24,11 +24,7 @@ $user_lname = $result['admin_last_name'];
 </head>
 <body>
 <div class="form-wrapper"> 
-    <center><h3>Welcome: <?php 
-     session_start();
-    $login_session=$_SESSION['login_user'];
-    echo $login_session;
-    ?> </h3></center>
+    <center><h3>Welcome:  <?php echo " " .$user_fname." ".$user_lname; ?></h3></center>
 	 <div class="reminder">
 	 
 	 	<META http-equiv="refresh" content="2;URL=Administrator.php"> 
