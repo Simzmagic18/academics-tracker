@@ -29,7 +29,7 @@ $user_lname = $result['guardian_last_name'];
 	 
 	 	<META http-equiv="refresh" content="2;URL=Guardian2.php"> 
 
-	 <p><a href="dependent.php">Click to Proceed</a></p>
+                <p><a href="Guardian2.php">Click to Proceed</a></p>
     <p><a href="logout.php">Log out</a></p>
   </div>
 </div>

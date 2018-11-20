@@ -138,7 +138,7 @@ $user_lname = $result['HOD_last_name'];
          
          }
          foreach ($datas[1] as $dats){}
-         foreach ($datas[1] as $datd){}
+         foreach ($datas[2] as $datd){}
         ?>
             <div class="w3-row-padding">
                 <div class="column">
@@ -178,10 +178,9 @@ $user_lname = $result['HOD_last_name'];
                  
              }
          }
-         foreach($data[0] as $dateach){
+         foreach($data[0] as $dateach){}
          
-         }
-         
+         foreach($data[1] as $dateach1){}
         ?>
             <div class="row">
                 <div class="column">
@@ -193,7 +192,7 @@ $user_lname = $result['HOD_last_name'];
                 <div class="column">
                     <a href=""> <img class="classimg" src="Teacher.svg" alt="classes" style="width:100%"></a>
                     <div class="class-label">
-                        <a href="">Teacher 2</a>
+                        <a href=""><?php echo $dateach1?></a>
                     </div>
                 </div>
                 <div class="column">
