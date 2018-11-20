@@ -137,7 +137,8 @@ $user_lname = $result['HOD_last_name'];
          foreach($datas[0] as $data){
          
          }
-         foreach ($datas[1] as $dats)
+         foreach ($datas[1] as $dats){}
+         foreach ($datas[1] as $datd){}
         ?>
             <div class="w3-row-padding">
                 <div class="column">
@@ -155,7 +156,7 @@ $user_lname = $result['HOD_last_name'];
                 <div class="column">
                     <a href=""> <img class="classimg" src="classes.svg" alt="classes" style="width:100%"></a>
                     <div class="class-label">
-                        <a href="">Subject 3</a>
+                        <a href=""><?php echo $datd?></a>
                     </div>
                 </div>
             </div>
