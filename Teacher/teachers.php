@@ -198,17 +198,7 @@ if(isset($_POST['submit'])){
                     <div class="accordion d-flex flex-row align-items-center" style="color:black; font-weight: bold"> View Past Attendace </div>
                     <div class="accordion_panel"><br>
                         <!--content-->
-                        <div class="row">
-                                <div class="col-lg-12">
-                                    <div class="elements_title"  style="text-align:center; font-weight: bold"> Overall Attendance Average  </div>
-                                </div>
-                            </div>
-                            <a href="StudentViewAtt.php">
-                            <div class="row elements_loaders_container"  style="float: inherit; margin-left: 40%">
-                                <div class="col-lg-3 loader_col">
-                                    <div class="loader" data-perc="0.5"></div>
-                                </div>
-                            </div></a>
+                        
                             <br><br>
                             <table class="w3-bordered" style="color:black; overflow-x:auto">
                             <tr style="background-color: #ffb606">
@@ -245,38 +235,123 @@ if(isset($_POST['submit'])){
                 <div class="accordion_container">
                     <div class="accordion d-flex flex-row align-items-center" style="color:black; font-weight: bold"> Record Attendance </div>
                     <div class="accordion_panel" style="overflow-x:auto;"><br>
-                    <form action = "teachers.php" method = "Post">
-                        <table class="w3-bordered" style="color:black; overflow-x:auto">
-                            <tr style="background-color: #ffb606">
+                    
+                    <script>
+            function ExportToTable() {  
+             var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.xlsx|.xls)$/;  
+             /*Checks whether the file is a valid excel file*/  
+             if (regex.test($("#excelfile").val().toLowerCase())) {  
+                 var xlsxflag = false; /*Flag for checking whether excel is .xls format or .xlsx format*/  
+                 if ($("#excelfile").val().toLowerCase().indexOf(".xlsx") > 0) {  
+                     xlsxflag = true;  
+                 }  
+                 /*Checks whether the browser supports HTML5*/  
+                 if (typeof (FileReader) != "undefined") {  
+                     var reader = new FileReader();  
+                     reader.onload = function (e) {  
+                         var data = e.target.result;  
+                         /*Converts the excel data in to object*/  
+                         if (xlsxflag) {  
+                             var workbook = XLSX.read(data, { type: 'binary' });  
+                         }  
+                         else {  
+                             var workbook = XLS.read(data, { type: 'binary' });  
+                         }  
+                         /*Gets all the sheetnames of excel in to a variable*/  
+                         var sheet_name_list = workbook.SheetNames;  
 
-                            <th>Student First Name</th><th>Student Middle Name</th><th>Student Last Name</th><th>Date</th><th>Status</th><th>Comment</th>
-		            </tr>
-			<?php
-                $SQLSELECT = "SELECT * FROM student ";
-                $result_set =  mysqli_query($conn,$SQLSELECT);
-				while($row = mysqli_fetch_array($result_set))
-				{
-				?>
-			
-					<tr>
-						<td><?php echo $row['student_first_name']; ?></td>
-						<td><?php echo $row['student_middle_name']; ?></td>
-						<td><?php echo $row['student_last_name']; ?></td>
-                        <td> <?php echo "<input type='text' name = 'date_t' value='".date('m/d/y')."'";?> </td>
-                        <td>
-                        <input type = "radio" name = "status_a" value = "Present"> Present <br>
-                        <input type = "radio" name = "status_a" value = "Absent"> Absent
-                        </td>
-                        <td> <input class="w3-input" id="comment" name = "comment" type="text" placeholder="comment"> </td>
+                         var cnt = 0; /*This is used for restricting the script to consider only first sheet of excel*/  
+                         sheet_name_list.forEach(function (y) { /*Iterate through all sheets*/  
+                             /*Convert the cell value to Json*/  
+                             if (xlsxflag) {  
+                                 var exceljson = XLSX.utils.sheet_to_json(workbook.Sheets[y]);  
+                             }  
+                             else {  
+                                 var exceljson = XLS.utils.sheet_to_row_object_array(workbook.Sheets[y]);  
+                             }  
+                             if (exceljson.length > 0 && cnt == 0) {  
+                                 BindTable(exceljson, '#exceltable');  
+                                 cnt++;  
+                             }  
+                         });  
+                         $('#exceltable').show();  
+                     }  
+                     if (xlsxflag) {/*If excel file is .xlsx extension than creates a Array Buffer from excel*/  
+                         reader.readAsArrayBuffer($("#excelfile")[0].files[0]);  
+                     }  
+                     else {  
+                         reader.readAsBinaryString($("#excelfile")[0].files[0]);  
+                     }  
+                 }  
+                 else {  
+                     alert("Sorry! Your browser does not support HTML5!");  
+                 }  
+             }  
+             else {  
+                 alert("Please upload a valid Excel file!");  
+             }  
+         }  
+        </script>
+        <script>
+            function BindTable(jsondata, tableid) {/*Function used to convert the JSON array to Html Table*/  
+                var columns = BindTableHeader(jsondata, tableid); /*Gets all the column headings of Excel*/  
+                for (var i = 0; i < jsondata.length; i++) {  
+                    var row$ = $('<tr/>');  
+                    for (var colIndex = 0; colIndex < columns.length; colIndex++) {  
+                        var cellValue = jsondata[i][columns[colIndex]];  
+                        if (cellValue == null)  
+                            cellValue = "";  
+                        row$.append($('<td/>').html(cellValue));  
+                    }  
+                    $(tableid).append(row$);  
+                }  
+            }  
+        </script>
+        <script>
+             function BindTableHeader(jsondata, tableid) {/*Function used to get all column names from JSON and bind the html table header*/  
+                var columnSet = [];  
+                var headerTr$ = $('<tr/>');  
+                for (var i = 0; i < jsondata.length; i++) {  
+                    var rowHash = jsondata[i];  
+                    for (var key in rowHash) {  
+                        if (rowHash.hasOwnProperty(key)) {  
+                            if ($.inArray(key, columnSet) == -1) {/*Adding each unique column names to a variable array*/  
+                                columnSet.push(key);  
+                                headerTr$.append($('<th/>').html(key));  
+                            }  
+                        }  
+                    }  
+                }  
+                $(tableid).append(headerTr$);  
+                return columnSet;  
+            }  d
+        </script>
 
-					</tr>
-				<?php
-				}
-			?>
 
-                        </table>
-                        <input type="submit" name="submit" value="Create">
-                        </form>
+
+
+ <form class="form-horizontal well" action="importAT.php" method="post" name="upload_excel" enctype="multipart/form-data">
+					<fieldset>
+						<legend>Import CSV/Excel file only!</legend>
+						<div class="control-group">
+							<div class="control-label">
+								<label>Attendance form:</label>
+							</div>
+							<div class="controls">
+								<input type="file" name="file" id="file" class="input-large">
+							</div>
+						</div>
+						
+						<div class="control-group">
+							<div class="controls">
+							<button type="submit" id="submit" name="Import" class="btn btn-primary button-loading" data-loading-text="Loading...">Upload</button>
+							</div>
+						</div>
+					</fieldset>
+                </form>
+                
+
+
                     </div>
                 </div>
                 <div class="accordion_container">

@@ -1,11 +1,8 @@
 <?php
-//Start session
-//session_start();
-//Check whether the session variable SESS_MEMBER_ID is present or not
-if (!isset($_SESSION['admin_id']) || (trim($_SESSION['admin_id']) == '')) {
-    header("location: index.php");
-    exit();
+session_start();
+if(isset($_SESSION['user'])){
+        
+}else{
+header("location:login.php?msg= No Access");
 }
-$session_id=$_SESSION['admin_id'];
-
 ?>
