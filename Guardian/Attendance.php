@@ -1,19 +1,18 @@
 <?php 
 include('conn.php');
-require_once("session.php");
+//require_once("session.php");
 ?>
 
 <?php
-$query = " SELECT * FROM `student` WHERE guardian_id = '{$_SESSION['user']}' ";
-$run_query = mysqli_query($conn, $query);
+//$query = " SELECT * FROM `student` WHERE guardian_id = '{$_SESSION['user']}' ";
+//$run_query = mysqli_query($conn, $query);
     
-if(mysqli_num_rows($run_query) == 1){
-while($result = mysqli_fetch_assoc($run_query)){
-$user_fname = $result['student_first_name'];
-$user_lname = $result['student_last_name'];
+//if(mysqli_num_rows($run_query) == 1){
+//while($result = mysqli_fetch_assoc($run_query)){
+//$user_fname = $result['student_first_name'];
+//$user_lname = $result['student_last_name'];
 
-}
-}
+//}
 ?>
 
 
@@ -113,9 +112,9 @@ $user_lname = $result['student_last_name'];
         <div class="home_background_container prlx_parent">
             <div class="home_background prlx" style="background-image:url(images/courses_background.jpg)"></div>
         </div>
-        <div class="home_content">
-            <h1>Dependent's Name</h1>
-        </div>
+        <!--<div class="home_content">
+            <h1></h1>
+        </div>-->
     </div>
 
     <!-- Title -->
@@ -145,25 +144,64 @@ $user_lname = $result['student_last_name'];
     <div class="container">
         <div class="row">
         
+        
+<style "text/css"">
+    
+    
+table      {
+    		border-bottom: 1px #ffb606;
+    		color:black; 
+    		margin:auto;
+    		border: 1px solid black;
+    		width: 80%;
+
+    	}
+    	
+    	
+th {
+
+        text-align: left;
+    	border-bottom: 1px #ffb606;
+    	color:black; 
+    	margin:auto;
+        border: 1px solid black
+        height: 50px;
+        
+        
+   }
+   
+td {
+
+border-bottom: 1px #ffb606;
+    	color:black; 
+    	margin:auto;
+        border: 1px solid black
+
+
+
+}
+    		
+    </style>
+        
  <?php
  
  $sql= "SELECT attendance.student_ID, student.student_first_name, attendance.status, attendance.comments,attendance.date
 FROM attendance
 INNER JOIN student ON attendance.student_ID=student.student_ID
-Where attendance.student.ID ="6"";
+WHERE attendance.student_ID = 6";
        
         if($result = mysqli_query($conn, $sql)){
     if(mysqli_num_rows($result) > 0){
         echo "<table  >";
             echo "<tr>";
-                echo "<th>Subject</th>";
+                //echo "<th>Subject</th>";
                 echo "<th>Status</th>";
                 echo "<th>date<h>";
                // echo "<th>email</th>";
             echo "</tr>";
         while($row = mysqli_fetch_array($result)){
             echo "<tr>";
-                echo "<td>" . $row['subject'] . "</td>";
+                //echo "<td>" . $row[''] . "</td>";
                 echo "<td>" . $row['status'] . "</td>";
                 echo "<td>" . $row['date'] . "</td>";
                // echo "<td>" . $row['email'] . "</td>";
@@ -176,7 +214,7 @@ Where attendance.student.ID ="6"";
         echo "No records matching your query were found.";
     }
 } else{
-    echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
+    echo "ERROR: Could not able to execute $sql. " . mysqli_error($conn);
 }
 
 ?>

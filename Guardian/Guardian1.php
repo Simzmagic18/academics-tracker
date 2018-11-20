@@ -1,10 +1,20 @@
-<?php
-
-$link = mysqli_connect("localhost", "root", "", "academicstracker2");
-
+<?php 
+include('conn.php');
+require_once("session.php");
 ?>
 
+<?php
+$query = " SELECT * FROM `guardian` WHERE guardian_id = '{$_SESSION['user']}' ";
+$run_query = mysqli_query($conn, $query);
+    
+if(mysqli_num_rows($run_query) == 1){
+while($result = mysqli_fetch_assoc($run_query)){
+$user_fname = $result['guardian_first_name'];
+$user_lname = $result['guardian_last_name'];
 
+}
+}
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -94,7 +104,7 @@ $link = mysqli_connect("localhost", "root", "", "academicstracker2");
                     <div class="home_background prlx" style="background-image:url(images/courses_background.jpg)"></div>
             </div>
             <div class="home_content">
-                    <h1> Guardian </h1>
+                    <h1></h1>
             </div>
     </div>
 
@@ -104,15 +114,18 @@ $link = mysqli_connect("localhost", "root", "", "academicstracker2");
             <div class="row">
                 <div class="col">
                     <div class="section_title text-center">
-                            <h1><?php echo $_GET['fname']; ?></h1>
+                            <h1><?php echo $_GET['fname1']; ?></h1>
                     </div>
                 </div>
             </div><br><br>
-            <h2 style="text-align:center"> Attendance </h2><br>        
+            <h2 style="text-align:center">
+ <?php  
+ 
+ echo 'Attendance' ?></h2><br>        
             <div class="row course_boxes" style="margin:auto">
                 <div style="margin:auto">
                     <div>
-                        <a href="Attendance.html"><button class="button" style="font-weight:bold"><span> Attendance </span></button></a>
+                        <a href="Attendance.php"><button class="button" style="font-weight:bold"><span> Attendance </span></button></a>
                     </div>
                 </div>
             </div><br><br>
@@ -158,7 +171,7 @@ rowbtn{
                     
  <?php
  
- $sname = $_GET['fname'];
+ $sname = $_GET['fname1'];
                    
 $sql = "SELECT student.student_ID, student.student_first_name, class.name, subject.subject_name
 FROM student
@@ -175,9 +188,13 @@ $query = $sql.$sname;
             
             
                     
-                    if($result = mysqli_query($link, $sql)){
+                    if($result = mysqli_query($conn, $sql)){
     if(mysqli_num_rows($result) > 0){
         echo "<table>";
+        
+        //$fname = $row['subject_name'];
+        
+
         
         while($row = mysqli_fetch_array($result)){
 
@@ -187,8 +204,9 @@ $query = $sql.$sname;
                
                $fname = $row['subject_name'];
                
+               
                 
-                echo "<span>    <a href='Guardian1.php?fname=".$fname."'><button>".$fname."</button></a></span>";
+                echo "<span>    <a href='subjectMarks.php?fname=".$fname."'><button>".$fname."</button></a></span>";
                 
                 
               echo "</tr>";  
@@ -203,7 +221,9 @@ $query = $sql.$sname;
 } else{
     echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
 }
-                    ?>
+ ?>
+ 
+ 
                         <!--<a href="subjectMarks.html"><button class="button" style="font-weight:bold"><span> Mathematics </span></button></a>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <a href="subjectMarks.html"><button class="button" style="font-weight:bold"><span> English </span></button></a>-->
