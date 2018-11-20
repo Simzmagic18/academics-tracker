@@ -521,6 +521,8 @@ if(isset($_POST['submit'])){
 
     <!-- footer -->
     <div> &nbsp; </div>
+    
+    </div>
     <div class="footer">
                 <Span>
                     Academics Tracker All rights reserved
