@@ -1,5 +1,5 @@
 <?php session_start()?>
-<?php include('dbcon.php'); ?>
+<?php include('conn.php'); ?>
 <?php //$login_session = $_SESSION['login_user']; ?>
 
 <!DOCTYPE html>
@@ -183,7 +183,7 @@ th, td
 					<?php
 						
 						$query = "SELECT * FROM subject";
-						$result = mysqli_query ($link, $query);
+						$result = mysqli_query ($conn, $query);
 						
 						
 						while($rows=mysqli_fetch_assoc($result))
@@ -252,6 +252,6 @@ th, td
 
 <?php
 // Close connection
-mysqli_close($link);
+mysqli_close($conn);
 
 ?>
