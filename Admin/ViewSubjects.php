@@ -2,15 +2,6 @@
 <?php include('dbcon.php'); ?>
 <?php //$login_session = $_SESSION['login_user']; ?>
 
-<?php
-
-$link = mysqli_connect("localhost", "root", "", "academicsTracker2");
-
-
-
-
-?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -133,7 +124,7 @@ th, td
 				<tr>				
 					<th onclick = "sortTable(0)">Subject Name</th>
 					<th onclick = "sortTable(1)">Grade</th>
-					<th onclick = "sortTable(3)">Department ID</th>	
+					<th onclick = "sortTable(2)">Department ID</th>	
 					
 				</tr>	
 				
@@ -150,23 +141,16 @@ th, td
 						{
 							swapping = false;
 							rows = subjectTable.rows;
-    /* Loop through all table rows (except the
-    first, which contains table headers): */
 							for (i = 1; i < (rows.length - 1); i++)
 							{
-      // Start by saying there should be no switching:
-								change = false;
-      /* Get the two elements you want to compare,
-      one from current row and one from the next: */
+   								change = false;
 								x = rows[i].getElementsByTagName("TD")[n];
 								y = rows[i + 1].getElementsByTagName("TD")[n];
-      /* Check if the two rows should switch place,
-      based on the direction, asc or desc: */
+   
 								if (direction == "asc") 
 								{
 									if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) 
 									{
-          // If so, mark as a switch and break the loop:
 										change = true;
 										break;
 									}
@@ -174,7 +158,6 @@ th, td
 								{
 									if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase())
 									{
-          // If so, mark as a switch and break the loop:
 										change = true;
 										break;
 									}
@@ -182,16 +165,11 @@ th, td
 							}
 							if (change) 
 							{
-      /* If a switch has been marked, make the switch
-      and mark that a switch has been done: */
 								rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
 								swapping = true;
-      // Each time a switch is done, increase this count by 1:
 								counter ++; 
 							} else 
 							{
-      /* If no switching has been done AND the direction is "asc",
-      set the direction to "desc" and run the while loop again. */
 								if (counter == 0 && direction == "asc") 
 								{
 									direction = "desc";
